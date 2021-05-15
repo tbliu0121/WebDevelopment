@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--rowspan: 跨行合并 上方第一个单元格为目标单元格 
+        colspan: 跨列合并 左侧第一个单元格为目标单元格
+        1.确定是跨行还是跨列
+        2.找到目标单元格，写出合并式 = 合并的数量
+        3.删除多余的单元格
+    -->
+    表格小结：
+    <br/> table, tr, td, td;
+    <br/> thead, tbody, border, align
+    <br/> cellsapcing, cellpadding;
+
+    <table border="1" align="center" cellspacing='0' width="300" , height="120">
+        <!--cellpsacing属性和cellpadding属性被废弃, 通过css来设计表格属性-->
+        <tr>
+            <td></td>
+            <td colspan="2"></td>
+            <!--删除多余单元格-->
+        </tr>
+
+        <tr>
+            <td rowspan="2"></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <!--删除多余单元格-->
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

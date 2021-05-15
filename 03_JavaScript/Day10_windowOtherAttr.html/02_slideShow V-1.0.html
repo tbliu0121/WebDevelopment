@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图 V-1.0</title>
+
+    <style></style>
+
+    <script>
+
+        window.onload = function() {
+
+            let slideshow = document.getElementById("slideshow");
+            let imgArr = ['images/prod01.jpg', 'images/prod02.jpg', 'images/prod03.jpg', 'images/prod04.jpg'];
+            let index = 0;
+
+            let btnStart = document.getElementById("btn-start");
+            let btnStop = document.getElementById("btn-stop");
+            let timer01 = 0;
+
+            btnStart.onclick = function() {  //点击按钮开始切换图片
+                /***每点击一次都会开启一个按钮，开多了后因为timer只有一个，所以只能关闭最后一个开启的定时器，导致前面开启的无法关闭。
+                 * 因此开启一个定时器之前需要将当前元素上上的其他定时器。
+                */
+                clearInterval(timer01);                
+                timer01 = setInterval(function() {
+                    index = (index + 1) % imgArr.length;
+                    slideshow.src = imgArr[index];
+                }, 1000);
+            };
+
+            btnStop.onclick = function() {  //点击按钮停止切换图片
+                clearInterval(timer01);     //clearInterval()可以接受任意类型参数，不会报错。
+            };
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <img id="slideshow" src="images/prod01.jpg" alt="">
+    <button id="btn-start">start</button>
+    <button id="btn-stop">stop</button>
+
+</body>
+
+</html>

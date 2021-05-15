@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单行超出文字省略显示</title>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 150px;
+            background-color: hotpink;
+            margin: 10px auto;
+            white-space: nowrap;  /*强制一行显示。文字不换行显示*/
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <div class="box">  <!--强制单行显示，溢出隐藏，显示省略号-->
+        一夫当关，万夫莫开。所守或匪亲，化为狼与豺。
+    </div>
+
+</body>
+
+</html>

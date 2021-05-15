@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计时器完成循环任务</title>
+	</head>
+	
+	<body>
+		
+		<script type="text/javascript">
+			/** setTimeout; setInterval
+			 *   - 在使用setTimeout()时, 不一定要使用记录超时ID, 因为它会在条件满足时自停止。
+			 *   - 使用setTimeout在满足条件时自动停止，否则自动设置另一个从超时任务, 这是设置循环任务的常用做法。
+			 *   - setInterval()在时间中很少使用, 因为一个任务和下一个任务开始之间的时间间隔是无法保证的; 有些循环定时任务可能会因此被跳过。
+			*/
+		  let cnt = 0;
+			let max = 10;
+			let increment = function() {
+				cnt++;
+				console.log(cnt);
+				if(cnt < max) {
+					setTimeout(increment, 1000);
+				} else {
+					console.log("计时完成~");
+				}
+			}
+			increment();
+		</script>
+	</body>
+</html>

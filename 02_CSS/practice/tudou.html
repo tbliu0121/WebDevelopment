@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>土豆视频预览图片效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tudou {
+            position: relative;  /*父元素使用相对定位，使子元素可以使用绝对定位*/
+            width: 444px;
+            height: 320px;
+            background-color: hotpink;
+            margin: 0 auto;
+        }
+
+        .tudou img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tudou .mask {
+            display: none;
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .3) url(../Day_06/images/arr.png) no-repeat center;
+        }
+
+        .tudou:hover .mask {
+            display: block;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="tudou">
+        <div class="mask"></div>  <!--鼠标浮动到图片上后显示播放按钮和透明效果-->
+        <img src="../Day_06/images/tudou.jpg">
+    </div>
+
+</body>
+
+</html>

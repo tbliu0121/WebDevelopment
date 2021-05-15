@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window对象的其他方法</title>
+
+    <script>
+        /***window对象中的一些方法
+         *     - review: alert(); prompt(); confirm()
+         *     
+         *     - setInterval()
+         *     - clearInterval()
+         * 
+         *     - setTimeout()
+         *     - clearTimeout() 
+        */
+
+        window.onload = function() {
+            let count = document.getElementById("count");
+            let num = 0;
+
+            /*** 使h1#count中的内容自动切换 
+             *     - setInterval()方法可以将一个函数没隔一段时间执行一次
+             *     - parameters: 
+             *         - 回调用函数。
+             *         - 时间间隔: 每隔多久执行一次。
+             *     - 返回值: 
+             *         - 此方法会返回一个返回值来唯一标识一个定时器。
+             * 
+             *     - clearInterval():
+             *         - 需要一个
+             * 
+             *     - 使用timer = setInterval()一定不要使用全局变量, 不然会相互受到影响。
+            */
+            count.innerHTML = "Start count..."
+            let timer = setInterval(function() {             //开始一个定时器
+                count.innerHTML = num++;
+                if(num == 10) {
+                    count.innerHTML = "End counting"
+                    clearInterval(timer);                    //达到条件时关闭定时器
+                }
+            }, 1000);
+
+        };
+    </script>
+</head>
+
+<body>
+    <h1 id="count">0</h1>
+</body>
+
+</html>

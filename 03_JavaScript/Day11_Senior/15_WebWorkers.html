@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Workers</title>
+
+    <style>
+        #input {
+            width: 300px;
+            height: 24px;
+            font-size: 16px;
+            border: 2px solid teal;
+            text-indent: 5px;
+            outline: none;
+            border-radius: 5px;
+            padding: 0;
+        }
+
+        #btn {
+            width: 60px;
+            height: 28px;
+            border: 2px solid tomato;
+            border-radius: 5px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<!--HTML5 中的Web Workers
+    - H5提供了JS分线程的实现，取名为Web Workers。
+    -我们可以把一些计算量非常大的代码交给Web Worker运行而不至于阻塞用户界面。
+
+    - 使用：
+        - 创建分线程执行的JS文件。
+        - 在主线程的JS中发送消息并回调用。
+        - 注意: 分线程的全局对象不再是window，window中的属性和方法均不可用; 分线程无法更新页面。
+
+    - 相关接口: 
+        - Worker: 构造函数，加载分线程执行的JS文件。
+        - Worker.prototype.onmessage: 用于接收另一个线程的回调函数。
+        - Worker.prototype.postMessage: 向另一个线程发送消息。
+
+    - 不足之处: 
+        - worker内的代码无法执行DOM操作。
+        - 无法跨域加载JS。
+        - 不是每个浏览器都支持这个新特性的。
+        - 慢！！！
+-->
+
+<body>
+    <input type="text" id="input" placeholder="输入一个正整数计算fibonacci数列">
+    <button id="btn">计算</button>
+
+    <script>
+        let input = document.getElementById("input");
+        let btn = document.getElementById("btn");
+
+        btn.onclick = function() {                      //利用Web Worker分担计算
+            let number = input.value;
+            
+            let worker = new Worker('./JS/worker.js');  //创建一个worker对象
+            worker.postMessage(number);                 //向分线程发送消息。不支持本地访问？？？
+            worker.onmessage = function(event) {        //event中有一个data数据包含了返回数据
+                console.log("主线程接收的返回数据: " + event.data);
+                alert(event.data);
+            };
+
+            console.log("主线程向分线程发送数据: " + number);         
+        };
+    </script>
+
+</body>
+
+</html>

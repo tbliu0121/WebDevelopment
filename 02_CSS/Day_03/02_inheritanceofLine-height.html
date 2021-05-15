@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行高继承性</title>
+    <style>
+        body {
+            color: blue;
+            font: 12px/1.5 "Microsoft Yahei";  /*子元素的行高为子元素字体大小的1.5倍*/
+        }
+
+        div {
+            font-size: 14px;  /*行高为14 * 1.5 = 21*/
+            background-color: yellow;
+        }
+
+        p {
+            font-size: 16px;  /*行高为16 * 1.5 = 24*/
+            background-color: green;
+        }
+
+        ul>li {
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<!--行高继承性的一种写法：16px/1.5 父元素文字大小为16px, 子元素的行高为子元素文字大小的1.5倍-->
+
+<body>
+    <div>这是body的子元素div，文字像素为14px. 行高为21px</div>
+    <p>这是body子元素p, 文字像素为16px. 行高为24px</p>
+    <ul>
+        <li>这是body的子元素ul的子元素li, 字体大小继承为12；行高为18px</li>
+    </ul>
+</body>
+
+</html>

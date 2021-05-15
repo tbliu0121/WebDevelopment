@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom查询剩余方法</title>
+
+    <script>
+        /***
+         *     document.body: return body
+         *     document.element: return html
+         *     daocumnet.all: return all elements
+         *     document.getElementsByCalssName()
+         *     document.querySelector()
+         *         - 需要一个css选择器字符串作为参数, 根据一个字符串选择器来查询一个元素节点。
+         *         - ie8也支持document.querySelector(), 此方法更加灵活
+         *         - 存在的问题: 只能找到满足条件的第一个元素
+         *     document.querySelectorAll()
+         *         - 用法和document.querySelector()类似, 不同之处在于选择符合条件的所有元素并且封装成数组对象返回。
+         *         - 即使符合条件的元素只有一个, 也会返回数组。
+        */
+        window.onload = function() {
+            //获取body标签
+            let body = document.getElementsByTagName("body");  //返回结果是一个类数组
+            console.log(body);                                 //输出一个类数组结构
+            console.log(body[0]);                              //在类数组中获取body元素
+
+            let _body = document.body;                         //document中有一个body属性。
+
+            let html = document.documentElement;               //document.documentElement保存的是html根标签
+
+            let all = document.all;                            //html页面中的所有元素
+            let _all = document.getElementsByTagName("*");     //获取页面所有元素的另一种方法
+            console.log(all);                                  //undefined
+            console.log(all.length);                           //所有元素的s数量, 有一个算一个
+
+            console.log(document.getElementsByClassName("test"));  //兼容性？？
+
+            /* 获取div.test中的div */
+            let div = document.querySelector(".test div");     //ie8也支持document.querySelector(), 此方法更加灵活
+            console.log(div);
+
+        };
+    </script>
+</head>
+
+<body>
+    <div class="test">
+        <div>this is a descentdant element</div>
+    </div>
+
+    <div></div>
+</body>
+
+</html>

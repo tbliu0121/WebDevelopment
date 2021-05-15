@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale =1.0">
+    <title>dom选择练习</title> 
+ 
+    <script>  
+        window.onload = function() {  //选择按钮; 添加事件: {选择操对象, 修改状态}
+            //#0-0: 设置一个函数对象
+            function myCheck(btn_name, func) {
+                let btn = document.getElementById(btn_name);  //选择按钮
+                btn.onclick = func;                           //设置按钮的响应函数
+            }
+
+            let items = document.getElementsByName("items");  //选中后面需要的四个复选框
+            let checkAllBox = document.getElementById("checkAllBox");  //全选框
+
+            //#1: checkedAllBtn 全选
+            myCheck("checkedAllBtn", function() {
+                let checkAllBox = document.getElementById("checkAllBox");
+                for(let i = 0; i < items.length; i++) {
+                    items[i].checked = true;
+                }
+                checkAllBox.checked = items[0].checked;
+            });
+
+            //#2: checkedNoBtn 取消全选
+            myCheck("checkedNoBtn", function() {
+                let checkAllBox = document.getElementById("checkAllBox");
+                for(let i = 0; i < items.length; i++) {
+                    items[i].checked = false;
+                }
+                checkAllBox.checked = items[0].checked;
+            });
+
+            //#3: checkedRevBtn 选择状态反转
+            myCheck("checkedRevBtn", function() {
+                let cnt = 0;
+                for(let i = 0; i < items.length; i++) {
+                    items[i].checked = !items[i].checked;
+                    cnt += Number(items[i].checked);
+                }
+                if(cnt == items.length) checkAllBox.checked = true;
+                else checkAllBox.checked = false;
+            });
+
+            //#4: submitBtn 点击按钮之后弹出所有选中信息, 模拟信息的提交。
+            myCheck("submitBtn", function() {
+                let checkedInfo = [];                      //记录选中的信息
+                for(let i = 0; i < items.length; i++) {
+                    if(items[i].checked) {
+                        checkedInfo.push(items[i].value);  //checkbox中的value属性保存了checkbox信息
+                    }
+                }
+                alert(checkedInfo);
+            });
+
+            //#5: checkedAllBox 功能和checkedAllBtn类似
+            checkAllBox.onclick = function() {
+                for(let i = 0; i < items.length; i++) {
+                    // items[i].checked = checkAllBox.checked;  //设置所有的选项的选择状态和操作按钮的状态一致。
+                    /* checkAllBox是方法的调用者, 利用一下this */
+                    items[i].checked = this.checked;
+                }
+            };
+            
+            //#6: items 单击每个复选框时检查全局的选择状态
+            for(let i = 0; i < items.length; i++) {
+                items[i].onclick = function() {
+                    checkAllBox.checked = true;
+                    for(let i = 0; i < items.length; i++) {
+                        if(!items[i].checked) {
+                            checkAllBox.checked = false;
+                        }
+                    }
+                }
+            }
+
+            
+        };
+    </script>
+</head>
+
+<body>
+    <form action="">
+        你爱好的运动是？<input type="checkbox" id="checkAllBox"> 全选<br>
+        <input type="checkbox" name="items" value="足球"> 足球
+        <input type="checkbox" name="items" value="篮球"> 篮球
+        <input type="checkbox" name="items" value="羽毛球"> 羽毛球
+        <input type="checkbox" name="items" value="乒乓球"> 乒乓球 <br>
+
+        <input type="button" id="checkedAllBtn" value="全 选">
+        <input type="button" id="checkedNoBtn" value="全不选">
+        <input type="button" id="checkedRevBtn" value="反 选">
+        <input type="button" id="submitBtn" value="提 交">
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+// 自定义函数
+@function body-width($content:40px, $border:30px) {  // 参数的默认值
+  @return $content + $border;
+}
+
+body {
+  // 自定义函数的调用
+  width: body-width(100px, 200px);
+  height: body-width();                              // 不传递参数时使用默认参数
+  height: body-width($border:5px, $content: 105px);  // 关键字参数
+}

@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6556877",
+      "name": "微博",
+      "font_class": "weibo",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    }
+  ]
+}

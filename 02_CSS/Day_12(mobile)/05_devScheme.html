@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端开发方案</title>
+
+    <style>
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        input {
+            -webkit-appearance: none;
+        }
+    </style>
+</head>
+
+<!--
+    - 单独制作移动端页面。
+    - 响应式兼容PC移动端：通过判断屏幕宽度来改变样式，以适应不同的终端
+        - 缺点: 制作麻烦，需要大量精力去调兼容性的问题。
+
+    - 移动端浏览器基本以webkit为主，因此只考虑webkit的兼容性即可。
+    - 可以放心大胆的使用H5标签和C3标签。
+    - 浏览器的私有前缀只需要考虑-webkit-即可。
+
+    - 移动端样式初始化方案: normalize.css
+        - 保护了有价值的默认值。
+        - 恢复了浏览器的bug。
+        - 是模块化的。
+        - 拥有详细的文档。
+
+    - 特殊样式
+        - -webkit-box-sizing: border-box;
+        - -webkit-tap-highlight-color: transparent; 点击高亮需要清除，使用transparent即可。
+        - -webkit-apperance: none; 移动端浏览器默认的外观在IOS上加这个属性才能给按钮和输入框自定义样式。
+        - -webkit-touch-callout: none; 禁用长按页面时弹出菜单; 如<a>、<img>等标签。
+
+-->
+
+<body>
+    <a href="#">Ai coding</a>
+    <input type="button" value="按钮一个~">
+</body>
+
+</html>

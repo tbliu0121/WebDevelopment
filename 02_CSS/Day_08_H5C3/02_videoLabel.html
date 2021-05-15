@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多媒体标签</title>
+    <style>
+        video {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<!--新增的多媒体标签
+    加入了多媒体标签之后，可以不使用插件而去播放视频、音频，video只支持三种格式，尽量使用mp4
+    Video: mp4 WebM Ogg
+        controls: 向用户显示播放控件
+        autoplay: 自动播放（谷歌浏览器需要添加muted来解决自动播放的问题）
+        width / height: 设置播放器的宽度和高度
+        loop: 播放之后是否循环播放
+        poster: 加载等待图片。视频为加载出来是一片黑色，poster可以先显示一张预览图。视频不自动播放是也会显示预览图。
+-->
+
+<body>
+    <video src="media/mi.mp4" controls="controls" muted="muted" loop="loop" poster="media/mi9.jpg"></video>
+
+</body>
+
+</html>

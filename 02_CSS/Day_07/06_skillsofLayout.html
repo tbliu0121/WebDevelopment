@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见的布局技巧</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .clearfix:before,
+        .clearfix::after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        ul li {
+            position: relative;
+            float: left;
+            list-style: none;
+            width: 150px;
+            height: 200px;
+            border: 2px solid #f00;
+            margin-left: -2px;
+        }
+
+        /* ul li:hover {
+            让鼠标浮动到盒子上时，变色的边框可以全部显示出来，相对定位的盒子会压住其他的盒子
+            position: relative;  
+            border-color: blue;
+        } */
+
+        /* 如果每个li都有相对定位，那么利用z-index提高当前元素的显示优先级; */
+        ul li:hover {
+            z-index: 1;  /*z-index默认是auto，修改优先级达到显示所有边框的目的*/
+            border-color: blue;
+        }
+
+        .news-box {
+            width: 300px;
+            height: 70px;
+            background-color: hotpink;
+            margin: 0 auto;
+            padding: 5px;
+        }
+
+        .news-box .pic {  /*设定装图片的box的width、height为图片尺寸*/
+            float: left;
+            width: 120px;
+            height: 70px;
+            margin-right: 10px;
+        }
+
+        .news-box .pic img {
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+
+    </style>
+</head>
+
+<!-- 几个常用的布局技巧
+    1. margin负值的使用
+        eg: 解决紧邻盒子的双边框问题
+    2. 文字围绕的浮动元素
+    3. 行内块元素的巧妙使用
+    4. css三角号的使用 
+-->
+
+<body>
+    <ul class="clearfix">  <!--相邻产品盒子双边框以及鼠标浮动边框变色的问题-->
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>  <!--相邻产品盒子双边框以及鼠标浮动边框变色的问题 END-->
+
+    <!-- 利用浮动元素不会压住文字的特性 -->
+    <div class="news-box">
+        <div class="pic">  <!--使用div将图片包含，方便以后换图片-->
+            <img src="images/img.png">
+        </div>
+        <!-- 让文字占满父元素，然后浮动图片即可 -->
+        <p>利用浮动元素不会压住文字的特点来布局图片和文字。</p>
+    </div><!-- 利用浮动元素不会压住文字的特性 END-->
+
+</body>
+
+</html>

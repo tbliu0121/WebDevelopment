@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的方法</title>
+
+    <script>
+        /*** 数组的方法(几个常用方法)
+         * 数组的创建：
+         *     let arr = new Array(args);  //构造函数
+         *     let arr = [];               //字面量
+         *     Array.from(args);           //参数为任何可迭代结构, 可实现对现有数组的浅复制
+         * 
+         * 迭代器方法:  ES6中新增的
+         *     Array.keys(): 返回数组的索引
+         *     Array.values(): 返回数组的值
+         *     Array.entries(): 返回索引的key-value对
+         *     三个方法返回的都是Array Iterator()
+         * 
+         *     for in
+         *     forEach(): 需要一个函数作为方法。
+         *         - 一个函数由我们创建, 但是不由我们调用的, 称为回调函数; (函数作为其他函数的参数)
+         *         - 数组中有几个函数就会执行几次。
+         * 
+         * 检测数组：
+         *     Array.isArray(value)
+         *  
+         * 栈和队列方法：   
+         *     push(): 向数组添加一个或多个元素, 返回值为数组的新长度。
+         *     pop(): 删除并返回数组的最后一个元素。
+         *     unshift(): 向数组的开头添加一个或多个元素, 并返回数组的新长度。
+         *     shift(): 删除并返回数组的第一个元素。
+         * 
+         * 排序方法:
+         *     reverse(): 该方法会直接修改原数组。
+         *     sort(): 按照Unicode来排序, 此方法会修改原数组; 接受一个回调函数作为参数传入。
+         *         浏览器会根据回调函数的返回值来决定元素的顺序
+         *             如果返回一个大于0的数, 则元素会交换位置
+         *             如果返回一个小于0的数, 则元素位置不变
+         *             如果返回一个等于0的数, 认为两个元素相等, 也不交换位置。
+         *         array.sort(
+         *             function(a, b) {
+         *                 return a - b;   //升序排列
+         *             }
+         *         );
+         *         
+         *         arrar.sort(function(a, b) {return a - b});
+         * 
+         * 操作方法:
+         *     concat(): 连接两个或多个数组, 对原数组无影响，新的数组被封装并返回
+         *         let result = array.concat(arr1, arr2, ...)  //[array, arr1, arr2, ...]
+         *     join(): 将所有 "数组元素" 转化成字符串并连接到一起, 并且对原数组无影响。
+         *         参数为连接符, 不传则默认为逗号, 如果不想要连接符, 则传入一个空串"".
+         * 
+         */
+
+        let Players = ['安琪拉', '鲁班', '赵云', ];      //使用字面量来创建数组
+        Players.push("孙尚香", "王昭君", "娜可露露");    //push()
+
+        //通过Array.from()转化为数组实例
+        _keys = Array.from(Players.keys());             //array.keys(), 获取数组索引, Array Iterator
+        _values = Array.from(Players.values());         //array.values(), 获取数组的值, Array Iterator
+        key_value = Array.from(Players.entries());      //array.entries(), 获取数组索引-值映射对, Array Iterator
+        console.log(_keys);
+        console.log(_values);
+        console.log(key_value);
+
+        console.log(Players);
+        for(let index in Players) {                   //for in 来遍历数组
+            console.log(Players[index]);
+        }
+
+        /********* 回调函数
+         * 浏览器会在回调函数中传递三个参数: 
+         *     value: 当前正在遍历的元素。
+         *     index: 当前正在遍历的数组。
+         *     obj: 当前正在遍历的数组。
+         */
+        console.log("========foaEch()方法遍历数组=========")
+        Players.forEach(
+            function(value, kye, obj) {
+                console.log(value);
+            }
+        );                            //forEach(args)遍历, 参数为一个函数
+
+        let _pop = Players.pop();                     //pop()
+        console.log(_pop);
+
+        Players.unshift("姜子牙", "梦琦", "虞姬");     //unshift()
+        console.log(Players);
+
+        let _shift = Players.shift();                 //shift()
+        console.log(_shift);
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

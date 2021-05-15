@@ -1,0 +1,8 @@
+.header {
+  width: length('type1' 'type2' 'type3') * 100px;
+  font-size: nth(('宋体' '华文彩云' '微软雅黑'), 3);
+  padding: join(10px 20px, 30px 40px);
+  margin: append(10px 20px 30px, 40px);
+  border: zip(1px 2px 3px, solid dashed dotted, red blue green);
+  border: index(1px solid red, red);
+}

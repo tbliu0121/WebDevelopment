@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS的三大特性</title>
+    <style>
+        div {
+            background-color: blue;
+            font-size: 16px;
+            display: inline-block;
+            width: 450px;
+            height: 100px;
+        }
+
+        div {
+            background-color: hotpink;  /*同名元素选择器属性冲突，产生了覆盖*/
+        }
+    </style>
+</head>
+
+<!-- 层叠性 继承性 优先级 -->
+<!-- 样式冲突时：后来者居上。及后来的将先来的覆盖掉
+     必须是相同的选择器产生的冲突 -->
+
+<body>
+    <div>相同选择器产生的冲突：覆盖效果。不产生冲突的属性不会覆盖</div>
+
+    <!-- 继承性：子元素未指定元素样式时，子元素自动继承父元素的某些属性，
+        某些属性！！！如text-, font-, line-, color等。文字相关的属性大部分会继承。
+        不是全部属性。高度与内外边距等不继承-->
+    <div>
+        <p>
+            这是div标签的子标签p元素。还是inline-block模式。这是div标签的子标签p元素。还是inline-block模式。这是div标签的子标签p元素。还是inline-block模式。这是div标签的子标签p元素。还是inline-block模式</p>
+    </div>
+
+    <!-- 行高的继承性 -->
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大数据热点图</title> 
+
+    <style>
+        #map {
+            position: relative;
+            width: 747px;
+            height: 617px;
+            background: url(./images/map.png) no-repeat;
+            background-color: #333;
+            margin: 0 auto;
+        }
+
+        #beijing,
+        #guangzhou,
+        #taibei {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+        }
+
+        #beijing {
+            position: absolute;
+            top: 228px;
+            left: 547px;
+        }
+
+        #guangzhou {
+            position: absolute;
+            top: 543px;
+            left: 548px;
+        }
+
+        #taibei {
+            position: absolute;
+            top: 498px;
+            left: 659px;
+        }
+
+        .dotted {
+            width: 8px;
+            height: 8px;
+            background-color: #09f;
+            border-radius: 50%;
+        }
+
+        div[class^="pulse"] {  /*div元素中已pulse开头的类名*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px; 
+            height: 8px;
+            box-shadow: 0 0 12px #009dfd;
+            border-radius: 50%;
+            animation: pulse 1.2s linear infinite;  /*注意默认的delay是0，后面增加延时要注意选择器的权重！！！*/
+        }
+
+        #map .pulse2 {
+            animation-delay:  0.4s;
+        }
+
+        #map .pulse3 {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes pulse {
+            0% {}
+
+            70% {
+                /* transform: scale(2); */
+                width: 40px;  /*如果使用scale放大替代动画效果的话，阴影也会被放大的！！！*/
+                height: 40px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 70px;
+                height: 70px;
+                opacity: 0;  /*放大到最后看不见波纹*/
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map">
+        <div id="beijing">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+
+        <div id="guangzhou">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+
+        <div id="taibei">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

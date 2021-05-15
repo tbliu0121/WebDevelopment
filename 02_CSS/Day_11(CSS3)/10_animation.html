@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画 </title>
+
+    <style>
+        /**打开页面后，一个盒子就从左面走到右面*/
+
+        /*定义动画*/
+        @keyframes move { /*fromt to和0% 100%的效果使一样的*/
+            /* 0% {   开始状态
+                transform: translateX(0px);
+            }
+
+            100% {  结束状态
+                transform: translateX(1000px);
+            } */
+            from {
+                transform: translateX(0px);
+            }
+
+            to {
+                transform: translateX(1000px);
+            }
+        }
+
+        @keyframes move_ {
+            0% {  /*初始状态没有动可以省略掉*/
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(1080px, 0);
+            }
+
+            50% {
+                transform:translate(1080px, 500px);
+            }
+
+            75% {
+                transform: translate(0, 500px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            border-radius: 12px;
+            /* animation-name: move;     调用动画 */
+            animation-name: move_;     /*调用动画*/
+            animation-duration: 6s;    /*动画持续时间*/
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            /* animation: move_ 6s linear 0s infinite alternate forwards;
+                - 动画属性简写顺序: name duration timing-function delay direction
+                - 简写属性不包含play-state！！！
+             */
+        }
+
+        div:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<!--动画animation
+        - 可以通过设置多个节点来精确控制一个或一组动画，通常用来实现复杂动画效果。
+        - 相比于过渡，动画可以实现更多变化，更多控制，连续自播放等效果。
+
+    动画的使用：
+        - 先定义动画（使用keyframes定义动画）
+            @keyframes animations_name {
+                0% {    //0%是动画的开始
+                    //
+                }
+
+                100% {  //100%是动画的完成
+                    //
+                }
+            }
+        - 再调用动画
+
+    常用动画属性：
+     - @keyframes: 规定动画。
+     - animation: 所有动画属性的简写。
+     - animation-name: 动画名字。
+     - animation-duration: 动画持续时间。
+     - animation-timing-function: 运动曲线效果。
+     - animation-delay: 动画开始的时间延迟。
+     - animation-iteration-count: 动画重复次数, infinite表示永久循环。
+     - animation-direction: 是否反方向播放; 默认是Normal。
+     - animation-play-state: 规定动画运行或者停止; 默认是running, 可以修改为paused。
+     - animation-fill-mode: 动画完结束状态, 保持结束状态: forward; 回到初始状态: backwards。
+-->
+
+<body>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子的阴影效果</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: chocolate;
+            margin: 200px auto;
+            /* box-shadow: 10px 10px 10px 10px #000 inset; */
+        }
+
+        /* 原来盒子没有影子，鼠标经过时添加影子即可
+           利用div:hov{}即可，任意元素均可以使用elemet:hover{}来完成鼠标经过时的效果
+         */
+        div:hover {
+            box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, .3);
+        }
+    </style>
+
+</head>
+
+<!--h-shadow: 水平阴影的位置（正值阴影往右走，负数往左走）。
+    v-shadow: 垂直阴影。
+    blur: 模糊距离(可选)。
+    sapred: (阴影尺寸)。
+    color: 阴影颜色。
+    inset: 将外阴影(outset)改为内阴影。 
+       默认是outset, 不允许写outset-->
+
+<body>
+    <div>  <!--盒子的阴影不占用空间，即盒子的阴影不会影响其他元素-->
+
+    </div>
+
+</body>
+
+</html>

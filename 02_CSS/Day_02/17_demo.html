@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五彩导航。。。。。</title>
+    <style>
+        .nav a {
+            width: 120px;
+            height: 58px;
+            display: inline-block;
+            background-color: cadetblue;
+            color:white;
+            line-height: 50px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .nav .bg1 {
+            background: url(images/bg1.png) no-repeat;
+        }
+
+        .nav .bg2 {
+            background: url(images/bg2.png) no-repeat;
+        }
+
+        .nav .bg3 {
+            background: url(images/bg3.png) no-repeat;
+        }
+
+        .nav .bg4 {
+            background: url(images/bg4.png) no-repeat;
+        }
+
+        .nav .bg5 {
+            background: url(images/bg5.png) no-repeat;
+        }
+        /* 伪类有了类名时，冒号前面用类名即可 */
+        .nav .bg1:hover {
+            background: url(images/bg11.png);
+        }
+
+        .nav .bg2:hover {
+            background: url(images/bg22.png);
+        }
+
+        .nav .bg3:hover {
+            background: url(images/bg33.png);
+        }
+
+        .nav .bg4:hover {
+            background: url(images/bg44.png);
+        }
+
+        .nav .bg5:hover {
+            background: url(images/bg55.png);
+        }
+    </style>
+</head>
+
+<!-- 为链接扩大选择范围，并加上背景即可-->
+
+<body>
+    <div class="nav">
+        <a href="https://baidu.com" class="bg1">百度导航</a>
+        <a href="https://douban.com" class="bg2">豆瓣导航</a>
+        <a href="https://csdn.com" class="bg3">CSDN</a>
+        <a href="https://weibo.com" class="bg4">微博导航</a>
+        <a href="https://sina.com" class="bg5">新浪导航</a>
+    </div>
+
+</body>
+
+</html>

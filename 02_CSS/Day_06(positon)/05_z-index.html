@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位重叠的次序</title>
+    <style>
+        .blue {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 8; /*加大定位后的叠合属性*/
+            width: 200px;
+            height: 150px;
+            background-color: blue;
+        }
+
+        .red {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<!-- 利用z-index属性可以设置盒子的定位叠放次序，数值越大越靠上
+    z-index后面是一个整数，不带单位
+    只要定位的盒子才有z-index
+ -->
+
+<body>
+    <div class="blue"></div>
+    <div class="red"></div>
+    <div>默认叠放顺序为后来者居上</div>
+
+</body>
+
+</html>

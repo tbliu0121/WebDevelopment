@@ -1,0 +1,19 @@
+.header {
+  content: type-of(100);
+  content: type-of("100");
+  content: type-of(true);
+  content: type-of(#ff6347);
+
+  // unit()获取一个值的单位
+  content: unit(100);
+  content: unit(100%);
+  content: unit(100px);
+
+  // unitless()判断一个值有没有单位
+  content: unitless(100);
+  content: unitless(100px);
+
+  // comparable()判断两个值是否可以做加减和合并
+  content: comparable(100px, 200px);
+  content: comparable(100px, 200em);
+}

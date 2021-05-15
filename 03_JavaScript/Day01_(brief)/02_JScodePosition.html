@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS代码编写位置</title>
+
+    <script src="js/JScodePosition.js">  /*--写在外部文件中可以在不同的页面中同时引用，也可以利用浏览器的缓存机制。*/
+        alert("我是script标签中的代码");  /*script标签一旦用于引入外部文件，就不能再编写代码了，及时编写了浏览器也不会执行，如果需要的话则可以再创建一个script标签用于编辑内部代码*/
+    </script>
+
+    <script>alert("我一个新script标签中的代码");</script>
+
+</head>
+
+<!--
+    1. 可以将js代码写到属性内。
+    2. 可以将js代码写到超连接的href属性中。
+        这种方法结构与行为产生了耦合，不便于维护。
+    3. 写到script中的标签中。
+    4. 将JS代码写到外部的.js文件中。
+-->
+
+<body>
+    <button onclick="alert('讨厌，你点我干什么~~~')">点我一下</button>  <!--注意属性参数内的引号用单引号，否则会产生嵌套问题-->
+    <a href="javascript: alert('让你点你就点')">你也点我一下</a>
+</body>
+
+</html>

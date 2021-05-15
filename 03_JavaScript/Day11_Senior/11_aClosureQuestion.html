@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一道闭包的面试题</title>
+</head>
+
+<body>
+    <script>
+        function func(n, o) {
+            console.log(o);
+            return {
+                func: function(m) {
+                    return func(m, n);
+                }
+            }
+        }
+
+        let a = func(0);  //undefined
+        a.func(1);        //0
+        a.func(2);        //0
+        a.func(3);        //0
+
+        let b = func(0).func(1).func(2).func(3);  //undefined 0 1 2
+
+        let c = func(0).func(1);  //undefined 0
+        c.func(2);                //1
+    </script>
+
+</body>
+
+</html>

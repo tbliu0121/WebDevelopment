@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精灵图</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .box1 {
+            width: 60px;
+            height: 60px;
+            margin: 100px auto;
+            background: url(images/sprites.png) no-repeat -182px 0;  /*利用背景图片的bakcground-position来调整精灵图的位置*/
+        }
+
+        .box2 {
+            width: 60px;
+            height: 60px;
+            margin: 100px auto;
+            background: url(images/sprites.png) no-repeat -155px -106px;  /*利用背景图片的bakcground-position来调整精灵图的位置*/
+        }
+    </style>
+</head>
+
+<!-- 精灵图
+    精灵图主要针对小的背景图，产品类图片需要定期更换，因此不使用精灵图。
+    核心是把许多小图片放到一个大图片中，这个大图片称为精灵图或者雪碧图，利用background-position移动背景图片位置
+        找出需要的拼图坐标位置放入到背景即可。
+ -->
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+</body>
+
+</html>

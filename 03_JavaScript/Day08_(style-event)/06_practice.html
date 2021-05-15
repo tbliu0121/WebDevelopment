@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件练习</title>
+
+    <style>
+        #move-box {
+            width: 80px;
+            height: 65px;
+            background-color: hotpink;
+            padding: 5px 10px;
+            position: absolute;
+        }
+
+        #fixed-box {
+            width: 500px;
+            height: 500px;
+            background-color: gray;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+
+            let moveBox = document.getElementById("move-box");
+            document.onmousemove = function(event) {       //鼠标移动move-div也移动
+                event = event || window.event;             //解决事件的兼容性问题
+                let left = event.clientX;                  //获取鼠标在可视区内的坐标
+                let top = event.clientY;
+                // let left = event.pageX;                 //当页面超过可视区高度时，若页面向下滑动，则元素和鼠标会产生距离。
+                // let top = event.pageY;                  //因此换一个高度属性, 但是此属性存在兼容性问题？？
+
+                /* 也可以利用scrollTop结合clientX/Y来计算, scrollTop/Left属性的归属同样存在兼容性问题 ORZ */
+                let st = document.body.scrollTop  || document.documentElement.scrollTop;
+                let sl = document.body.scrollLeft || document.documentElement.scrollLeft;
+
+                moveBox.style.left = left + sl + "px";     //通过内联样式设置move-box的定位位置
+                moveBox.style.top = top + st + "px";
+            };
+
+            let fixedBox = document.getElementById("fixed-box");
+            fixedBox.onmousemove = function(event) {
+                event = event || window.event;
+                event.cancelBubble = true;                 //取消事件的冒泡
+            };
+        };
+    </script>
+
+</head>
+
+<body style="height: 1024px; width: 2048px;">
+    <div id="fixed-box"></div>
+    <div id="move-box">鼠标去哪我去哪~</div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D呈现: transform-style</title>
+
+    <!--
+        - 控制子元素是否开启三维立体环境。
+        - transform-style: flat; 子元素不开启立体空间，是默认的。
+        - transform-stule: preserved-3d; 子元素开启立体空间。
+        
+        - 注意: 代码写给父元素; 这个元素很重要，后面必用！！！
+    -->
+
+    <style>
+        #outer {                   /*通过父元素看到透视效果*/
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            perspective: 500px;    /*打开透视*/
+            transition: all 1s;
+            transform-style: preserve-3d;
+        }
+
+        #outer:hover {
+            transform: rotateY(-60deg);
+        }
+
+        #outer div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: hotpink;
+        }
+
+        #outer div:last-child {
+            background-color: teal;
+            transform: rotateX(60deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div></div>
+        <div></div>
+    </div>
+
+</body>
+
+</html>

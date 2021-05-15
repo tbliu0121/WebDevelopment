@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>translate3D</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*参数是是视距离; 是眼睛到屏幕的距离，translate中的Z是元素离屏幕的距离
+              因此z不可以大于视距
+            */
+            perspective: 200px;
+        }
+
+        /***     3d转化
+            - transfrom: translatedX(100px)仅仅在X轴方向上移动。
+            - transfrom: translatedY(100px)仅仅在Y轴方向上移动。
+            - transfrom: translatedZ(100px)仅仅在Z轴方向上移动。
+            - transform: translate3s(x, y, z)三个参数分别是三个轴向的移动距离。
+        */
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            /* transform: translateX(100px); 只能有一个transform生效 可以*/
+            /* transform: translateX(100px) translateY(100px); 利用translate3d简写 */
+            transform: translate3d(400px, 100px, 100px);  /*顺序为xyz, 没有的不可以不写，必须写0*/
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象字面量</title>
+
+    <script>
+        /***使用对象字面量来创建对象 
+         * 所谓字面量literal就是在程序中直接使用的值
+         * 字面量可以简单理解为变量被赋予的值，永远在赋值运算的右侧。
+         * 使用对象字面量创建对象的时候，可以直接接指定对象中属性的值。
+         * 
+        */ 
+       let player = {  //对象的属性名字可以加引号，也可以不加引号，但是特殊属性名必须加引号。
+           name: "偷走你的碗",
+           gender: "male",
+           position: "Warrior" ,
+           bag: {                  //属性是一个对象
+               tool: "knife",
+               academy: "bandage"  //最后一个属性之后没有逗号
+           }         
+       };
+
+       console.log(player);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

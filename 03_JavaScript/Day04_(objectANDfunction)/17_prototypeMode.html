@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型模式</title>
+
+    <script>
+        /***  Prototype
+         * 我们所创建的每一个函数, 解析器都会向函数中添加一个prototype
+         *     这个属性对应这一个对象, 这个对象就是我们所谓的原型对象。
+         *     不同函数的原型对象是不同的。
+         *     普通函数的原型对象几乎没有任何作用。
+         *     当函数以构造函数的形式调用时, 它所创建的对象中都会有一个隐含的属性, 指向该构造函数的原型对象。
+         *     原型对象可以通过__proto__来访问。
+         * 
+         * 原型对象是同一个类中所有对象的共享区域。
+         * 当我们访问一个对象的属性或者方法时, 会现在对象自身寻找, 如果有则直接使用, 如果没有, 则回去原型对象* 中寻找, 如果找到则直接使用。
+         * 
+         * 使用in检查对象中是否含有某个属性时, 如果对象中没有但是原型中有, 也会返回true。
+         * hasOwnProperty("age"): 用来检查对象自己是否含有某个属性, 而不会包涵原型中的属性和方法.
+         *     使用该方法只有自身含有某个属性时才会返回true。
+         *     此方法属于原型对象的原型对象中的方法; 原型对象也是对象, 原型对象也有原型对象.
+         * 一层一层的原型即是原型链。
+        */
+
+        function Player() {
+
+        }
+
+        function Scenery() {
+
+        }
+
+        console.log(Player.prototype);
+        console.log(Scenery.prototype);
+        console.log(Player.prototype == Scenery.prototype)    //false
+        
+        player1 = new Player();
+        player2 = new Player();
+        console.log(player1.__proto__ == player2.__proto__);  //true
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

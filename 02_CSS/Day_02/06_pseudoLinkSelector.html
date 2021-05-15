@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类选择器</title>
+    <style>
+        table tr td {
+            text-align: right;
+        }
+
+        a:link {  /*未访问过的链接*/
+            color:#000;
+            text-decoration: none;
+        }
+
+        a:visited {  /*已经访问过的链接*/
+            color:purple;
+        }
+
+        a:hover {
+            color: #f00;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: blue;
+        }
+    </style>
+</head>
+
+<!--为了确保链接伪类能够生效。最好按照Link Visited Hover Active的顺序书写。LVHA-->
+
+<body>
+    <div>伪类选择器最大的特点就是用冒号: 如:hover、:firest-child<div>
+    <h3>链接伪类选择器</h3>
+    <table>
+        <tr>
+            <td>a:link</td>
+            <td>未被访问过的链接</td>
+        </tr>
+
+        <tr>
+            <td>a:visited</td>
+            <td>访问过的链接</td>
+        </tr>
+
+        <tr>
+            <td>a:hover</td>
+            <td>鼠标指向的链接</td>
+        </tr>
+
+        <tr>
+            <td>a:active</td>
+            <td>选择活动链接（鼠标按下未谈起的链接）</td>
+        </tr>
+    </table>
+
+    <hr/>
+
+    <a href="https://baidu.com">百度</a>
+    <a href="https://zhihu.com">知乎</a>
+    <a href="https://douban.com">豆瓣</a>
+    <a href="https://csdn">CSDN</a>
+    <a href="https://weibo.com">微博</a>
+</body>
+
+</html>

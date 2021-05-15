@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图 V-1.0</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .clear-fix::before,
+        .clear-fix::after {
+            content: "";
+            display: table;
+        }
+
+        .clear-fix::after {
+            clear: both;
+        }
+
+        .clear-fix {
+            *zoom: 1;
+        }
+
+        #outer {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 10px;
+            background-color: cadetblue;
+            overflow: hidden;
+        }
+
+        #img-list {  /*此处的宽度应该随着li的个数变化而变化, 利用JS修改*/
+            /* width: 1080px; */
+            position: absolute;
+            /*通过JS利用left属性使图片列表移动*/
+        }
+
+        #img-list li {
+            float: left;
+            margin: 0 10px;
+        }
+
+        #nav-div {
+            position: absolute;
+            z-index: 1;
+            bottom: 15px;
+        }
+
+        #nav-div a {
+            float: left;  /*浮动之后自动变成行内块元素*/
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 105, 180, .8);
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        #nav-div a:hover {
+            background-color: rgba(0, 0, 0, .5);
+        }
+    </style>
+
+    <script src="./JS/tools.js"></script>
+    <script>
+
+        window.onload = function() {
+            var imgList = document.getElementById("img-list");            //这是容纳图片的父元素，是一个ul元素
+            var imgArr = document.getElementsByTagName("img");            //获取img的每个元素实体
+            imgList.style.width = 270 * imgArr.length + 'px';             //根据图片的数量设计图片的宽度
+
+            /*  设置轮播图导航按钮垂直居中 
+              获取到父元素和子元素，left的值
+            */
+            var outer = document.getElementById("outer");
+            var navDiv = document.getElementById("nav-div");
+            navDiv.style.left =(outer.offsetWidth -  navDiv.offsetWidth)/2 + 'px';
+
+            var index = 0;                                                //初始默认选中的轮播图小点点, 用index记录导航点的位置
+            var allHref = document.getElementsByTagName("a");             //获取轮播图下面所有的点
+            allHref[index].style.backgroundColor = "rgba(0, 0, 0, .5)";   //设置默认第一个小点点为选中状态
+
+            /*轮播图两个功能
+                 - 点击小点点对应的图片
+                 - 定时换换图片
+            */
+           var timer = -1;                                                //设置一个定时器标识，用户点击时要停止自动轮播
+            for(let i = 0; i < allHref.length; i++) {                     //为每个导航点添加点击事件
+                allHref[i].index = i;                                     //为获得到的节点对象添加一个索引标记，来记录所在位置。
+
+                allHref[i].onclick = function() {                         //为每个点点绑定单击事件
+                    clearInterval(timer);                                 //点击导航时要停止计时器
+                    index = this.index;                                   //获得需要显示的图片的索引！！！
+                    // imgList.style.left = -(index * 270) + "px";           //计算偏移量，设置要显示的对应的图片
+                    setHref();                                            //选中一个点点设置其他的颜色
+
+                    //使用move函数来切换图片
+                    move(imgList, "left", -270*index, 20, function() {
+                        /* 点击导航点时要停止动画，完成回调之后要再开启动画 */
+                        autoChange();
+                    })
+                };
+            }
+
+            autoChange();  //开启自动切换图片
+
+            function setHref() {                                          //点击导航点后的导航点样式设置
+                if(index >= imgArr.length - 1) {                          //最后放一张和第一张一样的图片，掩藏过渡。
+                    index = 0;
+                    imgList.style.left = 0;
+                }
+                for(let i = 0; i < allHref.length; i++) {
+                    allHref[i].style.backgroundColor = "";                //通过style设置的是内联样式，对应属性设置为空即可让样式表中的属性生效
+                    allHref[index].style.backgroundColor = "rgba(0, 0, 0, .5)";   //index为选中的点点
+                }
+            }
+                                             
+            function autoChange() {
+                //开启一个定时器用来定时切换图片
+                timer = setInterval(function(){
+                    //令图片索引自增即可
+                    index = (index + 1) % imgArr.length;
+                    move(imgList, "left", -(270*index), 20, function(){
+                        //动画切换完成之后修改导航点
+                        setHref();
+                    });
+                }, 3000);
+            }
+        };
+
+    </script>
+</head>
+
+<body>
+    <!--创建一个放置图片的外部div-->
+    <div id="outer">
+        <ul id="img-list" class="clear-fix">
+            <li><img src="./images/prod01.jpg" alt=""></li>
+            <li><img src="./images/prod02.jpg" alt=""></li>
+            <li><img src="./images/prod03.jpg" alt=""></li>
+            <li><img src="./images/prod04.jpg" alt=""></li>
+            <li><img src="./images/prod01.jpg" alt=""></li>
+        </ul> 
+        
+        <!--创建图片对应的超链接-->
+        <div id="nav-div">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>   
+    </div>  <!--创建一个放置图片的外部div END-->
+</body>
+
+</html>

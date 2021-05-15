@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmet语法</title>
+</head>
+
+<!--Emmet语法用于快速生成HTML结构和CSS结构-->
+
+<body>
+    <!--输入div*5, 然后tab即可-->
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    
+    <!--'>'用于用于生成父子结构的标签。ul>li、div>span分别可生成如下代码-->
+    <ul>
+        <li></li>
+    </ul>
+    <div>
+        <sapn></sapn>
+    </div>
+
+    <!--'+'用于生成兄弟关系。输入“span*2+div*2”可生成如下代码-->
+    <span></span><span></span>
+    <div></div>
+    <div></div>
+
+    <!--默认div生成: .nav; #banner; p.one; span.gray; ul>li#two-->
+    <div class="nav"></div>
+    <div id="banner"></div>
+    <p class="one"></p>
+    <ul>
+        <li id="two"></li>
+    </ul>
+
+    <!--.demo_0$*5-->
+    <div class="demo_01"></div>
+    <div class="demo_02"></div>
+    <div class="demo_03"></div>
+    <div class="demo_04"></div>
+    <div class="demo_05"></div>
+
+    <!--div{Pink是粉色}*5-->
+    <div>Pink是粉色</div>
+    <div>Pink是粉色</div>
+    <div>Pink是粉色</div>
+    <div>Pink是粉色</div>
+    <div>Pink是粉色</div>
+
+    <!-- div{Parag$}*3 -->
+    <div>Paragraph1</div>
+    <div>Paragraph2</div>
+    <div>Paragraph3</div>
+
+</body>
+</html>

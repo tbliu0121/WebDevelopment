@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包与循环调用</title>
+
+    <script>
+        /*** 闭包产生的条件
+         *     - 外部函数
+         *     - 内部函数
+         *     - 内部函数引用了外部函数的数据
+        */
+        function func1() {
+            var a = 2;
+            function func2 () {  //函数声明时就会形成闭包，但是函数表达式不会
+                console.log(a);
+            }
+            func2();
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

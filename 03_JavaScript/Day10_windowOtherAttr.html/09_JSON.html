@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <link rel="shortcut icon" href="./images/favicon01.ico">
+
+    <style></style>
+
+    <script>
+        /*** JSON
+         *     - 一种特殊格式的字符串
+         *     - 在任何语言中都可以识别, 并且可以转化为任何语言
+         *     - Json主要用来在开发中进行数据交互
+         * 
+         *     - JSON(Java Scritp Object Notation)JS对象记号表示法
+         *     - 只不过JSON中的属性必须用双引号来表示
+         * 
+         *     - JSNO分类
+         *         - JSON对象{}
+         *         - JSON数组[]
+         * 
+         *     - JSON中允许的值: 
+         *         1. 字符串
+         *         2. 数值
+         *         3. 布尔值
+         *         4. null
+         *         5. 对象
+         *         6. 数组
+         * 
+         *     - 将JSON字符串转化为对象
+         *         - 在JS中有一个工具类就是JSON
+         *         - JSON既可以将字符串转化为JS对象，也可以把JS对象转化为JSON对象。
+         *         - JSON.parse()  将JSON字符串转化为JS对象并返回，属性必须加上双引号！！！
+         *         - JSON.stringify() 将JS对象转化为JSON字符串
+         * 
+         *     - JSON在ie7及以下不支持
+         *     - eval()接受字符串形式的代码并执行
+         *     - 使用eval()执行的代码中, 如果有{}则会被eval当做代码块。
+         *         - 如果不希望被当成代码块执行, 前后加上左右括号即可： let obj = eval("(" + str + ")")
+         *         - 在开发中尽量不要使用, 执行性能比较差, 还具有安全隐患
+        */
+        let HuaMulan = {              //创建一个对象, 属性加上了双引号也没问题~
+            "name": "花木兰",
+            "gender": "female"
+        }
+        console.log(HuaMulan);
+
+        let json = '{"name": "孙尚香", "gender": "female"}';
+        let obj = JSON
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

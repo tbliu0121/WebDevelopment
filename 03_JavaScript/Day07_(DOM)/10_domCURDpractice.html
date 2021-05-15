@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom增删改练习</title>
+
+    <style>
+        #employeeTable  {
+            border-collapse: collapse;  /*消除表格单元格之间的间隔*/
+            margin: 20px auto;
+        }
+
+        #employeeTable th,
+        #employeeTable td {
+            border: 1px solid #111;
+            text-align: center;
+            padding: 5px 10px;           /*设置内容与单元格之间的距离*/
+        }
+
+        .formDiv {
+            width: 360px;
+            padding: 20px;
+            border: 1px solid #111;
+            margin: 10px auto;
+        }
+
+        .formDiv input {
+            width: 290px;
+            height: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <script>
+    
+        /* 定义删除a元素所在行的函数 */
+        function delAnchor() {
+            let tr = this.parentNode.parentNode;                      //a为响应事件的调用者, 合理利用this
+            let name = tr.getElementsByTagName("td")[0].innerHTML;    //根据当前行内的tr元素获取姓名
+
+            if(confirm("确认删除"+ name +"的记录？")) {                //conforim()
+                tr.parentNode.removeChild(tr);
+            }      
+
+        }
+
+        window.onload = function() {
+            /* 绑定删除的响应事件 */
+            let allAnchor = document.getElementsByTagName("a");       //找出所有链接元素
+            for(let i = 0; i < allAnchor.length; i++) {               //为每个链接元素绑定点击删除事件
+                allAnchor[i].onclick = delAnchor;                     //删除a所在行, 注意是赋值delA对象！！！不要加括号
+            }
+
+            /* 提交的响应事件 */
+            let submit = document.getElementById("addEmpButton");
+            submit.onclick = function() {
+                /* 获取输入信息 */
+                let name = document.getElementById("empName").value;
+                let email = document.getElementById("email").value;
+                let salary = document.getElementById("salary").value;
+    
+                /* 将信息写入到HTML元素中 */
+                let tr = document.createElement("tr");
+                tr.innerHTML = "<td>" + name + "</td>" +                                  //将获取到的信息写入到新建的tr元素中
+                               "<td>" + email + "</td>" +
+                               "<td>" + salary + "</td>" +
+                               "<td><a href='#'>Delete</a></td>";
+                tr.getElementsByTagName("a")[0].onclick = delAnchor;                     //绑定删除响应事件, 绑定函数对象, 不要括号! ! !
+
+            
+                let employeeTable = document.getElementById("employeeTable");            //获取员工表元素table
+                employeeTable.getElementsByTagName("tr")[0].parentNode.appendChild(tr);  //将tr加入到table元素内部的末尾
+            }
+       
+        }
+        
+    </script>
+</head>
+
+<body>
+    <!--显示记录信息的表格-->
+    <table id="employeeTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+
+        <tr>
+            <td>Tom</td>
+            <td>tom@gmail.com</td>
+            <td>5000</td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@gmail.com</td>
+            <td>5000</td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Batman</td>
+            <td>batman@gmail.com</td>
+            <td>5000</td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+    </table>  <!--显示记录信息的表格 END-->
+
+    <!-- 信息录入表格 -->
+    <div class="formDiv">
+        <h4>添加新员工</h4>
+        <table>
+            <tr>
+                <td class="word">name: </td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName">
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email: </td>
+                <td class="inp">
+                    <input type="text" name="email" id="email">
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary: </td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton" value="abc">
+                        submit
+                    </button>
+                </td>
+            </tr>
+        </table> 
+    </div>  <!-- 信息录入 END-->
+
+</body>
+
+</html>

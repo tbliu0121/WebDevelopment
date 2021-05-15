@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的模式转化</title>
+    <style>
+        div {
+            width: 400px;     /*块级元素转化为行级元素后，width和height属性将自动失效*/
+            height: 50px;
+            background-color: cadetblue;
+            display: inline;  /*块级元素转化为行级元素*/
+        }
+
+        span {
+            width: 100px;
+            height: 50px;
+            display: inline-block;  /*转化为行内块元素*/
+            background-color: chartreuse;
+        }
+
+        a {
+            width: 400px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;  /*让文字垂直居中的一个技巧*/
+            text-decoration: none;
+            background-color: cornsilk;
+            display: block;  /*行内元素转化为块级元素：独占一行，并且可以设置宽度和高度*/
+        }
+
+        a:hover {
+            background-color: lightsalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <!--把行级元素转化为块级元素，如增加链接范围-->
+    <a href="https://baidu.com">百度</a>
+    <a href="https://豆瓣.com">豆瓣</a>
+
+    <!--转化为行内元素转化用的比较少-->
+    <div>盒子的输出模式从块级元素改成了行级元素</div>
+    <div>这是另一个行级的div元素</div>
+
+    <!--转化为行内块元素，display: inline-block-->
+    <span>行内元素转化为行内块元素</span>
+    <span>另外一个行内块元素</span>
+
+</body>
+
+</html>

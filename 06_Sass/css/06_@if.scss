@@ -1,0 +1,32 @@
+$type: isnew;
+div {
+  @if $type == 'isnew' {
+    color: red;
+  } @else if $type == 'ishot' {
+    color: green;
+  } @else if $type == 'isboom' {
+    color:hotpink;
+  } @else {
+    color: tomato;
+  }
+}
+
+$isshow: 1;
+p {
+  @if $isshow == 1 {
+    display: block;
+  }
+  @else {
+    display: none;
+  }
+}
+
+span::before {
+  @if $type == 'isnew' {
+    content: "is new! ! !";
+  } @else if type == 'ishot' {
+    content: "is hot! ! !"
+  } @else {
+    content: "just so so ~";
+  }
+}

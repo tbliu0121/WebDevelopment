@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米侧边栏的修改</title>
+    <Style>
+        a {
+            /* width: 230px; */
+            width: 200px;  /*使用padding后为了保持盒子为计算好的大小，要在宽度上做修改*/
+            height: 40px;
+            line-height: 40px;  /*令文字的行间距等于盒子的高度可以实现水平居中*/
+            color: white;
+            font-size: 14px;
+            background-color: gray;
+            /* text-indent: 2em; */
+            padding-left: 30px;
+            text-decoration: none;
+            display: block;
+        }
+
+        a:hover {
+            background-color:#ff6700;
+        }
+    </Style>
+</head>
+
+<!--
+    利用padding来修改文字有盒子的边距
+-->
+
+<body>
+    <a href="#">手机 电话卡</a>
+    <a href="#">电视 盒子</a>
+    <a href="#">笔记本 平板</a>
+    <a href="#">出行 穿戴</a>
+    <a href="#">智能 路由器</a>
+    <a href="#">健康 儿童</a>
+    <a href="#">耳机 音箱</a>
+
+</body>
+
+</html>

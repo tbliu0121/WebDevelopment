@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数</title>
+
+    <script>
+        /*** 立即执行函数
+         *     执行一次就完事了QAQ
+         * fuction() {
+         *     statement;
+         * }
+         * 是无法执行的，{}被当做一个整体而functioin()无法别识别
+         * 为了让匿名函数在不给任何变量赋值的情况下正常通过，需要整体用()括起来
+         * 但是, (function() {
+         *           statement
+         *       })
+         * 如何调用呢？思考fuction和function()的关系，一个是函数对象，一个是函数调用，因此在后面加上括号就行了~~
+         * 
+         * (function() {
+         *     statements;
+         * })();
+         * 就是一个立即执行函数。
+        */
+
+        (function() {
+            alert('我是一个匿名函数~~~');
+        })();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

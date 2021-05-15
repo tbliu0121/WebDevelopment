@@ -1,0 +1,15 @@
+.a {
+  color: pink;
+}
+
+.a .b {
+  color: tomato;
+}
+
+.a .b .c {
+  color: teal;
+}
+
+.d {
+  color: hotpink;
+}

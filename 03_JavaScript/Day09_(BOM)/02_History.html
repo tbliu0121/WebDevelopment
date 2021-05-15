@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+
+    <script>
+        /*** History: 用来操作浏览器向前或者向后翻页
+         *     - length: 可以获取到当前访问的链接数量。
+         *     - back(): 可以回退到上一个浏览器页面, 和浏览器的回退按钮一样
+         *     - forward(): 可以跳转到下一个浏览器页面, 和浏览器的前进按钮一样
+         *     - go(): 可以跳转到指定页面, 需要一个整数跳转到指定页面, 需要一个整数来确认跳转幅度。
+         *         - 正数向前跳, 负数向后跳。
+				 *     - pushState(): 更新url而不刷新页面，可通过back()达到回退的目的。
+				 *     - replaState(): 这种方法没有历史记录，无法回退。
+        */
+       
+        window.onload = function() {
+            let btn = document.getElementById("his-btn");
+            btn.onclick = function() {
+                alert(history.length);
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <h1>Index主页</h1>
+    <a href="./02_page01.html">Page01</a>
+    <a href="./02_History.html">首页</a>
+    <button id="his-btn">历史记录</button>
+
+</body>
+
+</html>

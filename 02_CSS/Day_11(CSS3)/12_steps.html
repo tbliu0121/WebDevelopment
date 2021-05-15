@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画速度曲线：步长</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            width: 0;
+            height: 25px;
+            background: teal;
+            font-size: 20px;
+            line-height: 25px;
+            /* animation: test 4s forwards; */
+            animation: test 4s forwards;
+            animation: test 4s steps(10) forwards;  /*分步走完*/
+            border-radius: 5px;
+            /* white-space: nowrap;  让文字强制一行显示 */
+            overflow: hidden;
+        }
+
+        @keyframes test {
+            0% {
+                width: 50;
+            }
+
+            100% {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<!-- animation-timing-function: 规定动画的速度曲线, 默认是ease。
+    - linear: 匀速变动。
+    - ease: 低俗开开始，加速，最后减速。
+    - ease-in: 动画以低速开始。
+    - ease-out: 动画以低速结束。
+    - ease-in-out: 动画以低速开始和低速结束。
+    - steps(): 分几步完成动画; 规定了时间函数中的间隔数量(步长)。
+
+    以上属性只能选择一个，选择了steps()就不用选择其他的了。
+-->
+
+<body>
+    <div>B站是最好的学习网站</div>
+</body>
+
+</html>

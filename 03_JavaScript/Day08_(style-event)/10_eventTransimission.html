@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的传播流程</title>
+
+    <style>
+        #box01 {
+            width: 400px;
+            height: 300px;
+            background-color: hotpink;
+        }
+
+        #box02 {
+            width: 320px;
+            height: 240px;
+            background-color: lightseagreen;
+        } 
+
+        #box03 {
+            width: 240px;
+            height: 180px;
+            background-color: maroon;
+        }
+    </style>
+
+    <script>
+        /***事件的传播流程
+         *     1. 捕获阶段: 
+         *         - 在捕获阶段时从最外层的祖先元素, 向向吗䯮元素进行事件的捕获, 但是此时默认不会触发事件的。
+         *     2. 目标阶段: 
+         *         - 事件捕获到目标元素, 捕获结束时开始在目标元素上触发事件。
+         *     3. 事件的冒泡: 
+         *         - 时间从目标元素向他的组向元素传递, 依次触发祖先元素上的事件。
+         * 
+         *     - 如果我们希望再捕获阶段触发事件, 可以将bind中addEventListener()的第三个参数设置为false, 一般情况下我们不会希望再捕获事件中触发事件, 所以这个参数一般都是false。
+         *     - 在IE8及以下版本中, 只要捕获阶段, 因此只能是从父元素向子元素依次触发事件。
+        */
+        function bind(obj, eventName, callBack) {  //绑定事件的对象; 事件称; 响应函数
+            //普通浏览器中事件绑定的方法
+            if(obj.addEventListener) {
+                obj.addEventListener(eventName, callBack, false);
+            } else {
+                //IE8及以下中的事件绑定方法
+                obj.attachEvent("on"+eventName, function() {
+                    obj.call(callBack);  //将callBack的this修改为obj
+                });
+            }  
+        }
+
+        window.onload = function() {
+            let box01 = document.getElementById("box01");
+            let box02 = document.getElementById("box02");
+            let box03 = document.getElementById("box03");
+
+            /* 为三个按钮添加响应事件, 即事件在冒泡阶段执行 */
+            bind(box01, "click", function() {
+                alert("box01的响应事件");
+            });
+
+            bind(box02, "click", function() {
+                alert("box02的响应事件");
+            });
+
+            bind(box03, "click", function() {
+                alert("box03的响应事件");
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="box01">
+        <div id="box02">
+            <div id="box03"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他样式和元素属性</title>
+
+    <style>
+        #box01 {
+            width: 200px;
+            height: 150px;
+            background-color: hotpink;
+            border: 10px solid blue;
+        }
+
+        #box03 {
+            width: 400px;
+            height: 300px;
+            background-color: indigo;
+            overflow: scroll;
+        }
+
+        #box04 {
+            width: 800px;
+            height: 600px;
+            background-color: lightblue;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            let btn01 = document.getElementById("btn01");
+            let btn02 = document.getElementById("btn02");
+            let box01 = document.getElementById("box01");
+            let box03 = document.getElementById("box03");
+
+            //btn01的事件响应函数
+            btn01.onclick = function() {
+                /*** 其他样式(这些属性都是不带px的; 均为只读属性)
+                 *     clientWidth: 获取元素的可见高度
+                 *     clientHeight: 获取元素的可见宽度(可见指的是content + padding)
+                 * 
+                 *     offsetWidth: 包括border的宽度
+                 *     offsetHeight: 包括border的高度
+                 * 
+                 *     offsetParent: 获取到离当前元素最近的开启了定位的祖先; 如果都没有定位则返回body元素
+                 * 
+                 *     offsetLeft: 当前元素相对于其定位父元素的水平偏移量
+                 *     offsetTop: 当前元素相对于其定位父元素的垂直偏移量
+                 * 
+                 *     scrollHeight: 获取元素整个滚动区的高度
+                 *     scrollWidth: 获取元素整个滚动区的宽度
+                 *     scrollLeft: 元素的内容左侧（卷起来的）到它的视口可见内容（的左侧）的距离
+                 *     scrollTop: 元素的内容顶部（卷起来的）到它的视口可见内容（的顶部）的距离
+                 * 
+                 *     当scrollHeight - scrollTop == clientHeight时, 说明垂直滚动条滚动到底了
+                 *     当scrollWidth - scrollLeft == clientWidth时, 说明水平滚动条滚动到底了
+                */
+
+               //分别获取clientWidth和offsetWidth
+               alert("clientWidth: " + box01.clientWidth + "\n" + "offsetWidth: " + box01.offsetWidth);
+
+               let offsetP = box01.offsetParent;             //获取当前元素最近的一个开启了定位的祖先元素。
+               alert(offsetP.id);
+               alert("box01 offset-left: " + box01.offsetLeft + '\n' + "box01 offset-top: " + box01.offsetTop);
+            }
+
+            //btn02的事件响应函数
+            btn02.onclick = function() {
+                alert("box03 scroll-height: " + box03.scrollHeight);
+                alert("box03 scroll-top: " + box03.scrollTop);
+                alert("box03 scroll-left: " + box03.scrollLeft);
+                alert("box03 chilent-width: " + box03.clientWidth);
+                // 当scrollWidth - scrollLeft == clientWidth时, 说明水平滚动条滚动到底了
+                alert("box03.scrollWidth - box03.scrollLeft: " + (box03.scrollWidth - box03.scrollLeft));
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <button id="btn01">点我一下</button> <br> <br>
+
+    <div id="box2" style="position: relative;">
+        <div id="box01"></div>
+    </div>
+
+    <button id="btn02" style="margin-top: 10px;">点我一下</button> <br> <br>
+    <div id="box03">
+        <div id="box04">
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+            box04<br>
+        </div>
+    </div>
+
+</body>
+
+</html>

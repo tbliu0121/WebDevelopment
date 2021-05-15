@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增结构伪类选择器</title>
+
+    <style>
+        /* 选择ul里面第一个孩子小li*/
+        ul li:first-child {  /*匹配ul中第一个子元素li  E:first-child, 同理E:last-child*/
+            background-color: hotpink;
+        }
+
+        ul li:last-child {
+            background-color: tomato;
+        }
+
+        /*Important! ! ! !*/
+        ul li:nth-child(3) {  /*nth-child(n)选择某个父元素的一个或多个特定的子元素, 其中括号内的n可以是数字、公式或者关键字(even、odd等)。*/
+            background-color: green;
+        }
+
+        ul li:nth-child(even) {  /*选择所有偶数子代*/
+            background-color: blue;
+        }
+
+        ol li:nth-child(n) {  /*n从0开始，每次加1，第0个或者超出的都会被忽略，这是一个选择所有孩子的方法*/
+            background-color: hotpink;
+        } 
+
+        section div:nth-child(1) {  /*先把所有孩子排序找到第一个孩子，再看第一个孩子是否为指定的元素div, 因为光头强是p, 因此此选择器无法生效*/
+            background-color: red;
+        }
+
+        section div:nth-of-type(1) {  /*nth-of-type(n)会把指定元素的孩子排列出来，因此先找到所有div, 再把其中的第一个变成蓝色*/
+            background-color: blue;
+        }
+    </style>
+
+
+</head>
+
+<!--结构伪类选择器(冒号后面的称为结构伪类选择器)
+    E:first-child
+    E:last-child
+    E:nth-child(n) 括号中的n可以是数字、公式、关键字等。
+        关键字：even(偶数)、odd(奇数)。
+        公式：2n; 2n + 1; 5n; n+5(从第5个开始); -n + 5(前5个); etc...
+
+    E:first-of-type
+    E:last-of-type
+    E:nth-of-type(n)
+
+    区别：
+        nth-child(n)会把所有的子元素都排序，找到n, 然后判断和目标元素是否匹配。
+        nth-of-type(n)会把目标类型的子元素排序，然后找出第n个子类。
+    小结：
+        结构伪类选择器一般用于选择子代的第几个孩子
+        n的数值从0开始！！！
+        类选择器、属性选择器、伪类选择器，权重是一样的均为10
+-->
+
+<body>
+    <ul>
+        <li>我是第一个儿子</li>
+        <li>我是第二个儿子</li>
+        <li>我是第三个儿子</li>
+        <li>我是第四个儿子</li>
+        <li>我是第五个儿子</li>
+        <li>我是第六个儿子</li>
+        <li>我是第七个儿子</li>
+    </ul>
+
+    <ol>
+        <li>我是第一个儿子</li>
+        <li>我是第二个儿子</li>
+        <li>我是第三个儿子</li>
+        <li>我是第四个儿子</li>
+        <li>我是第五个儿子</li>
+        <li>我是第六个儿子</li>
+        <li>我是第七个儿子</li>
+    </ol>
+
+    <section>
+        <p>光头强</p>
+        <div>熊大</div>
+        <div>熊二</div>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字体系列相关设置</title>
+    <style>
+        h2 {
+            font-family: "微软雅黑";
+        }
+
+        li {
+            font-family:'Microsoft YaHei' 'Courier New', Courier, monospace;  /*当浏览器遇到无法使用第一个字体时，依次顺序后延*/
+        }
+
+        /*字体尽量指定，不同浏览器的默认效果可能会不同*/
+        body {  /*标题的文字大小需要单独指出，不受此作用*/
+            font-size: 16px;
+        }
+
+        h2 {
+            font-size: 30px;  /*同尺寸下head的文字是加粗的*/
+            font-weight: 400;
+        }
+
+        /***字体加粗的色设定***/
+        .bold {
+            /* font-weight: bold; */
+            font-weight: 700;  /*实际开发中使用数字多一些400：normal; 700:bold*/
+        }
+    </style>
+</head>
+
+<body>
+    <h2>动漫大电影推荐</h2>
+    <ul>
+        <li class="bold">千与千寻</li>
+        <li class="bold">大鱼海棠</li>
+        <li class="bold">大护法</li>
+        <li>你的名字</li>
+        <li>头脑特工队</li>
+        <li>龙猫</li>
+        <li>小黄人大眼萌</li>
+        <li>神偷奶爸</li>
+    </ul>
+    <h4></h4>
+    
+</body>
+</html>

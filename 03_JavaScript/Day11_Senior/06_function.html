@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见的闭包</title>
+
+    <script>
+        /***常见的闭包
+         *     - 一个内部函数作为外部函数的返回值。
+         *     - 将函数作为实参传给另一个函数。
+         * 
+         * 一个函数一旦调用完成内内部的局部变量就消失了
+         * 函数内部的数据外部既不可见也无法操作。
+         * 
+         * 闭包的作用: 通过闭包在外部操作函数的内部变量; 延长变量周期
+         *     - 使外部函数的局部变变量在函数执行完成之后任然存过在内存中; 从而延长了局部变量的生命周期。
+         *     - 让函数外部可以操作导函数内部的数据（函数、变量）。
+         * 
+         *     - 应用：自定义JS模块; 事件的循环绑定。
+        */
+        window.onload = function() {
+
+            function func1() {
+                let a = 2;
+
+                function func2() {
+                    a++;
+                    console.log(a);
+                }
+                return func2;
+            }
+
+            let fn = func1();  //调用一次计数加一次
+            fn();
+            fn();
+
+            function showDelay(msg, time) {
+                setTimeout(function() {
+                    alert(msg);
+                }, time);
+            }
+            showDelay("前端冲冲冲！！！", 2000);
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

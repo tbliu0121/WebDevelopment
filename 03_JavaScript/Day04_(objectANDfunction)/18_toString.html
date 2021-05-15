@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toString()</title>
+
+    <script>
+        /*** toString()
+         * 
+        */
+        function Player(name, gender, age) {
+           this.name = name;
+           this.gender = gender;
+           this.age = age;
+        }
+
+        Player.prototype.sayHi = function() {
+            console.log("欢迎来到王者荣耀, 我是" + this.name);
+        };
+
+        Player.prototype.toString = function() {  //重写toString()方法
+           return "Player[name: " + this.name + ", gender: " + this.gender + ", age: " + this.age + "]";
+       };
+
+       let HuMulan = new Player("花木兰", "Female", 19);
+       let DiRenjie = new Player("狄仁杰", "Male", 21);
+       console.log(HuMulan.sayHi == DiRenjie.sayHi);
+       HuMulan.sayHi();
+       DiRenjie.sayHi();
+
+       /***直接在页面中打印对象时, 实际上是输出对象的toString()方法的返回值。
+        * toString()方法在原型对象的原型对象Object对象中。
+        * 如果想修改toString()方法, 直接在对象内重写toString()即可。
+        ***/
+       console.log(HuMulan);
+       console.log(HuMulan.toString());
+       let result = HuMulan.toString();
+       console.log(result);
+
+       console.log(HuMulan.toString());
+       console.log(DiRenjie.toString())
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

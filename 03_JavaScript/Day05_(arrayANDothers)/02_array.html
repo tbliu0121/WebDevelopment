@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+
+    <script>
+        /*** 
+         * 三种对象: 内建对象; 宿主对象; 自定义对象。
+         * 
+         * 内建对象:
+         *     数组: Array; 也是一个对象。
+         *         可以存放不同类型的数据
+         *         长度会随着元素的存储动态增长
+         *         数组的存储性能比普通对象好
+         * 数组也是一个对象, 因此所有对象可以做的事情, 数组也可以做。
+        */
+
+        let  course = new Array();
+        console.log(course);
+        console.log(typeof course);
+
+        course[0] = 'html';
+        course[1] = 'CSS';
+        course[2] = 'JavaScript';
+        course[10] = 'WebPack';      //非连续数组中间都会空出来。
+
+        console.log(course);
+        console.log(course[3]);      //读取不存在的对象, 不会报错, 而是返回undefined。
+        console.log(course.length);  //对于非连续的数组, lenght属性会获得最大的索引+1(索引从0开始)
+        course.length = 8;           //lenght属性还可以修改数组长度, 长度小于原长之后，多余部分会被删除。
+        console.log(course);
+        course[course.length] = 'React';  //利用lenght属性向数组中的最后一个位置添加元素
+
+        /* 使用字面量来创建数组 */
+        let fruits = ['apple', 'mango', 'durian', 'tangerine', 'pear'];
+        let animals = new Array('dog', 'kitty', 'mouse');  //构造函数方法
+        let UNK = Array(5);          //创建一个长度为5的数组, 使用更多的是字面量的方法
+
+        console.log(fruits);
+        console.log(animals);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

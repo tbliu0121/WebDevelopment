@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+    <script>
+        /***
+         * BOM: 通过一组对象来完成对浏览器的操作
+         *     - Window: 代表整个浏览器的窗口, 同时window也是网页中的全局对象。
+				 *         - setTimeout()
+				 *         - setInterval()
+				 *         - alert()
+				 *         - open()
+				 *         - confirm()
+				 *         - prompt()
+				 *         - confirm()
+				 *         - scrollTo()
+				 *         - scrollBy()
+				 *         - resizeTo()
+				 *         - resizeBy()
+         * 
+         * 
+         *     - Navigator: 代表当前浏览器的信息, 通过该对象可以识别不同的浏览器。
+         *         - 由于历史原因, 其中的大部分属性都已经不能帮我们识别浏览器了。
+         *         - userAgent: 一般我们只会使用userAgent来判断浏览器信息。
+         *         - userAgent: 是一个包涵浏览器信息的字符串。
+         *         - IE11中在userAgent中去除了所有与IE有关的信息了。
+         *         - 可以通过一些浏览器中特有的对象、属性来判断浏览器信息。如ActiveXObject只有IE有
+         *     - [WARNING]: 来自 navigator 对象的信息通常是误导性的，不应该用于检测浏览器版本，因为：
+         *         - 不同浏览器能够使用相同名称
+         *         - 导航数据可被浏览器拥有者更改
+         *         - 某些浏览器会错误标识自身以绕过站点测试
+         *         - 浏览器无法报告发布晚于浏览器的新操作系统
+         * 
+         * 
+         *     - Location: 代表当前浏览器的地址栏信息, 通过Location可以获得地址栏信息, 或者操控浏览器跳转页面。
+         * 
+         * 
+         *     - History: 代表浏览器的历史记录，可以通过对该对象来操作浏览器的历史记录。
+         *         - 由于隐私原因, 该对象不能获取到具体的历史记录, 只能操作浏览器前后翻页。
+         *         - 并且此操作只对本次浏览有效
+         * 
+         * 
+         *     - Screen: 代表用户的屏幕信息, 通过该对象可以获取到用户的显示信息; 此方法PC端使用不多，移动端使用较多
+         * 
+         *     这些BOM对象在浏览器中都是作为Window对象的属性保存的, 可以通过Window对象来使用, 也可以直接使用。
+        */
+        console.log(navigator);
+        console.log(window.history);
+        console.log(location);
+
+        alert(navigator.userAgent);    //使用userAgent来获取用户代理的信息。
+
+        //利用不同行浏览器中的userAgent中独有的信息来判断浏览器信息
+        var ua = navigator.userAgent;  //IE10及以下不支持let......
+
+        if(/firefox/i.test(ua)) {
+            alert("火狐狸浏览器");
+        } else if(/chrome/i.test(ua)) {
+            alert("chrome浏览器")
+        } else if(/MSIE/i.test(ua)) {
+            alert("IE 浏览器");
+        } else if("ActiveXObject" in  window){  //目前IE11在userAgent中删除了与浏览器相关的信息, 因此利用特有对象来判断
+            alert("IE11拉出去枪毙");
+        }
+
+        // alert(navigator.appName);   //netScape
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作内联样式</title>
+
+    <style>
+        #box01 {
+            width: 200px;
+            height: 150px;
+            background-color: hotpink;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            //点击按钮btn01之后改变div_1的大小
+            let btn01 = document.getElementById("btn01");
+            let box01 = document.getElementById("box01");
+
+            btn01.onclick = function() {
+                /**通过JS修改元素内联样式值:
+                 *     element.style.样式名 = 样式值
+                 *     对于带有连字符的css样式，需要改成驼峰式名称。
+                 *         margin-top: marginTop; 
+                 *         background-color: backgroundColor
+                 * 
+                 * 通过style属性设置的都是内联样式, 而内联样式具有较高的优先级, 所以通过JS修改的样式往往会立刻显示
+                 * 但是如果在样式中写了!important，则此时杨慧UI具有最高优先级, 通过JS也无法覆盖此属性, 所以尽量不要加!important
+                */
+               box01.style.width = "400px";    //样式值一定是字符串！！！  
+               box01.style.height = "300px";
+               box01.style.backgroundColor = "pink";
+            };
+
+            //点击btn02之后读取元素的样式
+            let btn02 = document.getElementById("btn02");
+            btn02.onclick = function() {
+                /*** 读取box01的样式
+                 *     element.style.样式名;
+                 * 
+                 * 通过style读取和设置的都是内联样式, 样式表中的样式都是无法读取和设置的。
+                */
+               alert("背景颜色是: " + box01.style.backgroundColor);
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <button id="btn01">点我一下</button> <button id="btn02">点我一下~</button> <br> <br>
+
+    <div id="box01">这是一个盒子</div>
+
+</body>
+
+</html>

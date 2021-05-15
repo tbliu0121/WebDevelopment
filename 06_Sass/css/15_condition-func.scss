@@ -1,0 +1,4 @@
+.header {
+  width: if(false, 300px, 400px);
+  height: if(true, 300px, 400px);
+}

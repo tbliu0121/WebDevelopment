@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器相关</title>
+</head>
+
+<body>
+    <button id="btn01">开启定时器</button>
+
+    <script>
+        /***     定时器相关
+         * - 定时器真的定时么？
+         *     - 定时器并不是真正定时执行的，会存在误差，可能会很大，也有可能不是很大。
+         *     - 延迟的产生是在定时完成之后产生。
+         * 
+         * - 定时器的回调函数。
+         * 
+         * - 定时器是如何实现的？
+         * 
+         * ***/
+        let btn = document.getElementById("btn01");
+        btn.onclick = function() {
+            console.log("启动定时器之前");
+            let start = Date.now();            
+            let timer = setTimeout(function() {
+                console.log("定时时间: ",  Date.now() - start);
+                clearTimeout(timer);   //回到函数执行完成要关闭定时器
+            }, 200);
+            console.log("定时开始");
+
+            for(let i = 0; i < 1000000000; i++) {  //这个循环导致定时器阻塞了。。。。。。
+                //
+            }
+        }
+
+        /*** JS引擎执行代码的流程
+         *     - 先执行初始化代码; 再执行回调代码。
+         *     - 后面的某个时刻再执行回调。
+         * 
+         *     其中初始化代码包括如下成分：
+         *         - 设置定时器
+         *         - 绑定事件监听
+         *         - 发送ajax请求
+         * ***/
+        let t2 = setTimeout(function() {
+            console.log("222222");
+            clearTimeout(t2);
+        },2000);
+
+        let t1 = setTimeout(function() {
+            console.log("111111");
+            clearTimeout(t1);
+        }, 1000);
+
+        function func() {
+            console.log("func()");
+        }
+        func();
+
+        console.log("alert()之前");
+        alert("============================");    //alert()会暂停当前代码的执行，包括计时器的计时。
+        console.log("alert()之后");
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BorderBox模型</title>
+    <style>
+        div {
+            width: 200px;
+            height: 150px;
+            background-color: hotpink;
+            padding: 20px;
+            border: 25px solid #00f;
+        }
+
+        p {
+            width: 200px;
+            height: 150px;
+            background-color: hotpink;
+            padding: 20px;
+            border: 25px solid #00f;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<!--
+    box-sizing来指定盒子模型，content-box / border-bod
+        1. content-box: 盒子大小为width + padding + border (这是默认的方式)
+        2. border-box: 盒子大小为width
+    如果我们盒子模型改为了border-box, 那么padding和border就不会撑大盒子了（前提是padding和border不会超过width）
+    [Notice]: 使用border-box之后，文字垂直居中line-height需要减去border和padding！！！
+-->
+
+<body>
+
+    <div>小猪佩奇</div>
+    <p>小猪乔治</p>
+
+</body>
+
+</html>

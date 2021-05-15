@@ -1,0 +1,38 @@
+@charset "UTF-8";
+body {
+  background-color: #ffffff;
+}
+
+body div {
+  width: 450px;
+  height: 450px;
+  background-color: #ff6347;
+  margin: 10px auto;
+  padding: 10px 8px;
+}
+
+header {
+  background-color: #e5e5e5;
+  height: 38px;
+  border-top: 2px solid #ff6347;
+  border-bottom: 2px solid #008080;
+  font-family: consolas;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+header nav a {
+  display: inline-block;
+  height: 100%;
+  text-decoration: none;
+  color: #ff6347;
+  font-size: 18px;
+  line-height: 38px;
+  padding: 0 8px;
+  /* 编写过程应该避免多层嵌套 */
+}
+
+header nav a:hover {
+  color: #ffffff;
+  background-color: #ff6347;
+}

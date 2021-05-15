@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>justigy-content</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #outer {
+      display: flex;
+      width: 80%;
+      height: 400px;
+      background-color: hotpink;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;        /* 侧轴内容居中排列 */
+      /* align-items: flex-start; 侧轴内容从头开始摆放*/
+      /* align-items: flex-end;   侧轴内容从尾开始摆放*/
+      /* align-items: stretch;    拉伸时不要给高度, 侧轴默认是拉伸的方式 */
+    }
+
+    #outer span {
+      width: 150px;
+      height: 100px;               /* 父元素设置align-items: stretch时, 子元素不设置高度才有拉伸效果 */
+      background-color: teal;
+    }
+  </style>
+</head>
+
+<!-- align-items只能调整单行, 多行需要使用align-content -->
+
+<body>
+  <div id="outer">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+  </div>
+</body>
+
+</html>

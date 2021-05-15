@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+
+    <script>
+        /***
+         * 1. 全局作用域(script标签内的)
+         *     在页面打开是创建，在页面关闭时销毁
+         *     全局对象window, 我们可以直接使用, 代表浏览器的窗口,可以直接使用。
+         *         在全局作用域中，创建的变量都会作为window对象的属性保存。
+         *         全局作用域中的函数, 都会作为window的方法保存。
+         * 2. 函数作用域
+         *     调用函数时创建函数作用域, 函数调用完之后, 函数作用域就销毁。
+         *     在函数作用域中要访问全局作用域中的变量. 使用window.var_name即可.
+         *     在函数作用域中, 不使用var声明的变量会自动提升为全局变量。
+         *     形参就相当于在函数中声明了临时变量。
+         *    
+        */
+
+        console.log(window);
+        let color = "red";
+        console.log(window.color);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的委派</title>
+
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        #ul {
+            background-color: hotpink;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+
+            let ul = document.getElementById("ul");
+            let btn = document.getElementById("btn01");                     //单击按钮之后添加一个超文本链接
+            btn01.onclick = function() {
+                let li = document.createElement("li");                      //创建一个li列表项
+                li.innerHTML = "<a href='#'  class='link'>new Added Hypertext Link</a>";  //为li中添加超链接
+                ul.appendChild(li);                                         //超链接加入到li中
+            };
+
+            /***事件的委派
+             *     - 新添加的超链接不存在单击响应事件, 因为最初的单击响应事件是为已经存在的a添加的。
+             *     - 我们希望只绑定一次事件, 即可应用到所有元素上, 即使元素是后添加的。
+             *     - 我们可以尝试将事件绑定给元素的共同祖先。这就叫事件的委派。
+             * 
+             *     - 事件的委派: 将事件统一绑定给元素的共同祖先元素, 这样后代的事件触发时会一直冒泡到祖先元素。从而通过祖先元素的响应函数来处理。
+             *     - 时间的委派是利用了冒泡。
+            */
+
+            let allHref = document.getElementsByTagName("a");               //为初始ul中的每个超链接添加点击响应事件
+            for(let i = 0; i < allHref.length; i++) {
+                allHref[i].onclick = function() {
+                    alert("我是a的单击函数");
+                };
+            }
+
+            ul.onclick = function(event) {                                  //为元素的共同祖先元素绑定响应事件
+                /*** 问题：
+                 *     - 上述委派方法会扩大响应区域
+                 *     - 我们可以检测一下触发事件的元素是否为我们期望的元素, 如果是则执行, 否则不执行。
+                */
+                event = event || window.event;
+                if(event.target.className == "link") {    /* 如果元素是多类, 则此种方法无法生效, 可以通过正则解决 */
+                    alert("我是ul的单击响应函数");
+                }
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn01">添加超链接</button>
+    <ul id="ul">
+        <li><a href="#" class="link">Hypertext Link 1</a></li>
+        <li><a href="#" class="link">Hypertext Link 2</a></li>
+        <li><a href="#" class="link">Hypertext Link 3</a></li>
+    </ul>
+</body>
+
+</html>

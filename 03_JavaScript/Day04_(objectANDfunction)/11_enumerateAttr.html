@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>枚举对象的属性</title>
+
+    <script>
+        /*** 枚举对象的属性
+         * for(var var_name in obj) {
+         * }
+         * 每次执行会将一个属性名！！！赋值给变量var_name
+        */
+        let player = {
+            name: "HuMulan",
+            position: "Warrior",
+            gender: "Female",
+            skill: {
+                A: "技能A",
+                D: "大招"
+            }
+        }
+
+        for(let attr in player) {       //遍历player的属性
+            console.log(attr);          //属性名赋值给attr
+            console.log(player[attr]);  //取出属性对应的值
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

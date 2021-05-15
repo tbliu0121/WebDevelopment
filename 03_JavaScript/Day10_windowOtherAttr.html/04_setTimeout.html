@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延时调用</title>
+
+    <script>
+
+        window.onload = function() {
+            /***延时调用
+             *     延时调用一个函数不是马上执行，而是隔了一段时间后再执行，并且只会执行一次。
+             *     延时调用和定时调用的区别：延时调用只会执行一次，而定时调用会执行多次。
+             *     延时调用和定时调用实际上是可以相互替代的，在开发中可以根据自己的需求来选择。
+            */
+
+            alert("你看看一会儿有延时调用提示么？？");
+
+            let timer = setTimeout(function() {
+                alert("这是一个延时调用");
+            }, 2000);
+
+            clearTimeout(timer);
+
+        };
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS优先级的问题</title>
+    <style>
+        .test {
+            color: red;
+        }
+
+        div {
+            color: orange;
+        }
+
+        p {
+            color:green!important;  /*!important将改变属性的优先级为无穷大*/
+        }
+
+        ul>li {
+            color: black;
+        }
+
+        #demod {
+            color: blue;
+        }
+
+        #demop {
+            color: blue;
+        }
+    </style>
+</head>
+
+<!--优先级的原则--
+    选择器相同则执行叠加原则
+    选择器不同则按照类别判定：style(行内样式表) > #id > class&pseudo > element > inheritance 
+    !important是权重最最最最最大的！！！！！
+    继承权重为0！！！！！！！
+-->
+
+<body>
+    <div class="test" id="demod">div测试一下权重优先级: div属性是橙色；类属性是红色；id属性是蓝色。看看最后是什么颜色</div>
+    <p  class="test" id="demop">p测试一下权重优先级: p属性是绿色；类属性是红色；id属性是蓝色。看看最后是什么颜色。(因为在p中加入了!important)</p>
+
+    <div id="demod">
+        <ul>
+            <li>li自定义颜色为黑色，虽然父亲ul的父亲div通过id选择器设置为橙色，但是继承属性权重为最低的。小于类选择器的优先级。即使父元素中加入important也不好使。</li>
+            <li>因此，只要看元素是否被直接选出来即可。因为继承的权重永远为0</li>
+            <li>浏览器为a属性设定了蓝色、下划线两个属性，因此只有通过覆盖才可以改变链接的样式</li>
+        </ul>
+    </div>
+
+    
+
+</body>
+
+</html>

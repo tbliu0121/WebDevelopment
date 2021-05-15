@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通栏布局练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .top {
+            height: 50px;
+            background-color: gray;
+        }
+
+        .banner {
+            width: 1080px;
+            height: 220px;
+            margin: 10px auto;
+            background-color: gray;
+        }
+
+        .box {
+            width:1080px;
+            height: 360px;
+            background-color: gray;
+            margin: 0 auto;
+        }
+
+        .box li {
+            width: 261px;
+            height: 360px;
+            background-color: brown;
+            float: left;
+            margin-right: 12px;
+        }
+
+        .box .last {
+            margin-right: 0;
+        }
+
+        .footer {
+            /* width: auto;  通栏的盒子不需要指定宽度 */
+            height: 50px;
+            background-color: gray;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">top</div>
+    <div class="banner">banner</div>
+    <div class="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li class="last">4</li>
+        </ul>
+    </div>
+    <div class="footer">footer</div>
+
+</body>
+
+</html>

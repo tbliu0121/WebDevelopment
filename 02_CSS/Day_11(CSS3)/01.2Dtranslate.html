@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D转换</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* 移动盒子的位置：定位、外边距、2d移动转化 */
+        #div01 {
+            width: 200px;
+            height: 150px;
+            background-color: hotpink;
+            /* transform: translate(100px, 100px); */
+            /* transform: translateX(100px);    单独使用translateX或者translateY的时候, 只能有一个生效 */
+            /* transform: translateY(100px); */
+            /* transform: translate(40px, 30px); */
+            transform: translate(10%, 10%);      /*百分比的计算是相对于自身元素的*/
+        }
+
+        #div02 {
+            width: 200px;
+            height: 150px;
+            background-color: teal;
+        }
+
+        #center {
+            position: absolute;
+            width: 135px;
+            height: 135px;
+            padding: 15px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<!--转换（transform）
+    可以实现元素的位移、旋转、缩放等效果; 简单的理解就是变形。
+        移动: translate。transform: translate(x, y);
+        旋转: rotate。
+        缩放: scale。
+    - translate的最大优点就是不会影响到其他的元素。
+    - 移动过程中使用百分比是针对自身的元素使用的
+    - 对行内元素没有作用！！！
+
+    sknew / matrix ???
+-->
+
+<body>
+    <div id="div01"></div>
+    <div id="div02"></div>
+    <div id="center">这是一个居中的盒子,注意位移是负值奥！</div>
+
+</body>
+
+</html>

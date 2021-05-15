@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动</title>
+    <style>
+        div {
+            width: 200px;
+            height: 150px;
+            background-color:sienna;
+            text-align: center;
+            border: 5px solid black;
+            line-height: 150px;
+            float: left;
+            /* display: inline-block;  这种方式会使代码中的空格在网页中产生空隙 */
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+    </style>
+</head>
+
+<!-- 为什么需要浮动？
+    浮动的排列特性？
+    3种常见的布局方式：[普通流(标准流); 浮动; 定位]（这三种方式主要指PC端）
+    为什么需要清除浮动
+    可以写出至少两种浮动方式
+    完成页面布局的案例 -->
+
+<body>
+    <!-- 原则：
+        多个盒子纵向排列找标准流
+        多个盒子横着放找浮动 -->
+    <div class="left">盒子left</div>
+    <div class="right">盒子right</div>
+
+</body>
+
+</html>

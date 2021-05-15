@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date对象</title>
+
+    <script>
+        /*** Date对象
+         * 在JS中利用Date对象来表示时间。
+         * Date中的方法:
+         *     - getDate(): 获取时间对象的日, 如2012-5-26返回26。
+         *     - getDay(): 获取一周的周几周几, 返回0-6, 0代表周天。
+         *     - getMonth(): 获取月份, 返回0-11的值, 0是yiyue, 11是12月。
+         *     - getFullYear(): 获取完整的四位年份。
+         *     - getTime(): 获取时间对象的时间戳; 从1970年1月1日到当前时间的毫秒数。
+         *         计算机底层在保存时间时用的都是时间戳。
+         * 
+         * Date.now(): 获取当前的时间戳。
+        */
+
+        let t0 = new Date();  //创建一个时间对象, 默认封装了当前代码执行的时间。
+        console.log("默认创建时间: ", t0);
+
+        let t1 = new Date("12/03/2050 13:25:45")  //用字符串指定时间: "MM/DD/YYYY HH:MM:SS"
+        console.log("指定时间: ", t1);
+
+        /*利用时间戳的方法计算循环时间*/
+        let start = Date.now();
+
+        let cnt = 0;
+        for(let i = 0; i < 50000000; i++) {
+            cnt++;
+        }
+        let end = Date.now();
+
+        console.log("循环一共花费了: " + (end - start) + "毫秒");
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

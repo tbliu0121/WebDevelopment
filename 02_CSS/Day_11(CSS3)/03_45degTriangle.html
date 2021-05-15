@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画一个箭头</title>
+
+    <style>
+        div {
+            position: relative;
+            width: 298px;
+            height: 33px;
+            border: 1px solid #333333;
+        }
+
+        /*  利用伪元素添加一个箭头; 伪元素生成的是行内元素  */
+        div::after {
+            content: "";
+            position: absolute;   /*记得给父元素加定位*/
+            top: 10px;
+            right: 10px;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #000;
+            border-bottom: 2px solid #000;
+            transform: rotate(45deg);
+            transition: all .2s ease;
+        }
+
+        /*鼠标经过div三角旋转*/
+        div:hover::after {
+            transform: rotate(-135deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+</body>
+
+</html>

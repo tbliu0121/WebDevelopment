@@ -1,0 +1,347 @@
+body {
+    /* background-color: #f5f5f5; */
+    background-color: #fff;
+    font-family: Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+    background-color: #f5f5f5;
+}
+
+.top-bar {  /*顶部通栏*/
+    width: auto;
+    height: 40px;
+    background-color: #333333;
+}
+
+ .top-box {
+    height: 40px;
+    margin: 0 auto;
+}
+
+.top-box ul li {
+    float: left;
+    line-height: 40px;
+    font-size: 13px;
+}
+
+.top-box ul li a {
+    color: #b0b0b0;
+}
+
+.top-box ul li a:hover {
+    color: #fff;
+}
+
+.top-box ul li span.sep {  /*分割竖线的格式*/
+    margin: 0 5px;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+.top-box .cart{
+    position: relative;
+    float: right;
+    width: 120px;
+    height: 40px;
+    background-color: #424242;
+    text-align: center;
+    line-height: 40px;
+}
+
+.top-box .cart a {
+    font-size: 12px;
+    color: #b0b0b0;
+}
+
+.top-box .cart:hover {
+    background-color: white;
+}
+
+.top-box .cart:hover a {
+    color: #ff6700;
+}
+
+.top-box .cart .cart-info {
+    position: absolute;
+    display: none;
+    top: 40px;
+    right: 0;
+    width: 280px;
+    height: 120px; 
+    background-color: white;
+    line-height: 120px;
+    text-align: center;
+}
+
+.top-box .cart:hover .cart-info {
+    display: block;
+    font-size: 12px;
+}
+
+.top-box .user {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+}
+
+.top-box .user ul {
+    float: right;
+    margin-right: 22px;
+}
+
+.top-box .user ul a {
+    font-size: 12px;
+}
+
+.sub-nav {
+    height: 55px;
+    /* background-color: lightblue; */
+    margin: 25px auto;
+}
+
+.sub-nav .logo {
+    float: left;
+    width: 234px;
+    height: 55px;
+    /* background-color: gray; */
+    line-height: 55px;
+}
+
+.logo img {
+    float: left;
+    width: 55px;
+    height: 55px;
+}
+
+.prod-classification {
+    float: left;
+    height: 55px;
+    /* background-color: palegreen; */
+}
+
+.prod-classification ul li{
+    float: left;
+    height: 55px;
+    line-height: 55px;
+    font-size: 16px;  /*ff6700*/
+    margin: 0 10px;
+}
+
+.prod-classification a {
+    color: black;
+}
+
+.prod-classification a:hover {
+    color: #ff6700;
+}
+
+.search {
+    float: right;
+}
+
+.search input,
+.search button {
+    float: right;
+    margin: 2.5px 0;
+    height: 48px;
+}
+
+.search input {
+    width: 245px;
+    border: 1px solid #e0e0e0;
+    text-indent: 15px;
+}
+
+.search button {
+    width: 50px; 
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+.search button,
+.search input:focus {
+    outline-color:#ff6700;
+}
+
+.banner {
+    position: relati;
+    height: 460px;
+    margin: 0 auto;;
+}
+
+.banner {
+    position: relative;
+    height: 460px;
+    background: url(images/mi10.jpg);
+    background-size: 100% 100% ;
+    background-color: cadetblue;
+}
+
+.left-nav {
+    float: left;
+    width: 234px;
+    height: 460px;
+    background-color: rgba(105,101,101,.6);
+}
+
+.left-nav ul {
+    float: left;
+    padding: 20px 0;
+}
+
+.left-nav ul li a {
+    display: block;
+    color: white;
+    width: 174px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+    padding: 0 30px;
+}
+
+.left-nav ul li span {  /*让侧边栏内的箭头靠边*/
+    float: right;
+}
+
+
+.left-nav ul li a:hover {
+    background-color: #ff6700;
+}
+
+.banner .prev,
+.banner .next {
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+    width: 41px;
+    height: 70px;
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.banner  .prev{
+    left: 234px;
+    border-radius: 0 2px 2px 0;
+}
+
+.banner .next {
+    right: 0;
+    border-radius: 2px 0 0 2px;
+}
+
+.banner .prev:hover,
+.banner .next:hover {
+    color: white;
+    background-color: rgba(105,101,101,.8);
+}
+
+.footer {
+    width: 100%;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.footer-container {
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.footer-service ul {
+    border-bottom: 1px solid gray;
+}
+
+.footer-service ul li {
+    float: left;
+    width: 20%;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-service ul li a {
+    color: #616161;
+}
+
+.footer-service ul li span {
+    font-size: 24px;
+    vertical-align: -4px;  /*让图标下沉一部分，和文字中心大致对齐*/
+    margin-right: 4px;
+}
+
+.footer-links {
+    padding: 40px 0;
+}
+
+.footer-links .support {
+    float: left;
+}
+
+.footer-links .support dl {
+    float: left;
+    margin-right: 100px;
+}
+
+.footer-links .support dl dd {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.footer-links .support dl dt {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.contact-us{
+    float: right;
+    text-align: center;
+}
+
+.contact-us p,
+.contact-us a,
+.contact-us  div {
+    margin: 0 auto;
+}
+
+ .contact-us p.tel {
+    color: #ff6700;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.contact-us p.time {
+    color: #616161;
+    font-size: 13px;  
+    margin-bottom: 5px;
+}
+
+.contact-us .staff-service {
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    color: #ff6700;
+    font-size: 13px;
+    border: 1px solid #ff6700;
+    background-color: #fff;
+    text-align: center;
+}
+
+.staff-service:hover {
+    color: #fff;
+    background-color: #ff6700;
+    cursor: pointer;
+}
+
+.contact-us .subscribe {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.contact-us .subscribe span {
+    font-size: 24px;
+    margin-right: 5px;
+    vertical-align: -4px;
+    /* margin-top: -4px; */
+}

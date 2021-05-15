@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D旋转</title>
+
+    <style>
+        /**   3D旋转rotate
+            - rotateX / rotateY / rotateZ / rotate3d
+            - 正数值表示顺时针转(坐标轴对着自己)注意y的正方向朝下
+        **/
+
+        body {
+            perspective: 500px;
+        }
+
+        img {
+            display: block;
+            margin: 100px auto;
+            transition: all 1s;
+        }
+
+        img:hover {
+            /* transform: rotateX(60deg); */
+            /* transform: rotateY(60deg); */
+            /* transform: rotateX(60deg) rotateY(60deg) rotateZ(60deg); */
+            /* transform: rotate3d(x, y, z, deg); 沿着自定义的旋转deg角度; xyz为旋转的矢量轴*/
+            transform: rotate3d(1, 0, 0, 45deg);  /*沿着x轴旋转, 可以通过三维矢量设置旋转轴心; 了解即可*/
+        }
+
+    </style>
+</head>
+
+<body>
+    <img src="./images/pig.jpg" alt="">   <!--img是一个行内块元素, 需要转化为block才可居中-->
+</body>
+
+</html>

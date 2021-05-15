@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>垂直居中对齐</title>
+
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+        }
+        img.base {
+            vertical-align: baseline;
+        }
+
+        img.middle {
+            vertical-align: middle;
+        }
+
+        img.top {
+            vertical-align: top;
+        }
+
+        img.bottom {
+            vertical-align: bottom;
+        }
+
+        .box {
+            border: 2px solid #f00
+        }
+
+        .box img {
+            vertical-align: bottom;   /*清除图片下面的空白缝隙*/
+        }
+    </style>
+</head>
+
+<!--Vertical Align
+    使用场景：经常用于设置图片或者表单(行内块元素或者行级元素！！！)和文字垂直居中对齐。
+    官方解释：用于设置一个元素的垂直对齐方式，只针对[行内元素]或者[行内块元素]有效。
+        baseline: 基线对齐
+        top: 父元素的顶部对齐
+        middle: 中部对齐
+        bottom: 底部对齐
+    verticla-align可以与inline-block一起使用
+
+    问题：图片底侧空白缝隙解决方案。
+    原因：行内块元素默认是和文字的基线对齐的。
+    两种解决方法：
+        1. 给文字添加vertical-align | top | bottom等。（提倡使用的）
+        2. 将图片转化为display: block; 只有行内块元素和行内元素才可以使用vertical-align
+-->
+
+<body>
+    <img src="images/abcd.jpg" class="base">这是一句基线对齐的句子, 看Perpetuita的位置。<br />
+    <img src="images/abcd.jpg" class="middle">这是一句中线对齐的句子。<br />
+    <img src="images/abcd.jpg" class="top">这是一句顶线对齐的句子。<br />
+    <img src="images/abcd.jpg" class="bottom">这是一句底线对齐的句子, 看Perpetuita的位置。<br />
+
+    <div class="box">
+        <img src="images/ldh.jpg">pink是粉色。加入vertical-align之后，图片下面的空白缝隙就没了。
+    </div>
+
+
+
+</body>
+
+</html>

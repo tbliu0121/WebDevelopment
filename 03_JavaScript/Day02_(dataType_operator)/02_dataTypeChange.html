@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>强制数据类型转换</title>
+
+    <script>
+        /*** 转化为String Number Boolean. 转化为Undefined和Null没意义，因为只有一个值。
+         * 1. 调用被转换数据类型的toString()方法，但是null和undefined没有toString()方法
+         * 2. 调用String()函数，将被转换数据作为参数传递给String
+        ***/
+        var height = 172;
+        console.log(height);
+        console.log(typeof height);
+
+        var res = height.toString();  //利用被转换数据的toSring方法，返回一个String类型数据，对数据自己无影响。
+        console.log(height);
+        console.log(typeof height);
+
+        console.log(res);
+        console.log(typeof res);
+
+        // var empty = null;
+        // _empty = empty.toString();   //null和undefined不存在toString()方法
+        // console.log(_empty);
+        // console.log(typeof _empty);
+
+        res = String(height);        //利用String()可以完成null和undefined的转换，分别转化为"null"和"undefined"
+        console.log(height);
+        console.log(typeof height);
+        console.log(res);
+        console.log(typeof res);
+
+
+        /*** 转化为Number
+         * 1. 使用Number(), 用法和String一样.
+         *    1.1 只能将纯数字的字符串转化为数字
+         *    1.2 如果字符串中有非数字的内容，则转化为NaN
+         *    1.3 空的字符串或者全是空格的字符串，则转化结果为0
+         * 2. 布尔转数字，分别对应0和1
+         * 3. Null转化结果也是0
+         * 4. Undefined转化为Number的结果是NaN
+         * 
+         * 专门处理字符串的方法
+         *    parseInt() 把一个字符串转化为一个整数。
+         *        可以将一个字符串中有效的整数的内容解析出来。
+         *    parseFloat() 把一个字符串转化为一个浮点数。
+         *        可以将一个字符串中有效的浮点数的内容解析出来。
+         * [Notice]: 对非字符串类型数据，会先转化为一个字符串类型的数据，再使用parse函数进行解析转化。
+         * ***/
+         var a = "123";
+         console.log(typeof a);
+         console.log(a);
+         _a = Number(a);
+         console.log(_a);
+         console.log(typeof _a)
+
+         var H = "660px";
+         _H = parseInt(H);
+         console.log(_H);
+         console.log(typeof _H);
+
+         _D = parseInt(H, 10);  //把H按照10进制解析
+         _O = parseInt(H, 8);   //把H按照8进制解析 js中0开头表示8机制
+         console.log(_D);
+         console.log(_O);
+
+        /***转化为Boolean类型
+         * 使用Boolean()函数即可. 
+         *     Number: 除了0和NaN是false, 其余的都是true. 
+         *     String: 只有空串是false, 其余的都是true. 
+         *     Null和Undefine都是false.
+         *     对象也会转化为true! ! !
+         * 对非布尔类型使用两次取反即可完成向布尔的转化
+        ***/
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

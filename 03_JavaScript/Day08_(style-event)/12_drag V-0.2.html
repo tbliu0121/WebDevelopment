@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽练习 V-0.2</title>
+
+    <style>
+        #box01 {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            background-color: hotpink;
+        }
+
+        #box02 {
+            position: absolute;
+            top: 300px;
+            left: 300px;
+            width: 200px;
+            height: 150px;
+            background-color:lightseagreen;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            /***实现对box01的拖拽功能
+             *     - 当鼠标在被拖拽元素上按下时, 拖拽开始
+             *     - 当鼠标移动时, 被拖拽元素跟随鼠标移动
+             *     - 当鼠标松开时, 被拖拽元素固定在当前位置
+            */
+            let box01 = document.getElementById("box01");
+            box01.onmousedown = function(event) {                      //按下鼠标时可以拖拽
+
+                /*** setCapture()
+                 *     设置box01捕获所有的鼠标按下事件
+                 *     解决IE8中全选拖拽的问题
+                 *     只有IE支持
+                 *     捕获只有一次性的, 只有松开鼠标后才开始执行, 捕获下一次事件会导致陷入死循环, 因此后面需要释放捕获。
+                */
+                box01.setCapture && box01.setCapture();                //如果存在此方法, 则运行; 解决此功能的兼容性问题
+
+                /*** 求出鼠标和元素坐标的偏差 
+                 *     - ol = mouse.clientX - element.offsetLeft;
+                 *     - ot = mouse.clientY - element.offsetTop;
+                */
+                let ol = event.clientX - box01.offsetLeft;             //鼠标偏移减去元素的偏移就是坐标差值
+                let ot = event.clientY - box01.offsetTop;
+
+                document.onmousemove = function(event) {               //元素随着鼠标移动
+                    /***鼠标移动时元素跟随移动
+                     *     - 此事件必须在按下鼠标的内部才可以响应！！！
+                     *     - 此事件必须绑定到document上, 如果绑定在box02上, 那么鼠标移动到box02上时, box01上的鼠标移动时间会消失。
+                    */
+                    event = event || window.event;
+                    let left = event.clientX - ol;
+                    let top = event.clientY - ot;
+                    box01.style.left = left + "px";
+                    box01.style.top = top +"px";
+                };
+
+                document.onmouseup = function() {                      //松开鼠标停止拖拽功能
+                    /*** 取消对onmusemove的绑定即可
+                     *     - 此处事件的绑定对象应该是document
+                     *     - tips: 我感觉绑定到box01上也没什么问题？？？并且还不用取消对.onmouseup的绑定？？？
+                    */
+                    document.onmousemove = null;                       //释放跟随鼠标移动的响应
+                    alert("鼠标松开了~");
+                    document.onmouseup = null;                         //拖拽事件完成之后, 停止对onmouseup事件的绑定。
+                    box01.releaseCapture && box01.releaseCapture();    //取消对box01的事件捕获
+                }
+
+                return false;  //取消浏览器对选中的内容拖拽搜索的影响。
+            };
+        }
+    </script>
+</head>
+
+<!-- V-0.1存在的问题
+    当ctrl a选中全体元素之后, 再对拖拽元素拖拽会出问题！！！
+    原因: 
+        当我们拖拽一个网页中的内容时, 浏览器会默认去搜索引擎中搜索内容
+        此时会导致拖拽功能异常, 这个是浏览器的默认行为
+        如果不希望这个行为发生, 在.onmousedown的末尾返回一个false即可。
+
+        但是这一招对IE8及以下不好使。。。。。。需要使用setCapture()和releaseCarture()来解决。
+            obj.setCapture && obj.setCapture()
+            obj.releaseCapture && obj.releaseCapture()
+-->
+
+<body>
+    <div id="box01"></div>
+    <div id="box02"></div>
+</body>
+
+</html>

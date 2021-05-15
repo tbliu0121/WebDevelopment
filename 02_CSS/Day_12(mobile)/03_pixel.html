@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二倍图</title>
+    <style>
+        * {
+           padding: 0;
+           margin: 0; 
+        }
+
+        div {
+            width: 300px;
+            height: 300px;
+            background: teal;
+        }
+
+        img:last-child {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<!--物理像素和物理像素比
+    - 物理像素点时屏幕显示的最小颗粒，是物理存在的。
+    - 移动端开发的时候1px单位不一定等于一个物理像素。
+    - pc端一个1px是一个物理像素点，但是移动端却不尽相同。
+    - 设备的的一个px能显示的物理像素点个数称为物理像素比。
+
+    - 我们需要的是一个50*50的图片, 但是由于iphone的dpr是2(2个物理像素显示为1px)
+    - 图片会变成100*100的会变模糊图片会变模糊
+    - 我们采取的做法是用一个100*100的图片，手动缩小为50*50
+    - 我们准备的图片比实际需要的大2倍，因此称为2倍图（随着dpr的不同，因此可以有3倍图或者4倍图）
+
+    多倍图: 在标准的viewport中，使用倍图来提高质量，解决高清设备中的图片模糊的问题。
+-->
+
+<body>
+    <div></div>
+    <img src="./images/apple50.jpg" alt="">
+    <img src="./images/apple100.jpg" alt="">
+</body>
+
+</html>

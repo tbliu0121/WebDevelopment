@@ -1,0 +1,53 @@
+$color: #ff69b4;
+// $width: 400px;
+$width: null;
+$height: 300px;
+$width: 450px !default;  // !default默认变量表示如果一个变量之之f前没有赋值, 则赋予新值; 如果之前已经赋值则不赋值。
+
+$colors: #ff69b4 #ff6347 #008080;  //定义一个颜色数组
+
+// 变量的使用原则: 是否多次出现？是否需要动态修改？
+// 如果只出现了一次那么不需要使用变量
+
+body {
+  background-color: #ffffff;
+  
+  div {
+    $gcolor: #ff6347 !global;          // 通过!blobal可以将局部变量转化为全局变量。
+    width: $width;
+    height: $width;
+    background-color: nth($colors, 2);   //通过nth函数来获取到colors的对应位置的颜色。
+    margin: 10px auto;
+    padding: 10px 8px;
+  }
+}
+
+header {
+  background-color: #e5e5e5;
+  height: 38px;
+  border: {
+    top: 2px solid #ff6347;
+    bottom: 2px solid #008080;
+  }
+  
+  font: {       // Sass的属性嵌套
+    family: consolas;
+    size: 16px;
+    weight: 400;
+  }
+
+  nav a {
+    display: inline-block;
+    height: 100%;
+    text-decoration: none;
+    color: #ff6347;
+    font-size: 18px;
+    line-height: 38px;
+    padding: 0 8px;
+    /* 编写过程应该避免多层嵌套 */
+    &:hover {        //&代表了当前嵌套规则的上一级, 即父级。
+      color: #ffffff;
+      background-color: #ff6347;
+    }
+  }
+}

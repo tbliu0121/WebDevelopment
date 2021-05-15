@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIFE</title>
+</head>
+<body>
+    <script>
+        (function() {
+            var a = 3;
+            console.log(a);             //3
+        })();
+        var a = 4;
+        console.log(a);                 //4
+
+        (function() {
+            var a = 1;
+            function test() {
+                console.log(++a);
+            }
+
+            window.func = function() {  //向外部暴露了一个全局函数func
+                return {                //返回一个对象, 对象中封装了func
+                    test: test
+                }
+            };
+        })();
+        func().test();    //2, 通过IIFE暴露出来的函数来调用IIFE内部的函数，
+    </script>
+    
+</body>
+</html>

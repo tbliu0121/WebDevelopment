@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@media媒体查询</title>
+
+  <style>
+    /* 在屏幕上 并且 最大宽度是800px 设置我们想要的样式 */
+    @media screen and (max-width: 800px) {
+      body {
+        background-color: hotpink;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      body {
+        background-color: teal;
+      }
+    }
+  </style>
+</head>
+
+<!--              媒体查询语法
+  @media mediatype and|not|only (media feature) {
+  CSS code
+
+  - mediatype: all print screen
+  - 关键字：关键字将媒体类型或多个媒体特性连接到一起作为媒体查询的条件。
+    - and: 可以将多个媒体特性连接到一起, 相当于且的意思。
+    - not: 排除某个媒体类型, 相当于非的意思, 可以省略。
+    - only: 指定某个特定的媒体类型, 可以省略。
+
+  - 媒体特性: 每种类型的媒体都有不同的特性，根据不同的媒体特性设置不同的展示风格。
+    - width: 定义输出设备中页面的指定可见区域的宽度。
+    - min-width: 定义输出设备中页面最小可见区域的宽度。
+    - max-width: 定义输出设备中页面最大可见区域的宽度。
+} 
+-->
+
+<body>
+
+</body>
+
+</html>

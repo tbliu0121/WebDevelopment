@@ -1,0 +1,12 @@
+.a {
+  color: pink;
+  .b {
+    color: tomato;
+    .c {
+      color: teal;
+      @at-root .d {
+        color: hotpink;
+      }
+    }
+  }
+}

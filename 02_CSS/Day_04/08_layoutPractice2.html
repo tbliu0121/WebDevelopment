@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布局练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 1226px;
+            height: 615px;
+            background-color: turquoise;
+            margin: 0 auto;
+        }
+
+        .left {
+            width: 234px;
+            height: 615px;
+            background-color: tomato;
+            float: left;
+        }
+
+        .right {
+            width: 992px;
+            height: 615px;
+            background-color: teal;
+            float: left;
+        }
+
+        .right>div {
+            height: 301px;
+            width: 234px;
+            margin-left: 14px;
+            float: left;
+            background-color: hotpink;
+            margin-bottom: 13px;  /*浮动是上对齐的，左右不溢出即可，并且外边界是透明的*/
+        }
+
+        /* .right .down {
+            margin-top: 13px;
+        } */
+    </style>
+</head>
+
+<!-- 两种常见的网页布局
+    自上而下的标准流
+    左右的使用浮动流
+    同栏＋限宽
+ -->
+
+<body>
+    <div class="box">
+        <div class="left">LeftBox</div>
+        <div class="right">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

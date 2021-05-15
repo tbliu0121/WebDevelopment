@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承模式</title>
+</head>
+
+<!-- 继承
+    - 原型链继承: 
+        - 子类型的原型为父类型的一个实例对象
+
+    - 借用构造函数(假继承)
+        - 在子类中通过 SuperType.call(this, args...)的方式使用父类的构造函数
+
+    - 组合继承: 使用原型链 + 借用构造函数的方式
+        - 利用原型链实现父类的方法的继承
+        - 利用Super.call()借用父类型构造函数初始化相同的属性。
+
+    - 原型式继承
+    - 寄生式继承
+    - 寄生式组合继承
+-->
+<body>
+
+    <script>
+        /***  ***/
+        function Super() {
+            this.superProp =  "Super property";
+        }
+
+        Super.prototype.showSuperProp = function() {
+            console.log(this.superProp);
+        }
+
+        function Sub() {
+            this.subProp = "Sub property";
+        }
+
+        /* 通过原型链实现继承，一定要在添加属性和方法之前设置好Prototype属性！！！ */
+        Sub.prototype = new Super();          //子类型的原型为父类型的一个实例对象
+        Sub.prototype.constructor = Sub;      //让子类型的构造函数指向Sub; 不修改的话指向的则是父类型的构造函数
+        Sub.prototype.showSubProp = function() {
+            console.log(this.subProp);
+        }
+
+        let sub = new Sub();
+        sub.showSuperProp();
+        console.log(sub.constructor);
+
+        /*** 2. 盗用构造函数方法(假继承) ***/
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        function Student(name, age, price) {
+            Person.call(this, name, age);      //得到父类型的方法
+            this.price = price;
+        }
+        let stu = new Student('Jonathan', 24, 18000); 
+        console.log(stu.name, stu.age, stu.price);
+
+        /*** 3. 组合继承 ***/
+        function Animal(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        Animal.prototype.eat = function() {
+            console.log("干饭中。。。。。。");
+        }
+
+        function Dog(name, age, weight) {
+            Animal.call(this, name, age);
+            this.weight = weight;
+        }
+
+        Dog.prototype = new Animal();         //通过原型链继承父类的方法
+        Dog.prototype.constructor = Dog;      //修正构造函数的指向
+        Dog.prototype.setName = function(name) {
+            this.name = name;
+        }
+
+        let dog = new Dog("WangWang", 3, 20);
+        dog.setName("旺财");
+        dog.eat();
+        console.log(dog.name, dog.age, dog.weight);
+
+    </script>
+
+</body>
+
+</html>

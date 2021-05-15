@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置旋转中心点</title>
+
+    <style>
+        /***设置旋转中心点
+         - transform-origin: x y;  默认是50% 50%;
+         - 其中的参数出了百分比，还可以设置为像素或者方位词top bottom left right center
+         - 像素形式的坐标是相对自己的
+
+        */
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            margin: 200px auto;
+            transition: all .5s;
+            transform-origin: left bottom;
+        }
+
+        div:hover {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

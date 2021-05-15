@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS中的三种逻辑运算符</title>
+
+    <script>
+        /***&& || !
+         *对于非布尔值， 两次取反之后则会转化为布尔值，一种更便捷的转化方式。
+         *对于两个非布尔值的运算，会先转化为布尔值，然后再运算，并且返回原值！！！
+         *
+         * [小结] 对于两个运算对象的逻辑运算有如下：
+         * 与运算
+         *        如果第一个为true, 则直接返回第二个值
+         *        如果第一个为false, 则直接返回第一个值
+         * 或运算
+         *        如果第一个为true, 则直接返回第一个值
+         *        如果第一个为false, 则直接返回第二个值
+        ***/
+
+        var a = true;
+        var _a = !a;  //!a对a不会产生任何影响，a还是true
+        console.log("a = " + a);
+        console.log("_a = " + _a);
+
+        /* && 属于短路型的，第一个为true这检查后面，第一个为false则停止检查*/
+        true && console.log("在与运算true后面的会显示出来");
+        false && console.log("在与运算false后面的不会显示出来");
+
+        /* || 也是短路型的，如果第一个是true，则直接返回true, 只有第一个是false则会检查第二个*/
+
+        true || console.log("在或运算true后面的不会显示出来");
+        false || console.log("在或运算false后面的会显示出来");
+
+        /*对于两个非布尔值的运算，会先转化为布尔值，然后再运算，并且返回原值！！！*/
+        var res_1 = 1 && 2;
+        console.log("对于 1 && 2，res_1 =" + res_1);
+        var res_2 = 2 && 1;
+        console.log("对于 2 && 1， res_2 =" + res_2);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

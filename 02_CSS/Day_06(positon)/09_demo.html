@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tudou {
+            position: relative;
+            width: 444px;
+            height: 320px;
+            background-color: tan;
+            margin: 0 auto;
+        }
+
+        .tudou img {
+            /*让元素内的图片保持和盒子一样大*/
+            width: 100%;
+            height: 100%;
+        }
+
+        .tudou .mask {
+            /*视频预览图的播放隐藏层*/
+            display: none;
+            /*将此图层隐藏出来*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-color: rgba(0, 0, 0, .4); */
+            background: rgba(0, 0, 0, .4) url(images/arr.png) no-repeat center; 
+            /*将播放按钮放到电影预览隐藏层中，center只写一个就可以在中心，垂直默认是居中的*/
+        }
+
+        /*此处需要将隐藏的mask显示，因此是tudou:hover .mask*/
+        .tudou:hover .mask {  
+             display: block;
+        }
+    </style>
+</head>
+
+<!-- 定位与隐藏案例
+    Description: 鼠标经过视频预览图片时，图片透明黑显示并且出现播放按钮
+    Core Idea: 原先半透明的黑色元隐藏，当鼠标经过盒子时，显示出来，
+               因为半透明盒子不占用原来的位置，因此需要将绝对定位和display: none配合使用
+-->
+
+<body>
+    <div class="tudou">
+        <div class="mask"></div>
+        <!--作为图片的遮挡，需要放在图片前，注意代码顺序！！！-->
+        <img src="images/tudou.jpg">
+    </div>
+
+</body>
+
+</html>

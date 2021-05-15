@@ -1,0 +1,5 @@
+@each $icon in home, user, search {
+  .icon-font-#{$icon} {
+    background: url("../img/#{$icon}.png");
+  }
+}

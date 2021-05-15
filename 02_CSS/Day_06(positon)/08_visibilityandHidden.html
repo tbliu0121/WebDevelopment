@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的显示与隐藏</title>
+
+    <style>
+        .peppa {
+            width: 200px;
+            height: 150px;
+            background-color: rgb(231, 118, 175);
+            display: none;  /*display：用于隐藏和元素后，元素隐藏不再占有原来的位置！！！0*/
+        }
+
+        .george {
+            width: 200px;
+            height: 150px;
+            background-color: rgb(17, 168, 228);
+        }
+
+    </style>
+</head>
+
+<!-- 
+    display: 
+        none:隐藏对象，隐藏之后对象位置不保留
+        block: 除了转化为块级元素之外，同时还有显示元素的意思
+    visibility: 
+        inherit: 可见属性继承父元素的（用的比较少）
+        visible: 可见
+        hidden: 隐藏（隐藏之后位置保留）
+    display & visibility: 区别在于隐藏后的元素是否保留原来的位置，一般使用display: none多一些。
+
+    overflow:  
+           主要是对元素内部溢出的内容做的处理。
+        visible: 默认的值，既不剪切内容也不添加滚动条。
+        hidden: 将溢出的内容隐藏掉，并未删除！！！
+        scroll: 溢出部分显示滚动条，及时内容未溢出也会显示滚动条。
+        auto: 在需要剪切的时候添加滚动条。
+
+    Notice: 有定位的元素一定要慎用元素隐藏！！！！有可能会隐藏多余的部分。
+-->
+
+<body>
+    <div class="peppa">小猪佩奇</div>
+    <div class="george">小猪乔治</div>
+
+</body>
+
+</html>

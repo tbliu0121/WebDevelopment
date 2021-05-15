@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的方法</title>
+
+    <script>
+        /***  字符串的一些方法
+         * 在底层, 字符串以字符数组的形式保存, 因此数组的属性再String中均存在。
+         *    - length, ...
+         * 方法:
+              - charAt(): 根据索引获得指定位置的字符。
+              - charCodeAt(): 返回指定索引位置的字符的Unicode编码。
+              - fromCharCode(): 根据字符编码获取字符; 要用构造函数来调用。
+                  result = String.fromCharCode(20013);
+
+              - concat(): 可以用来连接两个或多个字符串; 对元字符串不会产生影响, 作用和 '+' 一样。
+
+              - indexOf(sub_string, from_positon): 
+                    检索一个字符串是否含有指定内容; 如果含有指定内容, 则返回其第一次出现的索引。
+                    from_position为指定的起始位置。
+              - lastIndexof(): 和indexof不同的是从后往前找, 返回的是最后一个字母的位置, 同样可以指定开始的查找位置。
+
+              - slice(): 从字符串中截取指定内容。  slice(0, 2)截取[0, 2)位置上的内容, 不影响原数组的内容, 将截取的内容返回。
+                        如果省略第二个参数, 则截取后面所有内容, 支持负数索引。
+                        
+              - substring(start, end): 与slice()基本一样的, 不同之处在于substring()不支持负值参数, 传入一个负数默认为0, 并且会自动调整参数位置(后面小则自动放到前面)
+              - substr(start, length): 从指定索引提取指定长度的字符串。
+
+              - split(): 按照指定的分割符分割字符串, 以数组对象的形式封装返回结果, 字符串中的分隔符会被清除; 如果传入一个空字符串, 则将分割每个字符。
+
+              - toLowerCase():
+              - toUpperCase(): 均不会影响到原来的字符串
+
+              - match()/replace()/search()/split()与正则表达式搭配使用。
+
+        */
+
+        let str = "Hello world";
+        let welcome = "欢迎来到王者荣耀！";
+
+        console.log(str.charAt(3));                //'l'
+        console.log(welcome.charCodeAt(4));        //返回"王"的Unicode编码
+
+        let icon = String.fromCharCode(0x26c4);    //一个小雪人的图案
+        console.log(icon);
+
+        let comb = str.concat(welcome);
+        console.log(comb);
+
+        console.log(comb.indexOf("world"));        //6
+
+        _str = str.toUpperCase();                  //对原字符串没有影响
+        console.log(str);                          //"Hello world"
+        console.log(_str);                         //"HELLO WORLD"
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

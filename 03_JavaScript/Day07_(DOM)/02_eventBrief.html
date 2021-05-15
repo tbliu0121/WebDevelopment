@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的简介</title>
+
+    <script>
+        /*** 事件的简介
+         *     事件: 文档或浏览器窗口中发生的一些特定的交互瞬间, 用户和浏览器之间的交互行为。
+         *     JS与HTML之间的交互就是通过事件实现的。
+         *     对于Web来说, 典型的事件有: 点击、鼠标悬停、按下键盘按键、拖动等。
+         * 
+         *     事件不是关键, 关键是对事件的处理。
+        */
+    </script>
+</head>
+
+<body>
+    <!--
+        我们可以在事件对应的属性中设置一些JS代码, 这样当事件触发时, 这些代码将会被执行.
+        但是产生了耦合, 不推荐使用.
+        可以为按钮的对应事件绑定处理函数的形式来响应事件; 当事件被触发时, 其对应的函数会被调用。
+        这个函数称为响应事件函数。
+    -->
+
+    <!-- <button id="bth" onclick="alert('讨厌，你点我干嘛QAQ');">我是一个按钮</button> 产生了耦合-->
+
+    <button id="btn">我是一个按钮~</button>
+    <script>
+        let btn = document.getElementById("btn");
+
+        // btn.onclick = function() {  //绑定一个单击事件
+        //     alert("点什么点！！！");
+        // };
+
+        btn.ondblclick = function() {  //绑定一个双击事件
+            alert("发现了新大陆呀 ~ ~ ~");
+        };
+
+        // btn.onmousemove = function() {
+        //     alert("来都来了点一下呗~");
+        // };
+    </script>
+</body>
+
+</html>

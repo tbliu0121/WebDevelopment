@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=F, initial-scale=1.0">
+    <title>JS是单线程</title>
+</head>
+
+<!--JS是单线程的
+    - 通过H5中的Web Workers可以多线程运行。
+    - 浏览器是多线程运行的; 但是浏览器既有单进程也有多进程的。
+
+    JS为什么设计成单线程的？？
+    - JS设计成单线程与他的用途有关系；作为浏览器脚本语言，JS的主要用于是与用户互动以及操作DOM，这就决定了他只能是单线程，否则会带来很复杂的同步问题。
+
+    为了利用CPU的多核运算能力，H5提出了Web Workers标准
+    允许JS创建多个新城，但是子线程会受到主线程的控制，并且子线程不允许操作DOM
+    这个新标准并没有改变JS单线程的本质。
+-->
+
+<body>
+    
+</body>
+</html>

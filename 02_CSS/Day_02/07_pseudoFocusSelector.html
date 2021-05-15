@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>focus伪类</title>
+    <style>
+        input:focus {
+            background-color: hsl(120, 51%, 67%);
+        }
+    </style>
+</head>
+
+<!--focus伪类选择器主要针对具有焦点的元素，如input-->
+
+<body>
+    姓名：<input type="text"> <br />
+    学历：<input type="text"> <br />
+    住址：<input type="text"> <br />
+
+    <h3>符合选择器总结</h3>
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+             <th>选择器</th>
+             <th>作用</th>
+             <th>特征</th>
+             <th>使用情况</th>
+             <th>隔开符号及其用法</th>
+        </tr>
+        <tr>
+            <td>后代选择器</td>
+            <td>用来选择后代元素</td>
+            <td>儿子、孙子、曾孙。。。都会选</td>
+            <td>较多</td>
+            <td>空格“ ”连接</td>
+        </tr>
+        <tr>
+            <td>子代选择器</td>
+            <td>选择子代元素</td>
+            <td>只选择儿子</td>
+            <td>较少</td>
+            <td>大于号“>”连接</td>
+        </tr>
+        <tr>
+            <td>并集选择器</td>
+            <td>选择多个具有相同样式的元素</td>
+            <td>对多个相同样式的元素、类、id等进行声明</td>
+            <td>较多</td>
+            <td>英文逗号连接“, ”</td>
+        </tr>
+        <tr>
+            <td>链接伪类选择器</td>
+            <td>选择不同状态的链接</td>
+            <td>和链接有关</td>
+            <td>较多</td>
+            <td>LVHA的顺序</td>
+        </tr>
+        <tr>
+            <td>.focus选择器</td>
+            <td>选择贯光标点击的表单</td>
+            <td>和表单(form)有关</td>
+            <td>较少</td>
+            <td>记住input:focus的写法</td>
+        </tr>
+    </table>
+</body>
+
+</html>

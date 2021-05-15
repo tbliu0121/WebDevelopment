@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的显示模式</title>
+</head>
+
+<body>
+    <h1 align="center">元素的显示模式</h1>
+    <ul>
+        <li>即元素以什么样的方式显示</li>
+        <li>两大类：块元; 行内元素</li>
+    </ul>
+    
+    <h3>块元素</h3>
+    h1...h6, div, p, ol, ul, li
+    <ol>
+        <li>自己独占一行</li>
+        <li>所有块元素都可以设置高度和宽度</li>
+        <li>如果不给高度，则和父亲一样的宽度</li>
+        <li>每一个块元素都是容器级元素，均可以放置其他元素</li>
+    </ol>
+    <h4 style="color: red; text-decoration: underline;">notice</h4>
+    <ul>
+        <li>文字类的元素内不允许放块级元素</li>
+        <li>p标签主要用于存放文字，因此里面不可以放其他块元素，尤其是不可以放div元素</li>
+        <li>同理，h1-h6等都是块级元素，里面也不可以放置其他块级元素</li>
+    </ul>
+    
+    <h3>行内元素（也称为内联元素）</h3>
+    span, a
+    <ol>
+        <li>相邻的行内元素可以在一行上，即一行可以显示多个</li>
+        <li>无法<strong>直接设置</strong>高度和宽度</li>
+        <li>默认宽度就是本身内容的宽度</li>
+        <li>行内元素只能容纳文本或其他行内元素，不允许放置块级元素</li>
+    </ol>
+
+    <h4 style="color: red; text-decoration: underline;">notice</h4>
+    <ul>
+        <li>链接里面不可以放链接</li>
+        <li>只有a元素可以放置块级元素，但是给a转换一下块级模式最安全</li>
+    </ul>
+
+    <h3>行内块 元素</h3>
+    img, input, td同时具有块元素和行内元素的特点，可以成为行内块元素。<br/>
+    <ol>
+        <li>可以和相邻元素在一行上，但是之间会有空隙</li>
+        <li>默认宽度即为默认宽度</li>
+        <li>高度和宽度都可以设置宽度和高度，同时外边距和内边距都可以设置</li>
+    </ol>
+
+</body>
+
+</html>

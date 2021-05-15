@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角形的形成</title>
+
+    <style>
+        .hot-news {
+            position: relative;
+            width: 150px;
+            height: 200px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+
+        .triangle {
+            position: absolute;
+            top: 0;
+            right: -21px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: red;
+        }
+
+        .price {
+            width: 150px;
+            height: 20px;
+            border: 1px solid red;
+            margin: 10px auto;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        .new-price {
+            position: relative;
+            float: left;
+            width: 70px;
+            height: 100%;
+            background-color: red;
+            color: white;
+            font-size: 16px;
+        }
+
+        .price .new-price i {
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 20px 10px 0 0;
+            border-color: red transparent transparent transparent;
+        }
+
+        .old-price {
+            color: gray;
+            text-decoration: line-through;
+            font-size: 12px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="hot-news">
+        <div class="triangle"></div>
+    </div>
+
+    <div class="price">
+        <div class="new-price">
+            ￥1258
+            <i></i>
+        </div>
+        <div class="old-price">￥1299</div>
+    </div>
+</body>
+
+</html>

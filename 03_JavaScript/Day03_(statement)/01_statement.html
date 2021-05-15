@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语句</title>
+
+    <script>
+        /*
+        1. 条件判断
+        2. 条件分支
+        3. 条件循环：case和switch中的比较时全等比较。
+        4. break语句只能用在循环语句和switch语句中，不可以在if()中使用。
+               break会终止离它最近的一层循环语句。为了打破这种效果，可以为想要终止的循环前加一个label，然后使用break: label; 来终止指定的循环，使用的相对较少。
+        5. continue用来跳过本次循环，break用来终止整个循环过程。作用范围和break相同，也可使用label来指定范围。
+        */
+
+        /*
+        prompt()可以弹出一个提示框，该提示框中会带有一个文本框
+        用户可以在文本中输入一段内容，该函数中共需要一个字符串作为参数
+        该字符串会作为提示框中的提示文字。
+        用户输入的内容将会作为函数的返回值
+        */
+        var score = prompt("请输入你的成绩: ");
+
+        /***判断成绩是否合法：score > 0 || score > 150 || isNaN(score)***/
+        alert("输入的成绩为: " + score);
+        if(score > 100) {
+            alert("奖励一个棒棒糖");
+        } else if (score > 80) {
+            alert("奖励一本参考书");
+        } else {
+            alert("奖励一本张宇一千题");
+        }
+
+        /*判断是否为质数*/
+        var check_num = prompt("输入要检测是否为指数的数: ");
+        for(var i = 2; i < check_num; i++) {
+            if(check_num % i == 0) {
+                alert(check_num + "不是质数");
+                break;  //break默认的作用范围是最近的一层循环，可使用break label;来终止指定层次的循环。
+            }
+        }
+        if(i == check_num) {
+            alert(check_num + "是质数");
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

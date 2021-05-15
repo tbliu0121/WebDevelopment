@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        let HuaMulan = {
+            name: "花木兰",
+            gender: "女"
+        };
+
+        console.log(HuaMulan);
+
+        let {name: pName, gender: pGender} = HuaMulan;  //使用解构时属性名必须和目标对象属性一致
+        console.log(pName + ": " + pGender);
+
+        let {name, gender} = HuaMulan;
+        console.log(name + ": " + gender);              //如果想让变量直接使用属性名称, 可以使用这种方式
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>

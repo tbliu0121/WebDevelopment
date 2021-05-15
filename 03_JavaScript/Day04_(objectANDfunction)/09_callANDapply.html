@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数方法: callANDapply</title>
+
+    <script>
+        /***call()和apply()
+         * 这两个方法都是函数对象的方法, 需要通过函数来调用
+         * 当对函数调用call()和apply()都会调用函数, func.call()、func.apply()、func()效果是一样的。
+         * call(obj)和apply(obj)可以修改被调函数的this为参数中的obj, 此时参数中的对象将会称为函数的调用者。
+         *     call()可以将实参在对象之后依次传递: func.call(obj, arg1, arg2, ...);
+         *     apply()必须将实参封装到数组中统一传递: func.apply(obj, [arg1, arg2, ...]);
+         * 
+         * this:
+         *     1. 以函数形式调用的时候, this永远指向window。
+         *     2. 以方法调用的时候, this是调用方法的对象。
+         *     3. 以构造函数调用的时候, this指向新建对象。
+         *     4. 使用call和apply时, this指向指定对象。
+        */
+
+        function func() {
+            console.log(this);
+        }
+
+        let obj_1 = {name: "obj_1"};
+        let obj_2 = {name: "obj_2"};
+
+        func();             //函数形式的调用者为window
+        func.call(obj_1);   //将obj_1指定为函数的调用者
+        func.apply(obj_2);  //将obj_2指定为函数的调用者
+
+        let HuMulan = {
+            name: "花木兰",
+            saiHi: function() {
+                console.log("我是花木兰");
+                console.log("召唤师是: " + this.name);  //修改调用者的时候this会变成主调函数的name
+            }
+        };
+
+        let LuBan = {
+            name: "鲁班一号",
+
+            sayHi: function() {
+                console.log("我是鲁班一号");
+                console.log("召唤师是: " + this.name);
+            }
+        };
+
+        HuMulan.saiHi.call(LuBan);  //LuBan是胡木兰中sayHi()的调用者, this指向LuBan。
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图像标签和路径</title>
+</head>
+
+<body>
+    <h4>云吸猫</h4>
+    <img src='images/cat.jpg'>
+
+    <h4>1.alt 替换文本 图像无法显示的时候用文字替换：</h4>
+    <img src='catt.jpg' alt="你的猫猫正在赶来的路上">
+
+    <h4>2.title 提示文本 鼠标放到图像上的提示文字：</h4>
+    <img src='images/cat.jpg' title="一只可爱的猫猫，meow~">
+
+    <h4>3.width 给图像设宽度：</h4>
+    <img src='images/cat.jpg' alt="你的猫猫正在赶来的路上" title="meow~~~" width="500">
+
+    <h4>4.height 给图像设宽度：</h4>
+    <img src='images/cat.jpg' alt="你的猫猫正在赶来的路上" title="meow~~~" height="100">
+    <p>[注] 高度和宽度修改一个就可以，另外一可以自动等比例压缩</p>
+
+    <h4>5.border 给图像设定边框：</h4>
+    <img src='images/cat.jpg' alt="你的猫猫正在赶来的路上" title="AWSL" width="300" border=10>
+    <p>[注] 一般利用CSS来设定边框而不是通过属性来设置</p>
+
+    <h4>图像标签注意点：</h4>
+    <p><strong>1. </strong>图像标签可以有多个属性，属性必须放在标签之后
+        <br/> <strong>2. </strong>属性之间不区分顺序，标签名与属性、属性与属性之间均使用空格分开
+        <br/><strong>3.</strong> 属性采用键值对的形式，key=value
+        <br/> <strong>4.</strong>同级路径：&ltimg src="cat"&gt
+        <br/> 上一级路径：&ltimg src="../cat"&gt； 多层嵌套时：../../../以此类推即可。
+        <br/> 下一级路径：&ltimg src="images/cat"&gt
+        <br/> <strong>5</strong>绝对路径能利用完整路径即可："C:\user\images\cat", 很少使用。
+        <br> 一般使用网络绝对地址: "https://pic4.zhimg.com/80/v2-f41aca6e5aefd96838466c3a8d3f607a_720w.jpg?source=1940ef5c"
+        <img src="https://pic4.zhimg.com/80/v2-f41aca6e5aefd96838466c3a8d3f607a_720w.jpg?source=1940ef5c" width="100">
+
+</body>
+
+</html>

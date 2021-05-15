@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多类名字：给一个标签设定多个类名</title>
+    <style>
+        .box {
+            color: white;
+            width: 125px;
+            height: 125px;
+            background-color: rgb(47, 233, 177);
+        }
+        .red {
+            color: red;
+        }
+        .font16 {
+            font-size: 16px;
+        }
+        .bgred {
+            background-color: red;
+        }
+        .bgblue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 一个属性设定的不同类之间要用空格分开 -->
+    <div class="red font16 box">  <!--多类属性-->
+        多类名的标签<br/>
+        这是一个红色的16pixel的文字。
+    </div>
+
+    <div class="bgred box">红色背景div</div>
+    <div class="bgblue box">蓝色背景div</div>
+    <div class="bgred box">红色背景div</div>
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用键盘移动div</title>
+
+    <style>
+        #box01 {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: hotpink;
+            border-radius: 50%;
+        } 
+    </style>
+
+    <script>
+        window.onload = function() {
+        
+            document.onkeydown = function(event) {    
+                
+                let box01 = document.getElementById("box01");
+                let speed = 10;
+
+                if(event.ctrlKey) {  //按住ctrl加速
+                    speed = 50;
+                }
+
+                /***用方向键完成div元素的移动
+                 *     37: Left
+                 *     38: Up
+                 *     39: Right
+                 *     40: Down
+                */
+                switch(event.keyCode) {
+                    case 37:  //左移
+                        box01.style.left = box01.offsetLeft - speed + "px";
+                        break;
+                    case 38:  //上移
+                        box01.style.top = box01.offsetTop - speed + "px";
+                        break;
+                    case 39:  //右移
+                        box01.style.left = box01.offsetLeft + speed + "px";
+                        break;
+                    case 40:  //下移
+                        box01.style.top = box01.offsetTop + speed + "px";
+                        break;
+                }
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box01"></div>
+</body>
+
+</html>

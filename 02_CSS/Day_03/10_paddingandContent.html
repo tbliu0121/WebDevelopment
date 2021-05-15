@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调整文字与边框的距离</title>
+
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 5px solid brown;
+            padding: 5px;
+        }
+
+        .nav {
+            padding-left: 10px;  /*四个方向都有，一个padding时代表四个边框*/
+        }
+
+        .all {
+            /*padding后面不同个数的含义
+            1个数 5 上下左右都是5
+            2个数 5 10 上下5 左右10
+            3个数 5 10 20 上5 左右10 下20
+            4个数 5 10 15 20 上右下左（顺时针方向）
+            */
+            padding: 5px 10px 15px 20px;
+        }
+
+        .notice {
+            color: blue;
+            width: 300px;
+            height: 300px;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div>这是一个div盒子哦</div>
+    <div class="nav">这是一个带边距的div盒子哦</div>
+    <div class="all">padding的复合属性, 四个方向不同的内边距</div>
+
+    <div class="notice">padding也会影响盒子的实际大小奥, 看上面！！！
+        <p>为了保证盒子的大小在正确计算之内，在实际计算时，要把padding距离从width和height中减去</p>
+        <p>在设置导航时，当文字不同数量时，不设置width、height，利用padding可以合理调整文字之间的距离！！！！！！！</p>        
+    </div>
+
+</body>
+
+</html>

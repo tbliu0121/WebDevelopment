@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D转换放缩</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            margin: 200px auto;
+            background-color: hotpink;
+            border-radius: 12px;
+            transition: all .3s;
+        }
+
+        div:hover {
+            transform: scale(.5, .5);
+        }
+    </style>
+</head>
+
+<!--放缩效果
+    - transform: scale(x, y);
+    - 参数为数字, 没有单位, 代表放缩的倍数。
+    - 只有一个参数时, 以为这长宽同时按照该比例缩放。
+
+    - 指定元素大小改变大小：水平左右变化；垂直向下变化；最重要的是会影响到其他元素！！！
+    - scale不仅不影响其他元素，还可以指定中心点。（也是transform-origin）
+-->
+
+<body>
+    <div></div>
+
+</body>
+
+</html>

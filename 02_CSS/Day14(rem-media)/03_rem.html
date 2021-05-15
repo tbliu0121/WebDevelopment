@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rem单位</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* html标签下的字体大小不应该写死, 而是应该根据设备的不同来变化 */
+    @media screen and (min-width: 320px) {
+      html {
+        font-size: 50px;
+      }
+    }
+
+    @media screen and (min-width: 640px) {
+      html {
+        font-size: 100px;
+      }
+    }
+
+    .top {
+      height: 1rem;
+      line-height: 1rem;
+      font-size: .5rem;
+      color: #ffffff;
+      background-color: #ff6347;
+      text-align: center;
+      padding: 8px 12px;
+    }
+  </style>
+</head>
+
+<!-- 媒体查询 + rem实现元素动态大小变化 
+  - rem单位是跟着html元素字体大小变化的, 有了rem页面元素可以设置不同大小尺寸。
+  - 媒体查询可以根据不同设备宽度修改样式。
+  - 媒体查询 + rem 就可以实现不同设备的宽度, 实现页面元素的大小动态变化。
+-->
+
+<body>
+  <div class="top">购物车</div>
+
+</body>
+
+</html>

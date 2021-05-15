@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+    <script>
+        /**
+         * 计算机根据正则表达式来检查一个字符串是否符合规则;
+         * 或者将字符串中符合规则的内容提取出来。
+         * JS中利用RegExp对象完成:
+         *     let var_name = new RegExp("正则表达式", "匹配模式");
+         * RexExp()的方法:
+         *     test(): 检查一个字符串是否符合正则表达式的规则, 符合则返回true, 否则返回false。
+         * 
+         * 匹配模式:
+         *     i: 忽略大小模式
+         *     g: 全局匹配模式
+        */
+
+        let reg_exp = new RegExp("a");  //检测一个字符中是否含有'a'
+        console.log(reg_exp);         // /a/
+        console.log(typeof reg_exp);  // object
+
+        let str = 'a';
+        let res = reg_exp.test(str);  //字符串str是否符合正则表达式reg_exp的规则。
+        console.log(res);             //true
+
+        console.log(reg_exp.test("he is a student"));  //true
+        console.log(reg_exp.test("he is my son"));     //false
+        console.log(reg_exp.test("he is A student"));  //false 区分大小写; 根据匹配模式可以修改
+
+        reg_exp = new RegExp("a", 'i');  //检测一个字符中是否含有'a'; 匹配模式为忽略大小写
+        console.log(reg_exp.test("he is A student"));  //true, 忽略大小写后为true
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

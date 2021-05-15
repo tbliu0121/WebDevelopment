@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            background-color: coral;
+        }
+
+        p.default {
+            padding: 20px;
+            background-color: green;
+            border: 5px solid blue;
+        }
+
+        p.set {
+            width: 100%;
+            padding: 20px;
+            background-color: chartreuse;
+            border: black solid 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p class="default">当盒子不指定width属性和height属性时, 或者属性为auto，padding数值的设定不会将盒子撑开。无论padding多大，盒子的宽度、高度均和父元素一样</p>
+        <p class="set">但是，如果将width设置为100%则会撑开，从而超过父元素的大小, 多出两个paddding的大小</p>
+    </div>
+
+
+</body>
+
+</html>

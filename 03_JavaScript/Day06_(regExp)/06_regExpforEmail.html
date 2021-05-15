@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子邮件的正则表达式</title>
+
+    <script>
+        /***电子邮件的格式
+         *     Utnapishtim@gamil.com
+         *     256485454@qq.com
+         *     Jonathan.liu@pku.com  / @163.com @outlook.com.cn 
+         * 
+         * 任意字母下划线(至少3位) .任意字母下划线 @ 任意字母数字 .任意字母(2-5位) .任意字母(2-5位置)
+         * \w{3,}                 (\.\w+)*       @ [A-z0-9]    (\.[A-z]{2-5}){1,2}
+        */
+
+        /** 分开写之后再合上是不是感觉看不懂了 ORZ **/
+        let emailReg = /^\w{3,}(\.\w+)*@[A-z0-9](\.[A-z]{2-5}){1,2}$/;  //Warning: 注意要使用^ $来使模式完全匹配
+        let email_1 = "110112119@qq.com";
+        let email_2 = "110112119@qq.com.163";
+        let email_3 = "110112119@qq.163.com";
+        console.log(emailReg.test(email_1));
+    </script>
+</head>
+<body>
+
+</body>
+
+</html>

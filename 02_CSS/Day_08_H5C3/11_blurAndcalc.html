@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片模糊处理</title>
+    <style>
+        img {
+            filter: blur(5px);
+            /*blur是一个函数，filter参数越大图片越模糊*/
+        }
+
+        img:hover {
+            filter: blur(0);
+        }
+
+        .father {
+            width: 200px;
+            height: 150px;
+            background-color: cadetblue;
+            margin: 0 auto;
+        }
+
+        .son {
+            width: calc(100% - 40px);
+            height: 50px;
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<!--图片模糊处理
+        filte: 函数()
+
+    计算盒子高度: calc(100%-80px)
+        括号里面可以使用+ - * / 来进行计算。
+-->
+
+
+<body>
+    <img src="images/pink.jpg" alt="">
+
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+</body>
+
+</html>

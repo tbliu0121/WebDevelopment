@@ -1,0 +1,15 @@
+.header {
+  width: percentage(.8);  // percentage
+  height: round(200.4px);
+}
+
+.section {
+  width: ceil(199.4px);
+  height: floor(300.8px);
+}
+
+.div {
+  // width: min(300px, 400em, 500px);  单位必须一致, 否则会报错。
+  width: min(400px, 500px, 600px);
+  height: max(100px, 200px, 300px);
+}

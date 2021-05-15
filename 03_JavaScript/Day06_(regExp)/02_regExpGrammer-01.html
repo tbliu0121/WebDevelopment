@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式语法</title>
+
+    <script>
+        /***  使用字面量来创建正则表达式
+         * let reg_exp = /正则表达式/匹配模式
+         * 
+         * 使用构造函数的方法更加灵活; 使用字面量的方法更加简单
+         *     - 构造函数的方法中正则式是字符串, 意味着可以用变量来表示,
+         *     - 字面量的方法只能写原始正则表达式
+         * a|b|c表示或的关系
+         * [ab]也是另外一种或的表达方式
+         * [a-z] 任意小写字母
+         * [A-Z] 任意大写字母
+         * [A-z] 任意大小写字母
+         * [0-9] 表示任意数字
+         * [^ab] 除了a或者b都行 ^表示除了(在方括号内表示除了)
+        */
+
+        // let reg = new RegExp("hello", "i");  常规写法
+        let reg = /hello/i;                    //使用字面量创建正则表达式, 表达式和匹配模式均不用加引号
+        console.log(reg.test("Hello world"));  //true
+
+        /**** 检查一个字符串中是否含有a或b或c ****/
+        reg = /a|b|c/i;
+        console.log(reg.test("aaaaa"));
+        console.log(reg.test("bbbbb"));
+        console.log(reg.test("ccccc"));
+
+        /**** 检查一个字符串中是否含有字母 ****/
+        reg = /[a-z]/
+        console.log(reg.test("hello world"));  //true
+
+        /**** 检查一个字符串中是否含有abc或者adc或者aec ****/
+        reg = /a[bde]c/
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

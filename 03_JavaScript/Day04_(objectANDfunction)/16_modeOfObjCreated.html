@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的创建模式</title>
+
+    <script>
+        /***  工厂模式(Factory Mode)
+         * 工厂模式解决了创建了多个类似对象的问题, 但是没有解决对象标识问题, 即新创建的对象是什么类型。
+         * 工厂模式所创建的对象都是Object类型的。
+         * 实际使用的并不多。
+        */
+       function createPlayer(_name, gender, age) {
+           let player = new Object();  //局部变量
+
+           player._name = _name;
+           player.gender = gender;
+           player.age = age;
+
+           player.sayName = function() {
+               alert(this._name);
+           }
+
+           return player;
+       }
+
+       let HuaMulan = createPlayer("HuaMulan", "female", 23);
+       let SunShangxiang = createPlayer("SunShangxiang", "female", 23);
+       let LuBan = createPlayer("LuBan", "Male", 23);
+
+       LuBan.sayName();
+       alert(LuBan);
+
+       /****************** 构造函数模式(Constructor Mode)
+        *     构造函数按照惯例采用大驼峰模式。
+        *     构造函数需要使用new关键字来调用, 而普通函数是直接调用。
+        * 
+        * 构造函数模式与工厂模式的区别:
+        *     没有显示地创造对象。
+        *     属性和方法都直接赋值给了this。
+        *     没有return。
+        * 
+        * 构造函数的执行过程:
+        *     1. 在内存中创建一个对象
+        *     2. 新对象内部的__proto__被赋值为构造函数的prototype属性。
+        *     3. 构造函数内部的this被赋值为这个新对象(即this指向新对象)。
+        *     4. 指向构造函数内部的代码(给新对象添加属性)。
+        *     5. 如果构造函数返回非空对象，则返回该对象，否则返回刚创建的对象。
+        * 
+        * 使用一个构造函数创建的对象，我们称为一类对象，也将一个构造函数称为一个类。
+        * 通过一个构造函数创建的对象称为该类的实力。
+        * 
+        * 构造函数的问题:
+        *     定义的方法会在没个实例上都创建一遍。 占用大量内存。
+        * 解决方法:
+        *     将内部方法提到全局作用域内。
+        * 
+        * Review this:
+        *     1. 以函数的形式调调用时， this指向window
+        *     2. 以方法调用时, this指向调用方法的对象。
+        *     3. 以构造函数的形式调用时, this指向新创建的对象。
+       */
+      function CreateHero(name, gender, age) {  //构造函数按照惯例采用大驼峰模式
+          this.name = name;
+          this.gender = gender;
+          this.age = age;
+
+          this.sayName = function() {
+              alert("欢迎来到王者荣耀，我是你的" + this.name);
+          }
+      }  //没有return。
+
+      let LuBan_2 = new CreateHero("LuBan2号", "Male", 18);
+      let LiuShan = new CreateHero("LiuShan", "Male", 19);
+      alert("鲁班和刘禅中的函数是否为同一个: " + String(LuBan.sayName == LiuShan.sayName));
+      LuBan_2.sayName();
+      alert(LuBan_2);
+      console.log(LuBan_2);  //控制台会显示为CreatHero()类
+
+      //instaceof可以检查一个对象是否是一个类的实例
+      if(LuBan_2 instanceof CreateHero) {
+          alert("鲁班2号是CreateHero类别");
+      } else {
+        alert("鲁班2号是CreateHero类别");
+      }
+
+
+      /******************* 构造函数模式的改进 
+       * 将函数提取到全局作用域中, 相同的类指向同一个函数, 避免了重复创建同一个函数。
+       * 
+       * 问题：
+       *     虽然很好地解决了相同逻辑函数重复定义的问题，但是全局作用域因此被搞乱了。
+       *     因为那个函数实际上只能在一个对象上调用, 如果这个对象需要多个方法, 那么就需要在全局作用域中定义多个函数。这会导致自定义类型引用的代码无法很好滴狙击在一起。
+       *     这个问题可以通过原型模式来解决。 
+      ****************/
+      function CreateHeroPro(name, gender, age) {  //构造函数按照惯例采用大驼峰模式
+          this.name = name;
+          this.gender = gender;
+          this.age = age;
+
+          this.sayName = sayName;  //将方法sayName()提到全局作用域内。所有的同类对象均指向一个函数。
+      }
+
+      function sayName() {
+            alert("欢迎来到王者荣耀，我是你的" + this.name);
+      }
+
+      let DaJi = new CreateHeroPro("DaJi", "Female", 18);
+      let DiRenjie = new CreateHeroPro("DiRenjie", "Male", 21);
+      alert("妲己和狄仁杰中的函数是否为同一个: " + String(DaJi.sayName == DiRenjie.sayName));  //两个对象指向同一个函数对象。
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

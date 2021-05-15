@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转</title>
+
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            /* transform: rotate(-45deg); */
+            border-radius: 50%;
+            border: 5px solid hotpink;
+            transition: all 3s ease;      /*过渡写到元素身上，那个属性过渡就给那个属性*/
+        }
+
+        img:hover {
+            transform: rotate(360deg);
+        }
+
+    </style>
+</head>
+
+<!-- 旋转
+    transform: rotate(100deg);
+-->
+
+<body>
+    <img src="./images/pic.jpg" alt="">
+
+</body>
+
+</html>

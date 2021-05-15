@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外边距塌陷问题</title>
+    
+    <style>
+        /* 上下50外边距 */
+        .outer {
+            width: 300px;
+            height: 300px;
+            margin: 50px 0;
+            background-color: hotpink;
+        }
+
+        /* 上外边距20 */
+        .inner {
+            width: 300px;
+            height: 100px;
+            margin-top: 20px;
+            background-color: teal;
+        }
+
+        /* 上外边距20 */
+        .outer-bro {
+            width: 300px;
+            height: 300px;
+            margin: 20px 0;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+
+    <div class="outer-bro"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+// unquote: 去除字符串的引号
+.unquote {
+  content: unquote("hello SASS");
+}
+
+// quote
+.quote {
+  content: quote(hello SASS);
+}
+
+// unquote只能去除两边的引号, 中间的引号是不能去掉的。
+.test01 {
+  content: unquote(" hello 'SASS' andddd welcome to WEB");
+}
+
+/* quote的字符串如果带有单引号, 则单引号会被转化成双引号 */
+.test02 {
+  content: quote('Helloooo SASS~');
+}
+
+
+.toUpperCase {
+  content: to-upper-case("hello sass");
+}
+
+.toLowerCase {
+  content: to-lower-case("HELLO SASS");
+}

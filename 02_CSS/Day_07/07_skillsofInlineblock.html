@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行内块的巧妙使用</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .box {
+            /*父盒子添加text-align: center之后，所有行内块元素和行内元素都会水平居中*/
+            text-align: center;
+        }
+
+        .box a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            ;
+            text-align: center;
+            line-height: 36px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .box .prev,
+        .box .next {
+            width: 85px;
+        }
+
+        .box input {
+            width: 45px;
+            height: 36px;
+            border: 1px solid #ccc;
+            outline: 0;
+        }
+
+        .box button {
+            width: 60px;
+            height: 36px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<!-- 利用行内块元素的特点，text-align: center使行内块元素中的内容居中显示。 -->
+
+<body>
+    <div class="box">
+        <!--页面显示条-->
+        <a href="#" class="prev">&lt&lt上一页</a>
+        <a href="#">1</a>
+        <a href="#" class="current">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#" class="elp">...</a>
+        <a href="#" class="next">下一页&gt&gt</a>
+        到第<input type="">页
+        <button>确定</button>
+    </div>
+    <!--页面显示条 END-->
+
+
+</body>
+
+</html>

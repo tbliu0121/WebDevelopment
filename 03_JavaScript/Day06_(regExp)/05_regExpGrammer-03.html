@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达语法 v-3</title>
+    <script>
+        /***
+         * +: 至少一次, 相当于[1,]
+         * *: 0个或者多个, 相当于[0,]
+         * ?: 0个或者一个
+         * ^a: 以a开头
+         * a$: 以a结尾
+         * 
+         * \w: 任意字母、数字、下划线
+         * \W: 与\w相反, 除了字母、数字、下划线
+         * \d: 任意数字
+         * \D: 除了数字
+         * \s: 空格
+         * \S: 除了空格
+         * \b: 单词边界
+         *     - 用来检测一个独立的单词, 见例子
+         * \B: 除了单词边界
+         *     - 自己悟~
+        */
+
+        //测试一个字符串中是否含有单词child
+        let reg = /child/;
+        let _reg = /\bchild\b/;                      //使用单词边界来检测独立的单词
+        console.log(reg.test("hello children"));     //true
+        console.log(_reg.test("hello children"));    //false
+
+        /** 去掉字符中的空格 **/
+        let user_name = "           Utnapishtim              ";
+        console.log(user_name.replace(/\s/, ''));    //只去掉一个空格
+        console.log(user_name.replace(/\s/g, ''));   //使用全局模式清除空格
+    
+        //去掉开头的空格
+        console.log(user_name.replace(/^\s*/, ''));  //去掉开头任意多个空格
+        //去掉结尾的空格
+        console.log(user_name.replace(/\s*$/, ''));  //去掉结尾任意多个空格
+        //去掉开头和结尾的空格
+        user_name = "    hello world    ";
+        console.log(user_name.replace(/^\s*|\s*$/g, ''));  //注意要使用全局匹配模式
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

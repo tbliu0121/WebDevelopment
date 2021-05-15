@@ -1,0 +1,11 @@
+@for $i from 1 to 3 {
+  .item-#{$i} {
+    width: 2em * $i;
+  }
+}
+
+@for $i from 1 through 3 {
+  .bubble-#{$i} {
+    width: 100px * $i;
+  }
+}

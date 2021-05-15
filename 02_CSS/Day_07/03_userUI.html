@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户界面样式</title>
+
+    <style>
+        input,
+        textarea {
+            outline: none;
+            vertical-align: middle;
+        }
+
+        textarea {
+            resize: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<!-- 更改用户界面
+    更改用户鼠标样式
+        default: 小白箭头，默认属性
+        pointer: 小手形状
+        move: 移动十字架
+        text: 文本
+        not-allowed: 禁止
+    表单轮廓：outline
+    防止表单拖拽: resize: "none"
+
+    文本边框线: outline
+        outline: none;  去掉表单的默认蓝色轮廓线
+-->
+
+<body>
+    <ul> <!--光标的形状设定-->
+        <li style="cursor: default">鼠标的形状：白色箭头</li>
+        <li style="cursor: pointer">鼠标的形状：小手形状</li>
+        <li style="cursor: move">鼠标的形状：移动十字架</li>
+        <li style="cursor: text">鼠标的形状：文本(竖线光标)</li>
+        <li style="cursor: not-allowed">鼠标的形状：禁止</li>
+    </ul>
+
+    姓名：<input type="text"> <br />  <!--取消表单轮廓线-->
+    简介：<textarea>resize: none; 通过属性选择器来设定</textarea>  <!--禁止拖动文本域-->
+
+
+</body>
+
+</html>

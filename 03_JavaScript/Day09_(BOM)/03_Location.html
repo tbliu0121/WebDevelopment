@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location对象</title>
+
+    <script>
+        /*** location: 该对象封装了浏览器地址栏中的信息
+         *     - 如果将location修改为一个相对路径或者一个相对路径, 则页面会自动跳转到此页面, 并且会生成对应的历史记录。
+         *     
+         *     - 属性
+				 *         - href: 当前加载页面的完整URL。
+				 *         - hash: 定义了页面中的锚点部分, 可实现页面的无刷新页面内部跳转。
+				 *         - origin: URL的原地址。
+         *     - 方法:
+         *         - location.assign(): 用来跳转页面, 作用和window.location一样, 可以生成历史记录, 支持回退和前进。。
+         *         - location.reload(): 和刷新按钮的功能是一样的。
+         *             - reload(true)是强制清空刷新缓存, 默认是不清空缓存的(表单中的数据不会清除)。
+         *         - location.replace(): 可以使用一个新的页面替换当前页面, 此方法不会生成历史记录无法回退。
+         * 
+        */
+
+        window.onload = function() {
+            // alert(location);
+
+            let btnBaidu = document.getElementById("btn-baidu");
+            btnBaidu.onclick = function() {
+                location = "http://www.baidu.com";
+            };
+        };
+
+    </script>
+</head>
+
+<body>
+    <button id="btn-baidu">我是按钮, 点我一下去百度</button>
+
+</body>
+
+</html>

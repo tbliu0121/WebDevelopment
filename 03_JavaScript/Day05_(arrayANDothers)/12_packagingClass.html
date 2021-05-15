@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>包装类</title>
+
+    <script>
+        /***  包装类
+         * 基本数据类型: String, Number, Boolean, Null, Undifined, Symbol。 
+         *     基本数据类型有自身的局限, 没有对象的功能强大。
+         * 引用数据类型: Object
+         * 
+         * JS提供了三种包装类, 通过三个包装类可以将基本数据类型的数据转化为对象, 是浏览器底层自己用的哦 ╮(￣▽￣)╭
+         *     三个包装类实际上都是构造函数: 首字母大写 + 有()
+         *     - String()
+         *         可以将基本数据类型的字符串转化为String对象
+         *     - Number()
+         *         可以将基本数据类型的数字转化为Number对象
+         *     - Boolean()
+         *         可以将基本数据类型的布尔值转化为Boolean对象
+         * 
+         *     但是, 在实际的应用中不会应用基本数据类型对象！！！
+         *     如果使用基本数据类型对象时, 在做比较时会带来一些不方便。
+         * 
+         * 方法和属性只能添加给对象, 不能添加给基本数据类型, 但是在基本数据类型中却有属性和方法！！！
+         *     当我们使用一些基本数据类型去调用属性和方法时,
+         *     浏览器会“临时”使用包装类将其转化为基本数据类型对象,
+         *     然后调用基本数据类型对象的属性和方法,
+         *     调用完之后再将其转化为基本数据类型并销毁临时转化的对象。
+        */
+
+        let price = 128;
+        console.log(price)
+        console.log(typeof price);
+
+        let _price = new Number(128);  //实际中不要使用这种方法。
+        console.log(_price);
+        console.log(typeof _price);
+
+        /***        基本数据类型中的方法原理事例        ***/
+        let height = 660;
+        let _height = height.toString();
+
+        console.log("height: " + height);
+        console.log(typeof height);
+        console.log("_height: " + _height);
+        console.log(typeof _height);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

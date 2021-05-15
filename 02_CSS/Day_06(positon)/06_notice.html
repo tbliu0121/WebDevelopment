@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位的几点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;   /*定位盒子的水平居中*/
+            width: 200px;
+            height: 200px;
+            background-color: cornflowerblue;
+            top: 50%;
+            margin-top: -100px;
+            line-height: 200px;
+            text-align: center;
+            box-shadow: 5px 5px 3px 3px rgba(0, 0, 0, .3);
+        }
+
+        .float-box {
+            float: left;
+            height: 280px;
+            width: 380px;
+            text-align: center;
+            padding: 10px;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+
+<!-- 几个提示
+    1 带有绝对定位的盒子之后，无法利用margin: 0 auto来实现定位盒子居中
+    方法与固定在版心右侧类似：
+        1. 先设置绝对定位left: 50%
+        2. 再设置margin-left: 盒子自身的一半的负数即可。
+
+    垂直居中同理
+
+    2 定位的特殊特性：
+        只要加了绝对定位，则元素可以为行内元素设置高度，
+        块级元素加了绝对定位以后，如果不指定高度和宽度，则会默认为一个行高的高度
+
+    3 脱标的元素不会触发外边界的塌陷问题
+
+    4 浮动元素只会压住下面标准流的盒子，而不会压住盒子中的文字或图片
+        浮动之所以不会压住内容，最初的目的是为了产生环绕效果而诞生的。
+    但是！！！绝对定位会压住所有的东西！！！！！
+ -->
+
+<body>
+    <div class="box">一个居中定位的盒子哦~</div>
+    <div class="float-box">浮动最初的作用是为了产生文字和图片的环绕效果的，因此只会压住下面标准流的元素，不会压住元素中的文字和图片的~</div>
+    <p>这是一段文字啊？？？！！！</p>
+</body>
+
+</html>

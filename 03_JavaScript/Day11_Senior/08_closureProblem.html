@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包产生的问题和解决方法</title>
+</head>
+
+<!--闭包产生的问题和解决方法
+    - 缺点: 函数执行完成之后，函数内的局部变量没有释放，占应的内存时间边长; 从而造成内存泄露。
+    - 解决方法: 及时释放，让形成闭包的内部函数称为垃圾对象，从而取消内部数据的绑定关系达到回收内存的目的。
+
+    常见的内部泄露原因:
+        - 意外的全局变量。
+        - 没有及时清理计时器或者回调函数。
+        - 闭包造成的内存泄露。
+        - 脱离DOM的引用。
+-->
+
+<body>
+    <script>
+        function func() {
+            let arr = new Array(1000000);
+            
+            function func01() {
+                console.log(arr.length);
+            }
+            return func01;
+        }
+
+        let fn = func();
+        fn();
+    </script>
+
+</body>
+
+</html>

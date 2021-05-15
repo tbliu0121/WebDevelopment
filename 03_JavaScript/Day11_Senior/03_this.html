@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数中的This</title>
+</head>
+
+<!-- this
+    - 所有函数内部都有一个this
+    - 任何函数本质上都是通过某个对象来调用的！！！
+
+    如和确定this的指向
+        - test(): window
+        - p.test(): p
+        - new test(): 新建对象
+        - test.call(obj): obj
+-->
+
+<body>
+    <script>
+
+        function Person(color) {
+            cosole.log(this);  //输出函数的调用者: window
+            this.color = color;
+
+            this.getColor = function() {
+                console.log(this);
+                return this.color;
+            };
+
+            this.setColor = function() {
+                console.log(this);
+                this.color = color;
+            };
+        }
+
+        Person("red");
+
+        let p = new Person("yellow");  //this指向p
+        p.getColor();                  //this指向P
+
+        let obj = {};
+        p.setColor.call(obj, "black")  //this指向obj
+
+        let test = p.setColor();
+        test();                        //this指向window！！！
+
+        function func1() {
+            function func2() {
+                console.log(this);
+            }
+
+            func2();                   //this指向func1
+        }
+        func1();                       //this指向window
+
+    </script>
+    
+</body>
+</html>

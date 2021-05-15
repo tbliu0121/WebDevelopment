@@ -1,0 +1,41 @@
+@import '03_public.scss';    // 导入多个文件可以用逗号分隔
+
+$colors: #ff69b4 #ff6347 #008080;
+
+div {
+  width: 400px - 30px;
+  height: 300px - 24px;
+  margin: 12px auto;
+  padding: 12px 15px;
+
+  @media screen {
+    background-color: $bg;
+  }
+
+  @media print {
+    background-color: #ff0;
+  }
+}
+
+// Sass允许媒体查询嵌套到目标元素的内部, 编译之后媒体查询语句会自动编译到目标元素的外面
+$viewportsize: (
+  'sm': '(max-width: 500px)',
+  'md': '(min-width: 501px) and (max-width: 1000px)',
+  'lg': '(min-width: 1001px)'
+);
+
+body {
+  // map的使用方式; 通过差值的方式使用。
+  @media #{map-get($viewportsize, 'sm')} {
+    background-color: nth($colors, 1);
+  }
+  
+  @media (min-width: 501px) and (max-width: 1000px) {
+    background-color: nth($colors, 2);
+  }
+  
+  @media (min-width: 1001px) {
+    background-color: nth($colors, 3);
+  }
+}
+

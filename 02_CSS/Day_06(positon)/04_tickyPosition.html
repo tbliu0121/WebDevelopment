@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粘性定位</title>
+    <style>
+        .page-width {
+            width: 1080px;
+        }
+
+        .web-body {
+            height: 3000px;
+            margin: 0 auto;
+            background-color: darkgray;
+        }
+
+        .sticky-box {
+            height: 20px;
+            margin: 150px auto;
+            position: sticky;
+            top: 0;  /*只要和顶部距离指定px，就启动效果*/
+            background-color: darkseagreen;
+            
+        }
+    </style>
+    
+</head>
+
+<!-- 粘性定位
+    1. 以浏览器的可是窗口为参照（固定定位的特点）
+    2. 粘性定位占有原来的位置（相对定位的特点）
+    3. 必须加上top right bottom left的其中一个才有效
+    与页面的gun滚动搭配使用。兼容性差， IE不支持。 -->
+
+
+
+<body>
+    <!-- 这种效果更多的是使用JavaScript来做出来的 -->
+    <div class="sticky-box page-width"></div>
+    <div class="page-width web-body"></div>
+    
+
+</body>
+
+</html>

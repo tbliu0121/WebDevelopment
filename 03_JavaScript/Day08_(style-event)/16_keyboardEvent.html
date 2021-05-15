@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+
+    <style>
+        #box01 {
+            width: 380px;
+            height: 280px;
+            background-color: hotpink;
+            padding: 10px;
+        }
+
+        #name {
+            display: inline-block;
+            width: 300px;
+            height: 25px;
+            line-height: 25px;
+            outline: none;
+            border-radius: 5px;
+        }
+    </style>
+
+    <script>
+        /*** 键盘事件
+         *     - onkeydown: 键盘被按下
+         *     - onkeyup: 键盘被松开
+         * 
+         *     - 键盘事件一般绑定给可以获取焦点的对象或者document。
+         *     - 对于onkeydown, 如果按住某个键不松手, 那么这个事件会连续触发。
+        */
+        window.onload = function() {
+
+            document.onkeydown = function(event) {
+                event = event || window.event;
+                /*** 
+                 * altKey
+                 * ctrlKey
+                 * shiftKey
+                 * 这三个键用于判断对应的功能键是否被按下了
+                */
+               if(event.keyCode == 67 && event.ctrlKey) {  //通过keycode来获取按键的编码, 从而判断哪个按键被按下
+                   alert("Ctrl C~")
+               }
+            };
+
+            document.onkeyup = function() {
+                console.log("键盘松开了~");
+            };
+
+            let input = document.getElementById("name");   //或者ByTagName[0]
+
+            input.onkeydown = function(event) {            //为文本框添加键盘事件
+                event = event || window.event;
+
+                if(event.keyCode >= 48 && event.keyCode <= 57) {
+                    console.log("文本框中输入了数字");
+                    return false;//取消浏览器的默认行为: 在文本框中输出键盘输入内容。
+                }
+                console.log("文本框输入了内容");
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box01">
+        姓名：<input type="text " id="name">
+    </div>
+</body>
+
+</html>

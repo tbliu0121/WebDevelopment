@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定定位</title>
+    <style>
+        .pageWidth {
+            width: 1080px;
+        }
+
+        .webBody {
+            margin: 0 auto;
+            background-color: cornflowerblue;
+            height: 2000px;
+        }
+
+
+        .daji {  /*利用固定定位实现妲己对相对版心位置固定*/
+            position: fixed;
+            top: 50px;
+            left: 50%;   /*先走浏览器的一半的位置*/
+            margin-left: 540px;  /*在让margin为版心的一半*/
+        }
+    </style>
+</head>
+
+<!-- fixed（固定定位）：重要！！！！
+    1 以浏览器的可视窗口为定位，与父元素没有任何关系。
+    2 不占有原来的位置，也就是固定定位也是脱标的。
+    3 固定定位不是永远贴着版心定位的，也可以相对版心固定。
+        tips：1 先固定定位盒子的left: 50% 浏览器的一半宽度
+              2 让固定的盒子margin-left为版心的一半
+              这两步可以使固定的小盒子在版心的右侧固定了！！！ -->
+
+<body>
+    <div class="webBody pageWidth">
+        
+    </div>
+
+
+    <div class="daji">
+        <!--网页中的图片非常多，最好用盒子套起来并起一个类名，便于修改-->
+        <img src="images/pvp.png">
+    </div>
+
+</body>
+
+</html>

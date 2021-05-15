@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串和正则表达式相关的方法</title>
+
+    <script>
+        /*** 支持正则表达式的String对象方法
+         *     - search(): 检索与正则表达式相匹配的值的索引位置, 与indexof类似
+         *         如果搜索到指定内容, 则返回第一次出现的索引, 如果没有搜索到则返回-1;
+         *         可以接受一个正则表达式作为参数。
+         * 
+         *     - match(): 根据正则表达式从一个字符串中将符合条件的内容提取出来
+         *         默认情况下匹配到第一个符合内容的位置就会停止, 此时设置正则表达式为全局匹配模式即可
+         *         可以为一个正则表达式匹配多个匹配模式
+         * 
+         *     - replace(): 将字符中指定内容替换为新内容，不会影响到原字符串, 将结果封装并返回。
+         *         arg1: 被替换的内容; 支持正则表达式。
+         *         arg2: 新的内容。
+         *         默认只匹配第一个。
+         *     利用空串替换可以达到删除指定内容的效果。
+         * 
+         *     - split(): 除了指定分隔符外, 支持正则表达式作为参数, 方法将会根据正则表达式拆分字符串。
+         *         即使不指定全局匹配也会全局都拆分。
+        */
+        let str = "1a2b3c4d5e6f";
+        let res = str.split('c');          //根据c将字符串拆分
+        console.log(res);
+
+        let _res = str.split(/[A-z]/);     //根据字母拆分字符串
+        console.log(_res);
+
+        str = "hello abc hello aec hello afc";
+        console.log(str.search("abc"))     //6
+
+        /* 搜索字符中是否含有abc或者aec或者afc */
+        console.log(str.search(/a[bef]c/));
+
+        /* 使用match()将符合规则的内容提取出来 */
+        str = "1a2b3c4d5e6fABC";
+        res = str.match(/[A-z]/);
+        _res = str.match(/[a-z]/gi);        //使用全局匹配模式, 匹配结果以数组的形式封装返回,
+        console.log(res);
+        console.log(_res);
+        console.log(typeof _res);
+        
+        res = str.replace(/[a-z]/gi, 'x');  //将任意字母替换为x
+        console.log(res);
+        _res = str.replace(/[a-z]/gi, '');  //利用空串替换可以达到删除指定内容的效果。
+        console.log(_res);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

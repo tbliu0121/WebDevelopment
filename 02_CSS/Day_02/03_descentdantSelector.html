@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复合选择器</title>
+    <style>
+        ol li {  /*一个复合选择器的样式*/
+            color:blue;
+        }
+
+        ul li {  /*一个复合选择器的样式*/
+            color:red;
+        }
+
+        ul a {
+            color: green;
+        }
+
+        .nav li a {
+            color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>常见的复合选择器</h3>
+    <ul class="nav">
+        <li>后代选择器！！！</li>
+        <li>子选择器</li>
+        <li>并集选择器</li>
+        <li>伪类选择器</li>
+        <li>etc...</li>
+        <li><a href="#">这是一个ul中的空链接~~~</a></li>
+    </ul>
+
+    <ol>
+        <li>这是一个ol的li</li>
+        <li>这是一个ol的li</li>
+        <li>这是一个ol的li</li>
+        <li><a href="#">这是一个ul中空链接~~~（颜色是系统默认的）</a></li>
+    </ol>
+
+    <ul>
+        违法写法，验证复合选择器的有效作用范围！！！
+        <li>这是一个ul的li</li>
+        <li>这是一个ul的li</li>
+        <li><a href="#">这是一个空链接~~~</a></li>
+    </ul>
+    
+</body>
+</html>

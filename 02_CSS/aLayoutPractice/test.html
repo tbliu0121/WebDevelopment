@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+      * 通配符选择器 可以选中页面中所有的标签
+      给所有标签的外边距和内边距设置为0 让所有浏览器默认效果保持一致
+    */
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #content1{
+      width: 200px;
+      height: 200px;
+      margin-bottom: 80px;
+      background: red;
+    }
+    #content2{
+      width: 200px;
+      height: 200px;
+      margin-top: 30px;
+      background: pink;
+    }
+
+    #content3{
+      /* float: left; */
+      width: 300px;
+      height: 300px;
+      margin-top: 50px;
+      background: yellow;
+      position: absolute;
+      /* overflow: 溢出 */
+      /* overflow: hidden; */
+      /* border: 1px solid red; */
+    }
+    #content4{
+      /* float: left; */
+      width: 100px;
+      height: 100px;
+      margin-top: 30px;
+      background: paleturquoise;
+      /* position: absolute; */
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 
+      外边距合并问题
+        两个元素在同一方向上的外边距会合并
+      解决办法
+        1.并列关系的两个元素
+            只给某一个元素加外边距即可
+        2.嵌套关系的两个元素
+          1）给父元素加溢出隐藏 overflow:hidden
+          2) 给父元素加边框 border: 1px solid red
+          3) 给父元素或子元素加浮动 float:left
+          4) 给父元素或子元素绝对定位 position:absolute 
+
+   -->
+  <div id="content1">div1</div>
+  <div id="content2">div2</div>
+
+  <!-- <div id="content3">
+    <div id="content4"></div>
+  </div> -->
+</body>
+</html>

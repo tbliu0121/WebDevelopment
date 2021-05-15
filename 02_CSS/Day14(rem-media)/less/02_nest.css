@@ -1,0 +1,14 @@
+.header {
+  width: 1200px;
+  height: 200px;
+  background-color: hotpink;
+}
+.header a {
+  color: #ffffff;
+}
+.header a:hover {
+  color: blue;
+}
+.header a::before {
+  content: "a的before伪元素  |    ";
+}

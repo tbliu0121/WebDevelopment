@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的操作</title>
+
+    <style>
+        .box-style01 {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            transition: all 1s ease;
+        }
+
+        .box-style02 {
+            width: 200px;
+            height: 200px;
+            background-color: teal;
+            transition: all 1s ease;
+        }
+
+        .box-style03 {
+            width: 200px;
+            background-color: lightseagreen;
+            transition: all 1s ease;
+        }
+
+    </style>
+
+    <script>
+
+        window.onload = function() {
+            let btn01 = document.getElementById("btn01");
+            let btn02 = document.getElementById("btn02");
+            let btn03 = document.getElementById("btn03");
+
+            let box01 = document.getElementById("box01");
+
+            btn01.onclick = function() {
+                /*** style修改样式的问题
+                 *     通过style来修改样式，每修改一次浏览器就会重新渲染一次，性能比较差
+                */
+                // box01.style.width = 200 + "px";
+                // box01.style.height = 200 + "px";
+                /** className
+                 *     利用修改元素class的方法来达到同样的方法。
+                 *     浏览器只需要重新渲染一次就可以。
+                 *     进一步降低了样式和行为的耦合性。
+                 * 
+                 * class += " new-class"
+                 *     为了只加入进去的新的样式，可以新样式设定为一个新类
+                 *     利用className += " new-class";
+                 * 
+                */
+                // box01.className = 'box-style02';
+                // box01.className += " box-style03";               //注意前面有一个空格
+                addClass(box01, "box-style03");
+            };
+
+            btn02.onclick = function() {
+                removeClass(box01, "box-style03");
+            };
+
+            btn03.onclick = function() {
+                toggleClass(box01, "box-style03");
+            };
+        };
+
+        //封装一个函数，用于向一个元素中添加指定的class属性
+        function addClass(obj, className) {
+            if(!hasClass(obj, className)) {                        //如果属性不存在，则添加进去
+                obj.className += " " + className;
+            }                 
+        }
+
+        //判断加入到的类先前是否已经存在
+        function hasClass(obj, className) {
+            let regExp = new RegExp("\\b" + className + "\\b");    //利用单词边界\b检测b2是否是独立的, 注意转义字符
+            return regExp.test(obj.className);
+        }
+
+        //删除一个元素中指定的className, 将对应的className替换成空串即可。
+        function removeClass(obj, className) { 
+            let regExp = new RegExp("\\b" + className + "\\b");
+            obj.className = obj.className.replace(regExp, "");                      //将符合正则表达式的替换为空串
+        }
+
+        //切换操作
+        function toggleClass(obj, className) {
+            if(hasClass(obj, className)) {
+                removeClass(obj, className);
+            } else {
+                addClass(obj, className);
+            }
+        }
+
+    </script>
+    
+</head>
+
+<body>
+    <button id="btn01">一个按钮~</button>
+    <button id="btn02">reset</button>
+    <button id="btn03">Swap</button>
+    <br>
+    <br>
+    <div id="box01" class="box-style01"></div>
+
+</body>
+
+</html>

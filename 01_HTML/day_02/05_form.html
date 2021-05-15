@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单的使用</title>
+</head>
+
+<body>
+    <!--使用表单的目的是为了“搜集用户信息”,
+         form会把定义范围内的表单元素信息提交到服务器
+         <form action="url" method="提交方式" name="表单域名称">
+         </form>
+    -->
+    <!--表单的组成：
+        1.表单域
+        2.表单控件(或称为表单元素): 输入或者选择控件; input / select / textarea
+        3.提示信息
+    -->
+    <form>
+        <!-- text 文本框 用户可以在里面输入任何文字
+            maxlength这设置最大长度, 一般使用正则表达式来规范，而不是maxlength
+         -->
+        <!--radio和checkbox具有checked属性，设置初始时是否选中
+            radio中只有一个可以设置checked属性
+            checkbox可以设置多个
+        -->
+        头像：<input type="file"> <br>
+        用户名：<input type="text" name="userneme" value="请输入用户名" maxlength='6'> <br>
+        密码：<input type="password" name="pwd" value="密码"> <br> 
+
+        注册手机：<input type="text"> <input type="button" value="发证验证码"> <br>
+
+        <!-- text + label -->
+        学位：<label for="ba">学士</label> <input type="radio" name="degree" value="学士" id="ba"> 
+            <label for="ma">硕士</label> <input type="radio" name="degree" value="硕士" id="ma"> 
+            <label for="de">博士</label> <input type="radio" name="degree" value="博士" id="de"> <br>
+
+        <!-- 文本条 -->
+        教育经历：<input type="text" type="请输入教育经历"> <br>
+
+        <!-- checkbox -->
+        爱好：吃饭<input type="checkbox" name="hobby" value="吃饭"> 
+            睡觉<input type="checkbox" name="hobby" value="睡觉"> 
+            打豆豆<input type="checkbox" name="hobby" value="打豆豆"> <br>
+
+        <input type="submit" value="注册">  <!--submit向服务器提交表单信息-->
+        <input type="reset" value="重置">  <!--reset重置表单中所有信息为初始信息-->
+    </form>
+
+</body>
+
+</html>

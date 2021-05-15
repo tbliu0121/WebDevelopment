@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.unquote {
+  content: hello SASS;
+}
+
+.quote {
+  content: "hello SASS";
+}
+
+.test01 {
+  content:  hello 'SASS' andddd welcome to WEB;
+}
+
+/* quote的字符串如果带有单引号, 则单引号会被转化成双引号 */
+.test02 {
+  content: "Helloooo SASS~";
+}
+
+.toUpperCase {
+  content: "HELLO SASS";
+}
+
+.toLowerCase {
+  content: "hello sass";
+}

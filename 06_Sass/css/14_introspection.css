@@ -1,0 +1,13 @@
+.header {
+  content: number;
+  content: string;
+  content: bool;
+  content: color;
+  content: "";
+  content: "%";
+  content: "px";
+  content: true;
+  content: false;
+  content: true;
+  content: false;
+}

@@ -1,0 +1,18 @@
+// 页面也可以在PC端打开, 因此设置默认的html字体大小。
+// 由于样式的层叠性, 因此默认样式一定要写在最上面。
+html {
+  font-size: 50px;
+}
+
+// 设置常见的屏幕尺寸, 修改里面的html的font-size大小
+// 本次定义的划分次数为15份。
+$divid: 15;
+$screen-width: 320px 360px 375px 384px 400px 414px 424px 480px 540px 720px 750px;
+
+html {
+  @each $width in $screen-width {
+    @media screen and (min-width: $width) {
+      font-size: ($width / $divid);      
+    }
+  }
+}

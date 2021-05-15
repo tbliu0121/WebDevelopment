@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型</title>
+</head>
+
+<!--            显式原型和隐式原型
+    - 每个函数都有一个prototype属性，即显式原型
+    - 每个实力对象都有一个__proto__属性，称为隐式原型。
+    - 对象的__prototype__属性和其构造函数的prototype是相同的。
+-->
+
+<body>
+    <script>
+        console.log(Date.prototype);         //Object
+        console.log(typeof Date.prototype);  //object, 每一个对象中都有一个Prototype属性, 默认指向一个Object空对象（也称为原型对象）
+
+        function Func() {
+            //empty
+        }
+
+        Func.prototype.test = function() {  //为func的原型对象上添加一个方法。
+            console.log("test");
+        };
+        console.log(Func.prototype);        //默认指向一个没有属性的空对象
+
+        let fn = new Func();                //一个对象。。。。。
+        console.log(fn.__proto__);
+        console.log(Func.prototype);
+        console.log("fn.__proto__(函数实例) 等于 Func.prototype(函数对象): " + (Func.prototype === fn.__proto__));
+
+        console.log(Date.prototype.constructor === Date);    //原型对象中有一个constructor属性，指向函数对象
+        console.log(Func.prototype.constructor === Func);
+
+        
+
+    </script>
+
+</body>
+
+</html>

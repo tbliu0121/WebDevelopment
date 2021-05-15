@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: auto;  /*自动填充屏幕*/
+            height: 1000px;
+            line-height: 300px;
+            text-indent: 2em;
+            background-color:lightgreen;  /*背景颜色, 同时有图片和背景颜色时，背景会压住颜色*/
+            background-image: url(images/honourOfKings.jpg);
+            background-repeat: no-repeat;   /*使用平铺效果*/
+            /*使用top, bottom, left, right时，只使用一个，另一个方向默认居中也可以使用混合坐标，如20px, center; x方向20px, y方向居中*/
+            background-position: center;    
+            /*background-size可以调整背景图片在元素中的大小*/
+        }
+    </style>
+</head>
+
+<!--背景颜色、背景图片、背景平铺、背景图片位置、背景图像固定等-->
+<!-- 常用于小图片和超大背景图片的相对位置 -->
+
+<body>
+    <!--背景颜色-->
+    <div>一个盒子</div>
+    <div>两个盒子</div>
+
+    <!--背景图片：背景图片有利于控制图片位置 url(absolutely path);-->
+    <!--对背景图进行复制填充称为平铺，可以不平铺，可以指定x或者y轴-->
+    <!--背景图片的位置：top, bottom, left, right, center; 或者(x, y)-->
+
+
+</body>
+
+</html>

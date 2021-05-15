@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相等运算符</title>
+
+    <script>
+        /**相等运算的比较规则
+        * 1. 如果有一个操作数是布尔值，则在比较相等性之前先转化为数值
+        * 2. 如果一个操作数是字符串，另一个操作数是数值，在比较相等之前先将字符串转化为数值
+        * 3. 如果一个操作数是对象，另一个不是，则调用对象的valueOf()方法得到基本类型，然后按照前面的规则进行比较。
+        * 4. undifined衍生自null, 因此null和undefined是相等的。
+        * 5. 要比较相等性之前，不可将null和undefined转化为其他任何值。
+        * 6. 如果有一个操作数是NaN，则相等操作永远返回false, 不等操作永远返回true。即使两个操作数都是NaN，相等操作也会返回false.
+        * 7. 可以通过isNaN()函数来判断是否是NaN。
+
+        ===是全等运算符，与==不同的是不会对比较数据做类型转换，只要两个比较数据类型不同，则直接返回false.
+        因此Undefined和Null相等，但是不全等。
+        
+        !== 也是不会做类型转换的比较。
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slice & splice</title>
+
+    <script>
+        /***  slice & splice
+         * slice(): arrayObject.slice(start, end)
+         *     从数组中提取指定元素, 该方法不会改变原数组, 而是将结果封装并返回。
+         * 
+         * 
+         * splice(start, numbers, alt...)
+         *     删除元素并向数组添加新元素。
+         *     splice()会影响到原数组, 将删除的元素返回。
+         *     start: 删除元素的起始位置。
+         *     numbers: 删除元素的个数。
+         *     alt: 删除后要换入的新元素。
+         * 实现了向指定位置增加元素、删除元素、替换指定位置的元素。
+        */
+
+        let Hero = ['王昭君', '花木兰', '鲁班', '赵云', '姜子牙'];
+        let res = Hero.slice(0, 2);   //slice(0, 2)选取[0, 2)上的数据
+        let res_ = Hero.slice(-3, );  //索引支持负数slice(-3, )取最后三个元素
+        console.log(Hero);            //slice()不会改变原数组
+        console.log(res);
+        console.log(res_);
+
+        let res_splice = Hero.splice(0, 2, '妲己', '鳐');
+        console.log(Hero);
+        console.log(res_splice);
+
+        let fruits = ["apple", "banana", "durian", "tangerine", "mango"];
+        fruits.splice(0, 0, "苹果");  //实现向指定位置添加元素
+        console.log(fruits);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

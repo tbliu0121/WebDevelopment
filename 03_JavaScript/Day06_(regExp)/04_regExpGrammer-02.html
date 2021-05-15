@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则语法</title>
+
+    <script>
+        /***量词
+         *     通过量词可以设置一个内容出现的次数
+         *     量词只对它前面的一个内容起作用
+         *     {n}表示出现n次
+         *     {m,n}出现m次到n次都可以  Warning: 逗号后面不能有空格！！！
+         *     {3,}表示出现3次以上
+         *     +: 至少一次, 相当于[1,]
+         *     *: 0个或者多个, 相当于[0,]
+         *     ?: 0个或者一个
+         *     ^a: 以a开头
+         *     a$: 以a结尾
+        */
+        let reg = /a{3}/;   //连续出现三个a
+        console.log(reg.test("bbaaabba"));  //true
+        
+        reg = /ab{3}/                       //{3}只对前面的一个内容起作用
+        let _reg = /(ab){3}/                //使用括号扩大重复对象范围
+        console.log(reg.test("ababab"));    //false
+        console.log(_reg.test("ababab"));   //true
+
+        reg = /ab{1,3}c/;
+        console.log(reg.test("abbbbc"));    //false, ac中间的b出现1-3次才可以
+        console.log(reg.test("abbc"));      //true 
+
+        reg = /^a$/;                        //如果在正则表达式中同时使用了^ $, 则要求字符串必须完全符合正则表达式
+        console.log(reg.test("aaa"));       //false
+        reg = /^a|a$/;                      //以a开头或者以a结尾
+        console.log(reg.test("abc"));       //true
+        console.log(reg.test("cba"));       //true
+
+        /*** 手机号
+         * 1. 11位
+         * 2. 第二位是3-9的任意数字, 不能是012中的一位
+         * 3. 第三位开始是任意数字九个
+         * 4. 1开头
+         * 
+         * ^1 [3-9] [0-9]{9}$
+        */
+        let tel_1 = "58626485963";
+        let tel_2 = "11011251123";
+        let tel_3 = "18846191631";
+        let telReg = /^1[3-9][0-9]{9}$/;
+        console.log(telReg.test(tel_1));  //false
+        console.log(telReg.test(tel_2));  //false
+        console.log(telReg.test(tel_3));  //true
+
+        /*** 检测一个字符床是否含有.
+         * .具有通配符的含义, 因此需要转义, 利用\.来表示
+         * 使用构造函数时, 由于参数是一个字符串, 因此\还是一个转义字符
+         * 字面量里也要注意\的转义！！！
+        */
+        reg = /\./;
+        console.log(reg.test("abc@com"));
+        console.log(reg.test("abc.com"));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>align-sel_oreder</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    section {
+      display: flex;
+      /* align-items: flex-end; */
+      width: 80%;
+      height: 400px;
+      background-color: hotpink;
+      margin: 0 auto;
+    }
+
+    section span {
+      width: 200px;
+      height: 100px;
+      background-color: teal;
+    }
+
+    section span:nth-child(2) {
+      order: -1;
+    }
+
+    section span:nth-child(3) {
+      align-self: flex-end;
+    }
+  </style>
+</head>
+
+<!--             align-self
+  - 设置单个元素在 [侧轴] 的对齐方式！！！
+  - align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。
+  - 默认是auto, 表示继承父元素的align-items属性, 如果没有父元素, 则等同于stretch。
+
+  -                order
+  - order属性定义项目排列顺序。
+  - 数值越小, 排列越靠前, 默认是0。（注意和z-index不一样）
+-->
+
+<body>
+  <section>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+  </section>
+</body>
+
+</html>

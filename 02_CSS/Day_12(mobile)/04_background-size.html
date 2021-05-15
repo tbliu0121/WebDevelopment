@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 2px solid teal;
+            background: url(./images/dog.jpg) no-repeat;
+            /* background-size: 500px 200px; */
+            /* background-size: 500px;  如果只写一个参数，则高度等比例自动缩放 */
+            background-size: 50%;         /*百分比是相对于父元素的, 只写一个则高度自动适应*/
+            /* background-size: cover;    图片要完全覆盖盒子 */
+            /* background-size: contain;  高度或者宽度铺满盒子就停止拉伸 */
+        }
+    </style>
+</head>
+
+<!--
+    background-size: 规定了背景图片的尺寸。
+-->
+
+<body>
+    <div></div>
+</body>
+
+</html>

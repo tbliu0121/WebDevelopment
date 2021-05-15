@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面练习</title>
+</head>
+<body>
+    <h3>人生得意须尽欢，抓紧时间谈恋爱！</h3>
+
+    <table width="500">
+        <tr>  <!--Name and gender-->
+            <td align="right">性别：</td>
+            <td><Label for="M"><img src="maleIcon.jpg" width="22"></Label> <input type="radio" name="gender" id="M" checked="checked">
+              <Label for="F"><img src="femaleIcon.jpg" width="22"></Label> <input type="radio" name="gender" id="F"><br/></td>
+        </tr>
+        <tr>  <!--birthday-->
+            <td align="right">生日：</td>
+            <td>
+                <select >   <!--Year-->
+                    <option>--请选择年--</option>
+                    <option>1995</option>
+                    <option>1996</option>
+                    <option>1997</option>
+                    <option>1998</option>
+                    <option>1999</option>
+                    <option>2000</option>
+                </select>
+                <select>  <!--Month-->
+                    <option>--请选择月--</option>
+                    <option>一月</option>
+                    <option>二月</option>
+                    <option>三月</option>
+                    <option>四月</option>
+                    <option>五月</option>
+                    <option>六月</option>
+                    <option>七月</option>
+                    <option>八月</option>
+                    <option>九月</option>
+                    <option>十月</option>
+                    <option>十一月</option>
+                    <option>十二月</option>
+                </select>
+                <select>  <!--Day-->
+                    <option>--请选择日--</option>
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>            
+                </select>
+            </td>
+        </tr>
+        <tr> <!--Location-->
+            <td align="right">所在地区：</td>
+            <td><input type="text" value="请填写常用居住地" ></td>
+        </tr>
+        <tr>  <!--Marry-->
+            <td align="right">婚姻状况：</td>
+            <td>
+                <input type="radio" name="marrige" value="yes" id="married"><label for="married">已婚</label>
+                <input type="radio" name="marrige" value="no" id="unmarried"checked="checked"><label for="unmarried">未婚</label>
+            </td>
+        </tr>
+        <tr>  <!--Degree-->
+            <td align="right">学历：</td>
+            <td>
+                <input type="text" value="请输入最高学历">
+            </td>
+        </tr>
+        <tr> <!--likeType-->
+            <td align="right">喜欢的类型：</td>
+            <td>
+                <input type="checkbox" name="likeType" id="Strict"><label for="Strict">严肃</label>
+                <input type="checkbox" name="likeType" id="Lovely"><label for="Lovely">可爱</label>
+                <input type="checkbox" name="likeType" id="Outstanding"><label for="Outstanding">活泼</label>
+                <input type="checkbox" name="likeType" id="Iceberg"><label for="Iceberg">冰山</label>
+            </td>
+        </tr>
+        <tr> <!--Introduction-->
+            <td align="right">自我介绍：</td>
+            <td>
+                <textarea>个人简介</textarea>
+            </td>
+        </tr>
+        <tr> <!--SigninButton-->
+            <td></td>
+            <td>
+                <input type="submit" value="免费注册">
+            </td>
+        </tr>
+        <tr>  <!--AgreeSignInPolicy-->
+            <td></td>
+            <td>
+                <input type="checkbox" value="agreePolicy">我同意<a href="policy.html" target="_blank">免费注册条款协议</a>
+            </td>
+        </tr>
+        <tr>  <!--SignOnRightNow-->
+            <td></td>
+            <td>
+                我是会员<a href="signInPage.html" target="_self">立即登录</a>
+            </td>
+        </tr>
+        <tr>  <!--Permission-->
+            <td></td>
+            <td>
+                <h3>我承诺以下信息属实</h3>
+                <ul>
+                    <li>年满18周岁，单身</li>
+                    <li>心理健康无危害他人、危害社会的思想</li>
+                    <li>态度真诚</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆角边框</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 400px;
+            height: 300px;
+            margin: 200px auto;
+            border: 1px blue solid;
+            background-color: cadetblue;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border: 1px blue solid;
+            border-radius: 50%;
+        }
+
+        .roundedCorner {
+            border-radius: 150px;
+        }
+
+        .radius {
+            width: 300px;
+            height: 300px;
+            border: 1px blue solid;
+            border-radius: 10px 20px 30px 40px;
+        }
+    </style>
+
+</head>
+
+<!-- border-radius可以使边框变为圆角边框 -->
+<!--也可以利用top-left的方式来设置单个圆角; 先写上下方向，再写左右方向。eg: border-top-left-redius-->
+
+<body>
+    <div class="roundedCorner">这是一个盒子</div>
+    <div class="circle">利用百分百的方式设置圆形</div>
+    <div class="radius">不同的圆角位置</div>
+
+</body>
+
+</html>

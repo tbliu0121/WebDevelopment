@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本数据类型和引用数据类型</title>
+
+    <script>
+        /***
+         * 基本数据类型: Number, String, Boolean, Null, Undefined, Symbol.
+         * 
+         * 引用数据类型: Object.
+         * 
+         * 比较两个引用类型数据是否相等时，比较的是指向的是否为同一个内存地址。
+         * 比较两个基本类型数据的时候，比较的是指是否相同。
+        */
+
+        let cost = 12;
+        let price = cost;
+        cost -= 5;
+        console.log("成本是: " + cost);
+        console.log("售价是: " + price);
+
+        let stu = new Object();
+        stu.name = "SunWukong";
+        stu.age = 1012;
+        let _stu = stu;
+        console.log(stu);
+        console.log(_stu);
+        _stu.name = "ZhuBajie";
+        console.log(stu);
+        console.log(_stu);
+
+        
+         
+         
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

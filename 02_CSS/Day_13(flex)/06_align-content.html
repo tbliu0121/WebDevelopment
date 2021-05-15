@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>align-content</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #outer {
+      display: flex;
+      width: 80%;
+      height: 400px;
+      background-color: hotpink;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;         /* 侧轴内容居中排列 */
+      /* align-content: flex-start; */
+      /* align-content: flex-end; */
+      /* align-content: space-around;  上下边距均分 */
+      align-content: space-between;   /*上下贴着父元素, 剩余空间均分*/
+    }
+
+    #outer span {
+      width: 150px;
+      height: 100px;               /* 父元素设置align-items: stretch时, 子元素不设置高度才有拉伸效果 */
+      background-color: teal;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+
+<!-- slign-content用于设置侧轴上的排列方式, 只适用于子项出现换行的情况下(多行), 子项为单行是没有效果的 -->
+
+<body>
+  <div id="outer">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+    <span>7</span>
+    <span>8</span>
+    <span>9</span>
+    <span>10</span>
+    <span>11</span>
+    <span>12</span>
+    <span>13</span>
+    <span>14</span>
+  </div>
+</body>
+
+</html>

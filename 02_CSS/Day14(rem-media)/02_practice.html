@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>媒体查询练习</title>
+
+  <style>
+    /* 1.媒体查询一般按照从大小或者从小到大的顺序来 */
+    /* 2.max-width和min-width都是闭区间的 */
+    /* 利用CSS的层叠性来简化代码 */
+    @media screen and (max-width: 539px) {
+      body {
+        background-color: hotpink;
+      }
+    }
+
+    @media screen and (min-width: 540px) {
+      body {
+        background-color: teal;
+      }
+    }
+
+    @media screen and (min-width: 970px) {
+      body {
+        background-color: tomato;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏模拟</title>
+
+    <style>
+        span {
+            height: 41px;
+            color: #4c4c4c;
+            background-color: #fcfcfc;
+            display: inline-block;
+            border-top: 3px solid orangered;
+            border-bottom: 1px solid green;
+            padding-left: 10px;
+            padding-right: 10px;
+            line-height: 41px;
+        }
+
+        .nav a{
+            height: 41px;
+            color: #4c4c4c;
+            background-color: #fcfcfc;
+            border-top: 3px solid orangered;
+            border-bottom: 1px solid green;
+            padding:0 10px;  /*左右需要10px的padding*/
+            line-height: 41px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav a:hover {
+            color: red;
+            background-color: blueviolet;
+        }
+
+        ul.nav li {
+            list-style: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<!-- 上边框3px; 下边框1px;
+    盒子高度为41像素 背景颜色为fcfcfc; 
+    文字颜色为4c4c4c
+    设为首页 手机新浪网 移动客户端 博客 微博 关注我 -->
+
+<body>
+    <!-- 不同行的span/a会受到代码的回车而产生空格-->
+    <span>设为首页</span><span>手机新浪网</span><span>移动客户端</span><span>博客</span><span>微博</span><span>关注我</span>
+
+    <div class="nav">
+        <a href="#">设为首页</a><a href="#">手机新浪网</a><a href="#">移动客户端</a><a href="#">博客</a><a href="#">微博</a><a href="#">关注我</a>
+    </div>
+
+    <ul class="nav">
+        <li><a href="#">设为首页</a></li><li><a href="#">手机新浪网</a></li><li><a href="#">移动客户端</a></li><li><a href="#">博客</a></li><li><a href="#">微博</a></li><li><a href="#">关注我</a></li>
+    </ul>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex-direction</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #outer {
+      display: flex;
+      width: 80%;
+      height: 300px;
+      background-color: hotpink;
+      flex-direction: column-reverse;
+    }
+
+    #outer span {
+      width: 150px;
+      height: 100px;
+      background-color: teal;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+  </div>
+</body>
+
+</html>

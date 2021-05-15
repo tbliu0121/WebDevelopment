@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex-flow</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #outer {
+      display: flex;
+      /* flex-direction: column; */
+      /* flex-wrap: wrap; */
+      flex-flow: column wrap;     /* 上面两句话的合写 */
+      width: 80%;
+      height: 400px;
+      background-color: hotpink;
+    }
+
+    #outer span {
+      width: 150px;
+      height: 100px;
+      background-color: teal;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+  </div>
+
+</body>
+
+</html>

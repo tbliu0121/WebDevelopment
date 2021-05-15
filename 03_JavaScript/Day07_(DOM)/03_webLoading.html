@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档的加载</title>
+
+    <script>
+        /*** 文档的加载
+         * 浏览器加载页面的顺序是自上而下的顺序加载的, 读取一行加载一行。
+         * 如果响应事件函数放在head中的script中, 则会因为加载顺序而无法生效.
+         * 非要写在上面的思路: 文档的加载也是一个事件, 找到这个事件将函数绑定到该事件上即可。
+         *     - onload事件会在整个页面加载完成之后发生, 支持该事件的JS对象: image, layer, window。
+         *     - 为window绑定一个onload事件, 该事件对应的响应函数会在页面加载完成之后执行, 这样可以确保我们的代码执行时所有的dom对象已经加载完成。
+         * 比较好的方法是写在head标签中
+        */
+
+        // let btn = document.getElementById("btn");
+
+        // btn.onclick = function() {
+        //     alert("Hello~~~");
+        // };
+
+        window.onload = function() {
+            alert("网页加载完成");
+
+            let btn = document.getElementById("btn");
+
+            btn.onclick = function() {
+                alert("Hello~~~");
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn">我是一个按钮</button>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5新特性</title>
+    <style>
+        header {
+            height: 120px;
+            width: 800px;
+            background-color: hotpink;
+            border-radius: 15px;
+            margin: 15px auto;
+        }
+
+        nav {
+            height: 40px;
+            width: 800px;
+            background-color: hotpink;
+            margin: 15px auto;
+        }
+
+        section {
+            width: 200px;
+            height: 150px;
+            background-color: skyblue;
+            border-radius: 5px;
+            margin: 15px auto;
+        }
+    </style>
+</head>
+
+<!--HTML5的新特性
+    针对以前的不足，新增了一些新的标签、新的表单和表单属性等
+    这些新特性基本存在兼容性的问题，基本是IE9+以上的浏览器才支持。
+    div对于浏览器来说是没有语义的，HTML5新增了语义标签
+        <header>: 头部标签
+        <nav>: 导航标签
+        <article>: 内容标签
+        <section>: 定义文档的某个区域
+        <aside>: 侧边栏标签
+        <footer>: 尾部标签
+    语义化标签是针对搜索引擎做出的优化，header nav article section aside footer都是块级元素，但是在IE9中需要先转化为块级元素。
+    在移动端可以更随便地使用这些标签。
+-->
+
+<body>
+    <!--header nav article section aside footer都是块级元素-->
+    <header>头部标签</header>
+    <nav>导航栏标签</nav>
+    <section>某个区域，section类似于大号div</section>
+
+</body>
+
+</html>

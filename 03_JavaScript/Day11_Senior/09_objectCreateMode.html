@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象创建模式</title>
+</head>
+
+<!-- 对象的创建模式
+    1. Object构造函数, 动态添加属性和方法。
+    2. 对象字面量: 如果创建对个对象会产生大量重复代码和重复方法。
+    3. 工厂模式: 无法表示不同的对象类型。
+    4. 自定义构造函数模式: 通过new创建对象。每个对象都有的相同方法都会占用内存，浪费空间。
+    5. 构造函数 + 原型模式: 属性在构造函数中初始化，方法添加到原型上。
+        - 适用场景：需要创建多个类型确定的对象。
+
+-->
+
+<body>
+    <script>
+        /*  01: 适用于初始时内部数据不确定的情况  */
+        let player = new Object();
+        player.name = "花木兰";
+        player.gender = "女";
+        player.positon = "刺客;"
+        player.setName = function(name) {
+            this.name = name;
+        }
+        console.log(player.name, player.gender, player.positon);
+
+        /* 02: 重复创建多个变量会产生大量重复代码 */
+        let LuBan = {
+            name: "鲁班",
+            gender: "男",
+            position: "射手",
+
+            setName: function(name) {
+                this.name = name;
+            }
+        }
+        console.log(LuBan.name, LuBan.gender);
+        LuBan.setName("鲁班一号");
+        console.log(LuBan.name);
+
+        /* 03. 工厂模式无法表示不同类型的对象, 都是Object类型, 没有具体类型 */
+        function createPlayer(name, gender, position) {
+            obj = {
+                name: name,
+                gender: gender,
+                position: position,
+                
+                setName: function(name) {
+                    this.name = name;
+                }
+            }
+
+            return obj;
+        }
+        let p1 = createPlayer("黄盖", "男", "坦克");
+        let p2 = createPlayer("周瑜", "男", "法师");
+        console.log(p1.name, p1.gender, p1.position);
+
+        /* 4. 自定义构造函数模式 */
+        function Player(name, gender, position) {
+            this.name = name;
+            this.gender = gender;
+            this.position = position;
+
+            this.setName = function() {
+                this.name = name;
+            };
+        }
+
+        /* 5. 原型模式 */
+        function Person(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        
+        Person.prototype.setName = function(name) {
+            this.name = name;
+        }
+
+        let xiaoming = new Person("小明", "18", "男");
+        let lihua = new Person("李华", "18", "男");
+        console.log(xiaoming, lihua);
+    </script>
+
+</body>
+
+</html>

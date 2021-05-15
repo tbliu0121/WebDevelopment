@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>justigy-content</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #outer {
+      display: flex;
+      width: 80%;
+      height: 400px;
+      background-color: hotpink;
+      /* justify-content: flex-start;    从头开始排列*/
+      /* justify-content: flex-end;      从尾开始排列*/
+      /* justify-content: space-around;  左右边距均分剩余空间 */
+      /* justify-content: space-between; 左右贴着, 中间空间均分*/
+      justify-content: space-evenly;     /*不分左右边距,均分剩余空间*/
+    }
+
+    #outer span {
+      width: 150px;
+      height: 100px;
+      background-color: teal;
+    }
+  </style>
+</head>
+
+<!-- flex-content设置主轴上元素的排列方式 -->
+
+<body>
+  <div id="outer">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+  </div>
+</body>
+
+</html>

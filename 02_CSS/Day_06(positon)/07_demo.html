@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘宝轮播图练习</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .clearfix:before,
+        .clearfix:after {  /*双伪元素清除浮动 Begin */
+            content: "";
+            display: table;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        } /*双伪元素清除浮动 END*/
+
+        .taobao-adv {
+            width: 520px;
+            height: 280px;
+            background-color: hotpink;
+            margin: 0 auto;      /*标准流可以通过此方法水平居中！！！绝对定位的不可以*/
+            position: relative;  /*为了让子代可以绝对定位 review: 相对定位可以使用margin: 0 atuo的方法水平居中*/
+        }
+
+        .taobao-adv {  /*设置图片大小和盒子一样大，保证大小的图片会自动适应盒子大小*/
+            width: 520px;
+            height: 280px;
+        }
+
+
+        /* 利用并集选择器有效提取左右箭头的公共部分，缩减代码 */
+        .taobao-adv a.left,
+        .taobao-adv a.right {
+            width: 20px; 
+            height: 30px;
+            background-color: rgba(0, 0, 0, .3);
+            position: absolute;  /*加入了绝对定位后，行级元素不需要转换模式即可以设定高度和宽度*/
+            top: 50%; 
+            margin-top: -15px;   /*和上一行是让绝对定位垂直居中的两步*/
+
+            line-height: 30px;
+            color: black;
+        }
+
+        .taobao-adv a.left {     /*广告轮播图左箭头*/
+            left: 0;
+            border-radius: 0 15px 15px 0;  /*让箭头背景变为圆角*/
+        }
+
+        .taobao-adv a.right {    /*广告轮播图右箭头*/
+            right: 0;
+            border-radius:15px 0 0 15px;  /*让箭头背景变为圆角*/
+            text-align: right;   /*让箭头靠边*/
+        }
+
+        .taobao-adv a:hover {
+            color: white;
+        }
+
+        .taobao-adv-dots {
+            width: 70px;
+            height: 12px;
+            position: absolute;
+            left: 50%;
+            bottom: 15px;
+            margin-left: -35px;  /*让轮播图下册的小圆点底部居中显示*/
+            background-color: rgba(255, 255, 255, .3);
+            border-radius: 7px;
+        }
+
+        .taobao-adv-dots li {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            float: left;
+            border-radius: 50%;
+            margin: 2px 3px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- 淘宝顶部广告轮播图 -->
+    <div class="taobao-adv">
+        <img src="images/tb.jpg">
+
+        <!-- 轮播图中的左、右箭头，用 < >来实现 -->
+        <a href="#" class="left">&lt</a>
+        <a href="#" class="right">&gt</a>
+
+        <!-- 轮播图下侧的一排小圆点 -->
+        <ul class="taobao-adv-dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div><!-- 淘宝顶部广告轮播图 END-->
+
+</body>
+
+</html>

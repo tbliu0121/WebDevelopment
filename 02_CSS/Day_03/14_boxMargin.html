@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--要想使行内元素或者行内块元素水平居中，在其父元素中添加text-align: center即可。-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子的外边距</title>
+    <style>
+        div {
+            width: 500px;
+            height: 200px;
+            color:whitesmoke;
+            border: 5px solid black;
+            background-color: darkcyan;
+        }
+
+        div.topMargin {
+            margin-top: 20px;
+        }
+
+        .topBar {
+            background-color: orangered;
+            width: 1200px;
+            height: 200px;
+            margin: 0 auto;  /*上下外边距为0，左右外边距自动*/
+            text-align: center;  /*使子元素内部的元素居中显示*/
+        }
+    </style>
+</head>
+
+<body>
+    <div>这个盒子没有设定外边距</div>
+    <div>这个盒子也没有设定外边距</div>
+    <div class="topMargin">这一个上边距为20px的盒子</div>
+
+    <!--利用外边距来实现盒子的水平居中
+        1. 必须指定盒子的宽度！！！！！！！！！！
+        2. 盒子的左右边距设定为auto即可！！！！！
+    -->
+    <div class="topBar">
+        <span>盒子里面的文字、或者其他行内块元素，通过对父元素添加text-align: center即可</span>
+    </div>
+
+
+</body>
+
+</html>

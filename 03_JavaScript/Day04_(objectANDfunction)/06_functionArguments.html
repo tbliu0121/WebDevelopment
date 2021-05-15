@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的参数</title>
+
+    <script>
+        /***
+         * 在调用函数时, 浏览器每次都会传递两个隐含的参数:
+         *     1. this: 函数的上下文对象。
+         *     2. arguments: 封装实参的对象的arguments.
+         *         - arguments是一个类数组对象, 也可以通过索引来操作数据, 也可以获取长度, 但不是数组。
+         *         - 调用函数的实参时, 传递的实参会在arguments中保存。
+         *         - 即使不定义形参也可以通过arguments来传递实参。
+         *         - arguments.callee属性: 
+         *             对应了一个函数对象, 及当前正在执行的函数的对象.
+         * 
+         * 
+         * [Notice]:
+         *     调用函数时解析器不会检查实参的类型, 因此要注意，是否有可能接受到非法的参数，如果有可能则需要对参数进行类型检查。
+         * 
+         *     解析器也不会检查实参的个数
+         *     如果实参的数量少于形参的数量，则没有对应实参的形参将是undefined.
+        */
+
+        function sum(a, b) {
+            return a + b;
+        }
+        
+        let res = sum(128, "hello");
+        console.log(res);               //"128hello"
+        console.log(sum(true, false));  //1 + 0 = 1
+
+        function func() {
+            // console.log(arguments instanceof Array);  //false
+            // console.log(Array.isArray(arguments));    //false
+            // console.log(arguments.length);
+        }
+
+        
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

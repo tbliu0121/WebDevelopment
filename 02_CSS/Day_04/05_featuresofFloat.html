@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动的特性</title>
+    <style>
+        span {
+            float: left;  /*添加了浮动浮动，则具有了行内块的效果*/
+            width: 1080px;
+            height: 150px;
+            background-color: teal;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>浮动的特性</h3>
+    <ol>
+        <li>脱离了标准流的控制，浮动到指定位置，称为脱标, 浮动的盒子不在保留原来的位置，而被其他的标准流占有</li>
+        <li>所有浮动都是顶端对齐，并且都在同一行，显示不开时自动换行</li>
+        <li>浮动元素具有行内块的特点
+            <ul>
+                <li>如果块级盒子没有设置宽度，则默认和父亲宽度一样。但是添加浮动之后，大小根据内容来决定</li>
+                <li>浮动中间是没有空隙的</li>
+                <li>行内元素同理</li>
+            </ul>
+        </li>
+        <li>浮动元素经常和父级标准流搭配使用，使浮动以父级元素为准</li>
+    </ol>
+    <span></span>
+
+</body>
+
+</html>

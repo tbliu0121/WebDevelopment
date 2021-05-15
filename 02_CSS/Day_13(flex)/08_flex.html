@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    section {
+      display: flex;
+      width: 80%;
+      height: 150px;
+      background-color: hotpink;
+      margin: 0 auto;
+    }
+
+    section span:nth-child(1) {
+      width: 100px;
+      height: 150px;
+      background-color: teal;
+    }
+
+    section span:nth-child(2) {
+      flex: 1;
+      background-color: yellow;
+    }
+
+    section span:nth-child(3) {
+      width: 100px;
+      height: 150px;
+      background-color: teal;
+    }
+
+    #outer {
+      display: flex;
+      width: 75%;
+      height: 150px;
+      background-color: hotpink;
+      margin: 100px auto;
+    }
+
+    #outer span {
+      flex: 1;
+    }
+
+    #outer span:nth-child(2) {
+      flex: 2;
+      background-color: teal;
+    }
+  </style>
+</head>
+
+<!-- flex
+  - 属性用来定义子项占据 [剩余空间] 的多少份数 。
+  - 默认是0。
+-->
+
+<body>
+  <section>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+  </section>
+
+  <div id="outer">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+  </div>
+
+</body>
+
+</html>

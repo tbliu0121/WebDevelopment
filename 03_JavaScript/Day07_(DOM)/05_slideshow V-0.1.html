@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换练习</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 250px;  /*设置div宽度为图片宽度*/
+            margin: 50px auto;
+            padding: 10px;
+            background-color: hotpink;
+            text-align: center;
+        }
+
+        #outer p {
+            font-size: 12px;
+        }
+
+        #outer button {
+            display: inline-block;
+            height: 25px;
+            line-height: 20px;
+            margin: 0 10px;
+            padding: 0 15px;
+            font-weight: 700;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            /*** 点击按钮完成按钮图片
+             * 思路: 修改image元素的src属性
+            */
+
+            /* 获取两个按钮 */
+            let prev = document.getElementById("prev");
+            let next = document.getElementById("next");
+            let img = document.getElementsByTagName("img")[0];  //此处知道只有一个img, 因此可以直接用索引取出来显示图片的元素
+            let img_array = ['images/prod01.jpg', 'images/prod02.jpg', 'images/prod03.jpg', 'images/prod04.jpg'];
+            let cur_img_index = 0;
+            let info = document.getElementById("info");
+            info.innerHTML = "一共有" + img_array.length + "张图片，当前第" + (cur_img_index + 1) + "张"; 
+
+            prev.onclick = function() {
+                if(--cur_img_index < 0) {
+                    cur_img_index = img_array.length - 1;
+                }
+                img.src = img_array[cur_img_index];
+                info.innerHTML = "一共有" + img_array.length + "张图片，当前第" + (cur_img_index + 1) + "张";
+            };
+
+            next.onclick = function() {
+                if(++cur_img_index == img_array.length) {
+                    cur_img_index = 0;
+                }
+                img.src = img_array[cur_img_index];
+                info.innerHTML = "一共有" + img_array.length + "张图片，当前第" + (cur_img_index + 1) + "张";
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="outer">
+        <p id="info"></p>
+        <img src="images/prod01.jpg" alt="mi10Ultra">
+        <button id="prev">&lt;</button>
+        <button id="next">&gt;</button>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+
+    <script>
+        /***函数也是一个对象, 除了基本数据类型都是对象
+         * 
+         * 
+        */
+
+        let func = new  Function();  //使用构造函数来创建一个函数对象
+        console.log(func);
+        console.log(typeof func);
+
+        /***可以将要封装的代码以字符串的形式传递给构造函数, 注意, 是代码！！！
+         * 函数中的代码不会立即执行，而是在调用的时候执行。
+         * 函数对象可以和普通的对象一样，封装属性。
+        */
+        let sayHello = new Function("console.log('Hello world');");  //这种方法不好！！！
+        console.log(sayHello);
+        sayHello();  //使用函数对象()的形式来调用函数, 此时函数中封装的代码会顺序执行。
+
+        sayHello._name = "SAY_HELLO";   //ES6中所有函数对象都会暴露一个只读的name属性
+        console.log(sayHello._name);
+
+        function _sayHello() {
+            console.log('Hello world');
+        }
+        console.log(_sayHello);
+        _sayHello.name = "SAY_HELLO";   //匿名函数不支持修改name, 命名函数可以修改name属性
+        console.log(_sayHello.name);
+
+        /*** 实际开发中几乎不适用构造函数来创建一个函数对象
+         * 使用函数声明来创建一个函数
+         * function func_name([para1, para2, ... para3]) {
+         *     statement;
+         *     ......
+         * }
+        */
+
+        function sayHi() {  //函数声明
+            console.log("Hi~ world");
+        }
+        sayHi();
+
+        let a = function() {  //赋值右侧的为匿名函数, 即没有名字的函数。这种创建函数的表达式就是创建一个匿名函数，然后赋值给一个变量。与上面sayHi的创建方式其实没什么区别。
+            console.log("一个匿名函数中封装的代码");
+        };
+        a();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

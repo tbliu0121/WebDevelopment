@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的属性名和属性值</title>
+
+    <script>
+        let Wukong = new Object();
+        Wukong.name = "孙悟空";
+        Wukong.var = "Hello world!";
+        console.log(Wukong.var);     //对象的属性名强制要求遵守标识符的规范。Anything is OK! ! ! But~
+        /*Wukong.123 = 10086;*/     
+        Wukong['123'] = 10086;       //对象特殊属性的建立方法: Obj['attr'] = value;
+        console.log(Wukong['123']);  //特殊属性的使用和设定方式一样
+        console.log(Wukong);
+
+        /*** 属性名
+         * 使用[]这种形式操作属性更加灵活
+         * 在[]中可以直接传递一个变量, 变量的值是什么就读取什么属性
+        ***/
+       Wukong['123'] = 789;
+       Wukong['teacher'] = "TangSeng";
+       let var_1 = "123", var_2 = "teacher";
+       console.log(Wukong[var_1]);  //在对象中寻找var_1对应变量值的属性
+       console.log(Wukong[var_2]);
+
+       /***属性值
+        * JS的属性值可以是任意类型, 也可是一个对象。
+        * 
+       ***/
+
+       let Xuxiang = new Object();
+       Xuxiang.name = "徐翔"
+       Xuxiang.position = "爸爸";
+       Xuxiang.age = "84";
+
+       let Xusi = new Object();
+       Xusi.name = "徐四";
+       Xusi.position = "儿子";
+       Xusi.age = "24";
+
+       Xuxiang.son = Xusi;
+
+       console.log(Xuxiang);
+
+       /***in运算符
+        * 检查一个对象中是否含有指定的属性 如果有则返回true, 否则返回false
+        * "属性名" in 对象
+       ***/
+      console.log("nickName" in Xuxiang);
+      console.log("name" in Xuxiang);
+      console.log("徐翔" in Xuxiang);
+
+    </script> 
+</head>
+
+<body>
+
+</body>
+
+</html>
