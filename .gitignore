@@ -1,4 +1,16 @@
 /zeta_interview_code
 /07_WebPack
-/08_Vue
 /09_ElementUI
+
+.DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
