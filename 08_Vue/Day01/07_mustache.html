@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustache语法</title>
+</head>
+
+<!--              Mustach插值语法
+    - Mustache语法就是双括号的语法的专业名词
+    - mustache汉语是胡须的意思。
+-->
+
+<body>
+    <div id="app">
+        <h3>{{msg}}, 大厂冲冲冲</h3>
+        <h3>{{name}}  {{position}}</h3>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello vue~",
+                name: "HuMulan",
+                position: "刺客吧~"
+
+            }
+        });
+    </script>
+</body>
+
+</html>

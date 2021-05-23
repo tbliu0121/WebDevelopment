@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态绑定style</title>  <!--对象语法; 数组语法。两种绑定方法-->
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h3 v-bind:style="css属性名: 属性值">{{msg}}</h3> -->
+        <h3 v-bind:style="{fontSize: '25px', color: 'hotpink'}">{{msg}}</h3>    <!--对象语法, style中属性值要加引号; 同时支持font-size和fontSize-->
+        <h3 v-bind:style="{fontSize: fontSize, color: color}">{{msg}}</h3>      <!--对象语法: 属性值不加引号就是一个变量-->
+        <h3 v-bind:style="getStyles()">{{msg}}</h3>
+
+        <h4 v-bind:style="[baseStyle, baseStyle1]">{{msg}}</h4>                 <!--数组语法形式, style样式在Vue的data中-->
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello VUE~",
+                fontSize: "25px",
+                color: "hotpink",
+                baseStyle: {
+                    backgroundColor: "hotpink"
+                },
+                baseStyle1: {
+                    fontSize: "50px"
+                }
+            },
+            methods: {
+                getStyles: function() {
+                    return {
+                        fontSize: this.fontSize,    //CSS属性: 属性值
+                        color: this.color
+                    }
+                }
+            }
+        });
+    </script>
+
+</html>

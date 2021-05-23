@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-bind动态绑定class</title>
+
+  <style>
+    .active {
+      color: hotpink;
+    }
+
+    .bold {
+      font-weight: 900;
+    }
+  </style>
+</head>
+
+
+
+<body>
+  <div id="app">
+    <!-- <h3 :class="active">{{msg}}</h3>   v-bind绑定单个类-->
+    <!-- <h3 :class="{className: boolean; className: boolean}">{{msg}}</h3> -->
+    <h3 v-bind:class="{active: isActive, bold: isBold}">{{msg}}</h3>    <!--一般需要动态修改的放在v-bind中-->
+    <h3 v-bind:class="getClasses()">{{msg}}</h3>                        <!--第二种写法, 将参数对象放到一个函数中作为结果返回-->
+    <button v-on:click="btnClick">变色按钮</button>
+    <h3 v-bind:class="['bold', 'active']">{{msg}}</h3>                  <!--数组中的内容不加单引号会被解释成一个变量, 数组语法用的比较少-->
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+
+      data: {
+        msg: "hello vue!!!",
+        isActive: true,
+        isBold: true
+      },
+
+      methods: {
+        btnClick: function() {
+          this.isActive = !this.isActive;
+        },
+
+        getClasses: function() {
+          return {
+            active: this.isActive,
+            bold: this.isBold
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

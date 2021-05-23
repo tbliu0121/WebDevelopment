@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-cloak</title>
+
+  <style>
+    [v-cloak] {                        /*利用属性选择器，如果有v-cloak这个属性, 那么就先不展示这个元素*/
+      display: none; 
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>{{msg}}</div>  <!--Vue解析之前有v-cloak属性, "解析后" v-cloak属性会被删除; v-cloak基本也不会使用-->
+
+  <script src="../js/vue.js"></script>
+  <script>
+    setTimeout(function(){             //模拟JS加载过程阻塞页面渲染的情况, 此时会出现闪烁的效果
+      const app = new Vue({
+        el: "#app",
+        data: {
+          msg: "Hello VUE###"
+        }
+      });
+    }, 1000);
+  </script>
+
+</body>
+
+</html>

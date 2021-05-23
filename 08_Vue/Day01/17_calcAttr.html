@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{msg}}</h2>
+        <h2>{{firstName + " " +lastName}}</h2>
+        <h2>{{fullName}}</h2>                      <!--计算属性中的方法不允许加()！！！否则会报错; 计算属性只会调用一次(详见day02>02)-->
+
+        <h3>总价格: {{totalPrice}}</h3>
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello Vue~",
+                firstName: "Tianbao",
+                lastName: "Liu",
+                books: [
+                    {id: 110, name: "红宝书", price: 119},
+                    {id: 111, name: "代码大全", price: 108},
+                    {id: 112, name: "深入理解计算机系统", price: 136}
+                ]
+            },
+            computed: {                             //计算属性; 定义的也是方法, 一般都是不具有动词词性的方法
+                fullName: function() {
+                    return this.firstName + " " + this.lastName;
+                },
+                totalPrice: function() {
+                    // return this.books.reduce();  need to learn
+                    let res = 0;
+                    // for(let i = 0; i < this.books.length; i++) {
+                    //     res += this.books[i].price;
+                    // }
+                    for(let book of this.books) {   //for of语句的使用
+                        res += book.price;
+                    }
+                    return res;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

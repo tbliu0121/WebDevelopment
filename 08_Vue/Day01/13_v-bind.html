@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-bind</title>
+
+  <style>
+    #app img{
+      width: 1080px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-bind的语法糖就是一个冒号 -->
+    <img v-bind:src="imgURL" alt="">  <br>                       <!--使用v-bind为属性动态绑定值, 将src属性动态绑定到imgURL变量上-->
+    <a v-bind:href="link" target="_blank">这是一个链接</a> <br>
+    <a :href="link" target= "_blank">这是一个v-bind的语法糖</a>
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "hello vueAAAAA",
+        imgURL: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/42ed6276bebc2c842741cad88537156e.jpg?w=2452&h=920",
+        link: "https://wwww.baidu.com"
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识VUE</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <h3>我是：{{name}}</h3>
+    </div>
+
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        /*** 编程范式：这是一个声明式编程
+             - 可以做到数据和结构相分离
+         ***/
+        const app = new Vue({            //new Vue()的参数是一个对象类型
+            el: "#app",                  //用于挂载要管理的元素
+            data: {                      //定义数据
+                /*data中的数据可以是自定义数据，也可以是网络请求过来的数据*/
+                msg: "Hello VUE",
+                name: "Utnapishtim"
+            }
+        });
+    </script>
+</body>
+
+</html>
