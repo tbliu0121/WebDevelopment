@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>块级作用域</title>
+</head>
+
+<!-- 块级做用域
+    
+-->
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+    <script>
+        var btns = document.getElementsByTagName("button");
+
+        // for(var i = 0; i < btns.length; i++) {
+        //     //for循环中i其实是在花括号内定义的, 因为var没有块级作用域, 因此此方法无法正确绑定
+        //     btns[i].addEventListener("click", function() {            //无法正确实现
+        //         console.log("第" + index + "个按钮");
+        //     });
+        // }
+
+        // for(var i = 0; i < btns.length; i++) {                         //利用闭包解决循环绑定？？我感觉就是一个IIEF。。。
+        //     (function(index) {
+        //         btns[index].addEventListener("click", function(){
+        //             console.log("第" + (index + 1) + "个按钮");
+        //         });
+        //     })(i);    //括号内为IIEF的实参
+        // }
+
+        const btns = document.getElementsByTagName("button");
+        for(let i = 0; i < btns.length; i++) {                         //改成let就好了！！！！！！
+            //原因: 因为let有自己的块级作用域; 但是var没有块级作用域
+            btns[i].addEventListener('click', function(){
+                console.log("第" + (i + 1) + "个按钮");
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>

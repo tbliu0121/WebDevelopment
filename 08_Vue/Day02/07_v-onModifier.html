@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-on修饰符</title>
+
+  <style>
+    input[type="text"] {
+      margin: 10px;
+      width: 256px;
+      height: 28px;
+      line-height: 28px;
+      font-size: 16px;
+      text-indent: 5px;
+      /* overflow: hidden; */
+    }
+  </style>
+</head>
+
+<!-- v-on中的修饰符(modifier)
+  - .stop: 调用event.stopPropagation()阻止事件的冒泡。
+  - .prevent: 调用event.preventDefault()阻止事件的默认事件。
+  - .{keyCode | keyAlias}: 事件从特定的键盘触发; 参数为keyCode或者对应键盘的简写。
+  - .native: 监听组件根元素的根事件的原生事件。
+  - .once: 只触发一次。
+-->
+
+<body>
+  <div id="app" @click="divClick">
+    <button @click.stop="btnClick">按钮</button>                        <!--.stop修饰符, 阻止事件冒泡; 冒泡到button就停止了-->
+
+    <br><br>
+
+    <form action="post">
+      <input type="submit" value="提交" @click.prevent="submitClick">   <!--.prevent修饰符阻止默认事件-->
+    </form>
+
+    <input type="text" @keyUp="keyUp"> <br>
+    <input type="text" @keyUp.enter="keyUp"> <br>                       <!--监听enter键的松开-->
+
+    <button @click.once="onceClick">once按钮</button>                   <!--.once修饰符: 事件时发生一次-->
+
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello VUE~"
+      },
+      methods: {
+        btnClick() {
+          console.log("button click");
+        },
+        divClick() {
+          console.log("div click");
+        },
+        submitClick() {
+          console.log("submit click~");
+        },
+        keyUp() {
+          console.log("keyUp~~~");
+        },
+        onceClick() {
+          console.log("只能点一次哦~~~");
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

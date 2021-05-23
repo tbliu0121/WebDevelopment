@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const的使用注意事项</title>
+</head>
+
+<body>
+    
+
+
+    <script>
+        const name = "Jonathan";    //const类型使用的数据必须赋值, 并且不可以改变; 建议: 优先使用const
+        console.log(name);
+
+        const obj = {               //const类型对象只是不可以改变指向, 但是可以改变内部属性
+            name: "Utnapishtim",
+            age: "24"
+        };
+        obj.height = 182;
+        console.log(obj);
+    </script>
+</body>
+
+</html>

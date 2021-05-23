@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象字面量的增强写法</title>
+</head>
+
+<body>
+
+
+    <script>
+        const obj = {
+            name: "tbliu",
+            age: 18,
+            gender: "male",
+            coding: function() {
+                console.log("敲代码中。。。。。。");
+            }
+        };
+
+
+        /*** 对象的增强写法 ***/
+        const name = "tbliu";
+        const age = 18;
+        const height = 172;
+
+        const objPro = {      //ES6中对象的增强写法
+            name,
+            age,
+            height,
+            coding() {        //ES6对象中的函数增强写法
+                console.log("ES6中的coding......");
+            }
+        }
+        console.log(objPro);
+        objPro.coding();
+    </script>
+
+</body>
+
+</html>

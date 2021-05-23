@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性和methods的对比</title>
+</head>
+
+<!--    原则  
+    - 在处理数据的变化时能使用计算属性尽量使用计算属性
+-->
+
+<body>
+    <div id="app">
+        <h3>{{firstName}} {{lastName}}</h3>    <!--直接拼接属性; 代码过于繁琐, 尽量不要在HTML中出现代码的逻辑处理-->
+
+        <h3>{{getFullName()}}</h3>             <!--定义一个methods中的方法: 用一次调用一次-->
+        <h3>{{getFullName()}}</h3>             
+        <h3>{{getFullName()}}</h3>             
+
+        <h3>{{fullName}}</h3>                  <!--计算属性: 只会调用一次。Vue内部对计算属性做缓存，如果没发生变化则返回缓存, 变换了才调用-->
+        <h3>{{fullName}}</h3>                  
+        <h3>{{fullName}}</h3>                  
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                firstName: "Tianbao",
+                lastName: "Liu"
+            },
+            computed: {
+                fullName: function() {
+                    console.log("computed调用了一次~");
+                    return this.firstName + " " + this.lastName;
+                }
+            },
+            methods: {
+                getFullName: function() {
+                    console.log("methods调用了一次~");
+                    return this.firstName + " " + this.lastName;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

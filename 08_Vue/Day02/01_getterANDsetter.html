@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性的getter和setter</title>
+
+    <style>
+         * {
+             padding: 0;
+             margin: 0;
+         }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h3>{{fullName}}</h3>
+    </div>
+    
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello VUE",
+                firstName: "Tianbao",
+                lastName: "Liu"
+            },
+            computed: {
+                // fullName: function() {
+                //     return this.firstName + " " + lastName;
+                // }
+
+                /** 计算属性本质上对应的是一个对象, 返回结果是调用get()方法的结果
+                 * 计算属性的完整写法如下
+                 * 计算属性一般简写成上面的注释代码即可, 属性后面对应的就是属性中的get()方法 
+                 **/
+                fullName: {
+                    set: function(newValue) {
+                        /**    计算属性的完整写法
+                         * 计算属性一般只设置get()方法即可, 不需要用set()方法设置计算属性的内容
+                         * 计算属性一般是没有set()方法的, 就是一个只读属性; 不写set()方法是无法修改计算属性的。
+                         * 99%的情况是不写set()方法的;
+                         * set()方法完整流程如下：
+                        */
+                        console.log("====================", newValue);    //设置了get()方法之后, 可以对fullName重新复制(会执行set()方法)
+                        const names = newValue.split(" ");
+                        this.firstName = names[0];
+                        this.lastName = names[1];
+                    },
+                    get: function() {
+                        // return "abc";  显示结果是abc
+                        return this.firstName + " " + this.lastName;
+                    }
+
+                }
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

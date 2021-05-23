@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-for中key的使用</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <!--   通过key属性优化
+        - 操作: 使用splice(2, 0, 'F')插入一个字母
+        - 底层操作是将F插入到对应的li上, 后面的往后移动(类似于数组插入)
+        - 通过key绑定li和每个字母, 则会新建一个li插入到指定位置(类似于链表插入)
+
+        - key属性和VDOM的diff算法有关, key属性的绑定标识必须唯一！！！
+        - key的作用主要是为了高效更新VDOM
+      -->
+      <li v-for="letter in letters" :key="letter">{{letter}}</li>  <!--将每个li和letter绑定(letter必须唯一)-->
+      
+    </ul>
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        letters: ['A', 'B', 'C', 'D', 'E']
+      }
+    });
+  </script>
+
+</body>
+
+</html>

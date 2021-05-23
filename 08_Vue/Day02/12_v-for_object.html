@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-for遍历对象</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <!-- v-for遍历数组, 同时获得索引和数据注意逗号 -->
+      <li v-for="(player, index) in players">  
+        {{index + 1}}: {{player}}
+      </li>
+    </ul>
+
+    
+    <ul>
+      <!-- v-for遍历对象, 同时获取多种信息。对象中的index很少使用 -->
+      <li v-for="(val, key, index) in info">
+        {{index}}: {{key}}: {{val}}
+      </li>
+    </ul>
+
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        players: ["why", "kobe", "james", "curry"],
+        info: {
+          name: "tbliu",
+          age: 18,
+          height: 182
+       }
+      },
+      
+    });
+  </script>
+</body>
+
+</html>

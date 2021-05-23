@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>监听器watch</title>
+</head>
+
+<!-- watch尽量少用
+  - 能用computed解决就不要用watch
+ -->
+
+<body>
+  <div id="app">
+    <h2>{{msg}}</h2>
+    <ul>
+      <li v-for="item in comic">{{item}}</li>
+    </ul>
+    <button @click="reverse">倒叙查看</button>
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~",
+        comic: ["一人之下", "海贼王", "斗罗大陆"]
+      },
+      methods: {
+        reverse() {
+          this.comic.reverse();
+        }
+      },   
+      watch: {
+        msg(newVal, oldVal) {  //new和old的顺序不能错！
+          console.log("msg 更新了", oldVal, " -> ", newVal);
+        },
+        comic() {
+          console.log("漫画更新了~");
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

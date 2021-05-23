@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-show的使用</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 切换原则: 只切换一次的时候使用v-if; 频换切换使用v-show -->
+    <h3 v-if="isShow" id="vIf">{{msg}}</h3>      <!-- v-if不成立会从DOM树中清除 -->
+    <h3 v-show="isShow" id="vShow">{{msg}}</h3>  <!-- v-show不成立会设置display为none; 改变了样式而已-->
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello VUE~",
+        isShow: true
+      }
+    });
+  </script>
+
+</body>
+
+</html>

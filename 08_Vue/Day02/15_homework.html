@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业回顾和实现</title>
+
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item, index) in movies" :class="{active: curIndex === index}"  @click="liClick(index)">
+        {{index}}: {{item}}
+      </li>
+    </ul>
+  </div>
+
+  <!--  描述: 默认第一个是红色, 之后点击谁谁变红 
+    - 动态添加样式 :class="className: true"
+    - 设置一个curIndex记录点击的Index, 通过点击事件传入index
+  -->
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue",
+        movies: ['海贼王', '海尔兄弟', '一人之下', '秦时明月'],
+        curIndex: 0                        //标记哪个是红色的
+      },
+      methods: {
+        liClick(index) {
+          this.curIndex = index;
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

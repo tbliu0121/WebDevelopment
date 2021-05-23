@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-on语法糖的基本使用</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{count}}</h2>
+    <!-- <button v-on:click="count--">-</button> -->
+    <!-- <button v-on:click="count++">+</button> -->
+    <!-- <button v-on:click="minus">-</button> -->
+    <!-- <button v-on:click="add">+</button> -->
+    <button @click="minus">-</button>  <!--v-on语法糖形式-->
+    <button @click="add">+</button>    <!--监听事件的响应函数不需要参数可以省略()-->
+
+    <br><br>
+
+    <!-- v-on参数的问题 -->
+    <button @click="btn01Click">按钮一</button>
+    <button @click="btn02Click('VUE')">按钮二</button>    <!--需要但是没有没传入, 则形参为undefined, 如果没有过括号, 则参数是一个事件-->
+    <button @click="btn02Click">省略括号</button>         <!--需要参数但是没有参数和括号, VUE默认传入浏览器的事件-->
+    <button @click="btn03Click('VUE', $event)">Event</button>    <!--参数和Event参数一同传入时要用$event格式手动获取event-->
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "hello VUE~",
+        count: 0
+      },
+      methods: {
+        add() {
+          this.count++;
+        },
+        minus() {
+          this.count--;
+        },
+        btn01Click() {
+          console.log("button01");
+        },
+        btn02Click(str) {
+          console.log("button02: hello " + str);
+        },
+        btn03Click(str, event) {
+          console.log('hello: ' + str, event);
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

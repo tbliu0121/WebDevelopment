@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组中的响应式方法</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in letters" :key="item">{{item}}</li>  <!--v-on:key绑定一个唯一标识, 可以让内部性能更高-->
+    </ul>
+  </div>
+
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    /**测试用例(响应式方法会实时显示变化)
+     *     - app.letters.push('GG', 'HH', 'II')           Yes
+     *     - app.letters.pop()                            Yes
+     *     - app.letters.shift()                          Yes
+     *     - app.letters.unshift('UUU', 'VVV', 'WWW')     Yes
+     *     - app.letters.splice()                         Yes
+     *     - app.letters.sort()                           Yes
+     *     - app.letters.reverse()                        Yes
+     *     - app.letters[0] = ('AAA')                     No
+     *         - 原因: vue内部没有监听这种方法; 利用splice()即可~
+     *     
+     *     Vue.set(this.letters, 0, 'XYZ')也可以实现; Vue内部实现的一个方法, 也可以达到响应式。
+     * 
+     * **/
+    const app = new Vue({
+      el: "#app",
+      data: {
+        letters: ['A', 'B', 'C', 'D', 'E', 'F']
+      }
+    });
+  </script>
+
+</body>
+
+</html>

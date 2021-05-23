@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义过滤器</title>
+</head>
+
+<!-- 自定义过滤器
+  - 常用于格式化文本数据
+  - 可用于Mustach语法和v-bind
+ -->
+
+<body>
+  <div id="app">
+    <h2>{{msg}}</h2>
+    <h4>{{date}}</h4>
+    <h4>{{date | formatDate}}</h4>
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    Vue.filter("formatDate", (date) => {
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      return year + "/" + month + "/" + day;
+    });
+
+
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~",
+        date: new Date()
+      }
+    });
+  </script>
+
+</body>
+
+</html>
