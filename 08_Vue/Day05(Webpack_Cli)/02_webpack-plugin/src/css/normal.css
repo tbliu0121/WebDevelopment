@@ -1,0 +1,4 @@
+body {
+  /* background-color: hotpink; */
+  background: url("../img/img01.jpg");  /* webpack需要通过url-loader来处理 */
+}
