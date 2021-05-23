@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数</title>
+</head>
+
+<!-- 箭头函数的使用场景
+  - 当我们准备把一个函数作为参数传给另一个函数的时候使用箭头函数比较多。
+
+ -->
+
+<body>
+  <script>
+    // 箭头函数: 也是定义函数的一种方式
+    const sum = (a, b) => {
+      return a + b;
+    }
+
+    const temp = () => {
+      //TODO
+    }
+
+    const test = () => console.log("Hello Arrow Function");
+    console.log(test());
+
+
+    setTimeout(() => {
+      //箭头函数更多的是作为回调函数使用
+      console.log(this);
+    }, 1000);
+
+    // 对象中的函数, 一般使用字面量的形式, 不使用箭头函数, 此处仅仅做一个测试
+    const obj = {
+      func() {
+        setTimeout(function() {
+          console.log(this);    //window, 与事件的循环机制有关。定时器的回调函数是在全局进行的。
+        },1000);
+
+        setTimeout(() => {
+          console.log(this);    //Object
+        },1000);
+      }
+    }
+    obj.func();
+
+  </script>
+
+</body>
+
+</html>
