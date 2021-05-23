@@ -16,12 +16,18 @@
 </head>
 
 <!--音频支持的格式
-        mp3 wav ogg
+    mp3 wav ogg
     ogg即是音频格式，也是视频格式。
 -->
 
 <body>
-    <audio src="media/music.mp3" autoplay="autoplay" controls="controls"></audio>
+    <audio src="media/music.mp3" autoplay="autoplay" controls="controls" muted="muted" ></audio>
+    <!-- 不同浏览器之间的音频格式兼容 -->
+    <audio src="">
+        <source src="media/music.mp3" type="audio/mp3">
+        <source src="media/music.mp3" type="audio/ogg">
+        <source src="media/music.mp3" type="audio/wav">
+    </audio>
 </body>
 
 </html>
