@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>具名插槽</title>
+</head>
+
+<body>
+  <div id="app">
+   <kid><span slot="mid">Utnapishtim</span></kid>   <!-- 指定插槽即可对指定插槽替换 -->
+  </div>
+
+
+
+  <template id="kid">
+    <div>
+      <slot name="left"><span>left</span></slot>
+      <slot name="mid"><span>mid</span></slot>
+      <slot name="right"><span>right</span></slot>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      },
+      components: {
+        // 一个子组件
+        kid: {
+          template: "#kid"
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

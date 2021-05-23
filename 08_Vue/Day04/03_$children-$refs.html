@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父子组件的访问方式</title>
+</head>
+
+<!--   父子组件的访问方式
+  父组件访问子组件: $children或者$refs
+  子组件访问父组件: $parent
+-->
+
+<body>
+  <div id="app">
+    <kid></kid>
+    <kid></kid>
+    <kid ref="dest"></kid>                           <!-- ref属性便于父组件通过$refs访问子组件 -->
+    <button @click="btnClick">打印子组件</button>     <!-- 方法访问了子组件 -->
+  </div>
+
+
+  
+  <template id="kid">
+    <div>我是一个子组件</div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 父组件
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      },
+      methods: {
+        btnClick() {
+          // 1 $children一般在开发中使用的比较少, 只有需要所有子组件时才用
+          // console.log(this.$children);
+          // // this.$children[0].showMsg();           //$cjhildren返回子组件组成的数组
+          // for(let item of this.$children) {         //遍历每个子组件
+          //   console.log(item.name);                 //子组件中data()下有个name属性。
+          //   item.showMsg();                         //子组件中有个showMsg()方法
+          // }
+
+          // 2 $refs
+					// this指向app组件, $refs属性可以获得app下所有具有ref属性的子元素
+          console.log(this.$refs.dest);                //通过ref属性可以指定目标子组件, $refs默认是一个空对象
+        }
+      },
+      components: {
+        // 一个子组件
+        kid: {
+          template: "#kid",
+          data() {
+            return {
+              name: "我是子组件的数据~"
+            }
+          },
+          methods: {
+            showMsg() {
+              console.log("这是一个子组件kid~");
+            }
+          }
+        }
+      }
+      
+    });
+  </script>
+
+</body>
+
+</html>

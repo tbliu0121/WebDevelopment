@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域插槽</title>
+</head>
+
+<body>
+  <div id="app">
+    <kid></kid>
+
+    <kid>
+      <!-- 获取子组件的数据。v-2.5以上可以使用功能其他元素, 包括div -->
+      <template slot-scope="slot">     <!-- 通过slot引用插槽对象 -->
+        <!-- <span v-for="item in slot.data">{{item}} | </span> -->
+        <span>{{slot.data.join(" | ")}}</span>
+      </template>
+    </kid>
+  </div>
+
+  <template id="kid">
+    <div>
+      <slot :data="language">  <!-- 父组件通过作用域插槽获得子组件数据 -->
+        <ul>
+          <li v-for="item in language">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      },
+      components: {
+        kid: {
+          template: "#kid",
+          data() {
+            return {
+              language: ['Java', 'JavaScript', 'Python', 'C++', 'Go Lang', 'Objective-C']
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

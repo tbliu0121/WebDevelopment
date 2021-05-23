@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编译作用域</title>
+</head>
+
+<!--               官方准则
+  - 父组件模板的所有东西都会在父级作用域内编译。
+  - 子组件模板的所有东西都会在子级作用域内编译。
+ -->
+
+<body>
+  <div id="app">
+    <kid v-show="isShow"></kid>                         <!-- isShow和kid是并列成分, 在app中找isShow -->
+  </div>
+
+
+  
+  <template id="kid">
+    <div>
+      <h3>我是一个子组件</h3>
+      <p>我是子组件的内容。。。。。。</p>
+      <button v-show="isShow">我是子组件的按钮</button>   <!-- 在当前模板中寻找isShow -->
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~",
+        isShow: true
+      },
+      components: {
+        kid: {
+          template: "#kid",
+          data() {
+            return {
+              isShow: false
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

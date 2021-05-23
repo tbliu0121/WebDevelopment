@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父子组件的访问方式</title>
+</head>
+
+<!--   父子组件的访问方式
+  父组件访问子组件: $children或者$refs
+  子组件访问父组件: $parent
+-->
+
+<body>
+  <div id="app">
+    <kid></kid>
+  </div>
+
+
+  <!-- 子组件的模板 -->
+  <template id="kid">
+    <div>
+      <grandson></grandson>
+    </div>
+  </template>
+
+  <!-- 子组件的子组件的模板 -->
+  <template id="grandson">
+    <div>
+      <div>我是一个子组件的子组件</div>
+      <button @click="btnClick">一个按钮</button>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 父组件
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      },
+      components: {
+        // 一个子组件
+        kid: {
+          template: "#kid",
+          data() {
+            return {
+              name: "我是kid组件的data"
+            }
+          },
+          components: {
+            // 子组件的一个子组件
+            grandson: {
+              template: "#grandson",
+              methods: {
+                btnClick() {
+                  // 1. 通过$parent访问父组件。实际使用很少, 会降低组件的可复用性。
+                  console.log(this.$parent);  
+                  console.log(this.$parent.name);  //我是kid组件的data
+
+                  // 2. $root访问根组件
+                  console.log(this.$root);
+                  console.log(this.$root.msg);     //Hello Vue~
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

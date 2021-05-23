@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot的使用</title>
+</head>
+
+<!--          组件插槽的作用
+  - 组件的插槽是为了让封装的组件具有更好的扩展性。
+  - 让使用者决定内部的一些内容到底展示什么。
+
+  - 抽取共性: 封装到组件中。
+  - 保留不同: 预留插槽位置。
+ -->
+
+<body>
+  <div id="app">
+    <kid>
+      <button>这是一个按钮</button>                     <!-- 将需要的元素放入到插槽位置即可 -->
+    </kid>
+    <kid>
+      <span>这是一个span标签</span>
+    </kid>
+    <kid>
+      <i>这是一个i标签</i>
+    </kid>
+    <kid>
+      <button>这是另一个按钮</button>
+    </kid>
+    <kid></kid>
+    <kid></kid>
+  </div>
+
+
+
+  <template id="kid">
+    <div>
+      <h3>我是一个子组件</h3>
+      <h4>我是子组件的子标题。。。。。。QAQ</h4>
+      <slot><button>插槽默认值</button></slot>         <!-- 预留插槽位置; 可以设置可替换的默认值 -->
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      },
+      components: {
+        // 一个子组件
+        kid: {
+          template: "#kid"
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

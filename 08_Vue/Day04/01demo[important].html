@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父子组件通信案例</title>
+</head>
+
+<!-- demo描述 
+  - 父组件中有num1和num2, 子组件中有kidnum1和kidnum2。
+  - 将父组件中的数据传到子组件中, 同时和子组件中的input绑定。
+  - 同时, input中的数据变化, 父组件中的数据也会随着变。
+  - 最后, 让下面的是上面的100倍, 上面的是下面的1/100.
+-->
+
+<body>
+  <div id="app">
+    <kid :kidnum1="num1" :kidnum2="num2" @num1change="num1change" @num2change="num2change"></kid>
+  </div>
+
+
+  <!-- 子组件模板 -->
+  <template id="kid">
+    <div>
+      <h3>pros: {{kidnum1}}</h3>
+      <h3>{{dnum1}}</h3>
+      <!-- <input type="text" v-model="dnum1"> 文本框和子组件data()中的数据双向绑定 下面是v-model的本质-->
+      <!-- 文本框的value和数据绑定(此时dnum1变value才会变), 再监听文本框的输入响应事件 -->
+      <input type="text" :value="dnum1" @input="num1Input">
+
+      <h3>pros: {{kidnum2}}</h3>
+      <h3>{{dnum2}}</h3>
+      <input type="text" :value="dnum2" @input="num2Input">
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 父组件
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~",
+        num1: 1,
+        num2: 0
+      },
+      methods: {
+        num1change(value) {
+          this.num1 = parseFloat(value);  //文本框的内容是String类型, 需要转化成Number
+        },
+        num2change(value) {
+          this.num2 = parseFloat(value);
+        }
+      },
+      components: {
+        // 子组件
+        kid: {
+          template: "#kid",
+          props: {
+            kidnum1: Number,
+            kidnum2: Number
+          },
+          data() {
+            return {
+              dnum1: this.kidnum1,
+              dnum2: this.kidnum2
+            }
+          },
+          methods: {
+            num1Input(event) {
+              // 01 将input的值赋值给dnum1
+              this.dnum1 = event.target.value;
+
+              // 02 让父组件可以同时变化, 需要子组件发射一个事件
+              this.$emit("num1change", this.dnum1);
+
+              // 03 同时修改dnum2的值
+              this.dnum2 = this.dnum1 * 100;
+              this.$emit("num2change", this.dnum2);
+            },
+            num2Input(event) {
+              this.dnum2 = event.target.value;
+              this.$emit("num2change", this.dnum2);
+              this.dnum1 = this.dnum2 / 100;
+              this.$emit("num2change", this.dnum1);
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
