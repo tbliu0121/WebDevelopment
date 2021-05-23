@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件里面的data必须是一个函数</title>
+</head>
+
+<!--    组件可以访问Vue实例里面的对象么？ 
+  - 组件是一个单独功能模块的封装
+    - 这个模块有属于自己的HTML模板, 也应该有属于自己的数据data。
+
+  - 组件中的数据保存位置在哪呢？
+    - 我们组件不可以访问Vue实例中数据, 即使可以访问, 如果将所有的数据都放在了Vue实例中, Vue实际就会变得非常臃肿。
+    - 结论: Vue组件应该有存放自己的数据的地方。
+
+  - 组件中的data为什么必须是一个函数呢？？
+    - 每个组件实例之间的数据都是独立的, 而不是共用的。
+    - 如果使用对象类型存数据, 引用类型是地址传递, 则会相互之间产生影响。
+-->
+
+<body>
+  <div id="app">
+    <cpn01></cpn01>
+    <cpn02></cpn02>
+    <cpn02></cpn02>
+  </div>
+
+  <template id="cpn01">         <!-- 组件01 的模板 -->
+    <div>
+      <h3>这是一个标题01</h3>
+      <h4>{{title}}</h4>        <!-- 组件中自己封装的数据: title -->
+      <h4>这是一个子标题01。。。。。。</h4>
+    </div>
+  </template>
+
+  <template id="cpn02">         <!-- 组件02 的模板 -->
+    <div>
+      <h3>当前计数: {{counter}}</h3>
+      <button @click="minus"> - </button>
+      <button @click="add"> + </button>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 组件01
+    Vue.component("cpn01", {
+      template: "#cpn01",
+      data() {    //用于存放组件自己的数据, 必须是一个函数, 此函数返回一个实例的值: Object; 返回结果保存了数据。
+        return {
+          title: "Utnapishtim"
+        }
+      }
+    });
+
+    const obj = {
+      counter: 0
+    }
+
+    // 组件02
+    Vue.component('cpn02', {
+      template: "#cpn02",
+      data() {
+        // return obj 如果想让组件实例之间共用数据, 用这种方法即可。
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        add() {
+          this.counter++;
+        },
+        minus() {
+          this.counter--;
+        }
+      }
+    });
+
+    // Vue实例一个~
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件注册语法糖抽离template</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn01></cpn01>
+    <cpn02></cpn02>
+  </div>
+
+
+  <!-- 01 在script标签中写模板; type="text/x-template", 然后设置一个id属性即可。 -->
+  <script type="text/x-template" id="cpn01">
+    <div>
+      <h3>这是一个标题01</h3>
+      <h4>这是一个子标题01。。。。。。</h4>
+    </div>
+  </script>
+
+  <!-- 02 使用template标签; 也需要这是一个id属性 -->
+  <template id="cpn02">
+    <div>
+      <h3>这是一个标题02</h3>
+      <h4>这是一个子标题02。。。。。。</h4>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 注册一个全局组件
+    Vue.component('cpn01', {
+      template: "#cpn01"
+    });
+
+    Vue.component("cpn02", {
+      template: "#cpn02"
+    });
+
+
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      },
+      components: {
+        //TODO
+      }
+    });
+  </script>
+
+</body>
+
+</html>

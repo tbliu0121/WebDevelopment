@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父组件和子组件</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+  </div>
+
+
+  
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const cpnC1 = Vue.extend({
+      template: `
+        <div>
+          <h3>我是一个标题01</h3>
+          <h4>我是一句内容01。。。。。。</h4>
+        </div>
+      `
+    });
+
+    const cpnC2 = Vue.extend({   //cpn2就是父组件, cpn1是子组件
+      template: `
+        <div>
+          <h3>我是另一个标题02</h3>
+          <h4>我是另一句内容02。。。。。。</h4>
+          <cpn1></cpn1>
+        </div>
+      `,
+      components: {              //在一个组件内注册了了另一个组件; 并且可以在组件cpn2中使用cpn1; 而且只可以在cpn2中使用
+        cpn1: cpnC1
+      }
+    });
+
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      },
+      components: {
+        cpn1: cpnC1,             //要想在app下使用cpn1, 必须在app下注册
+        cpn2: cpnC2
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model的修饰符</title>
+</head>
+
+<!--  v-model的修饰符  
+  - .lazy: 
+  - .number: 
+  - .trim: 
+-->
+
+<body>
+  <div id="app">
+    <!-- 01 .lazy延迟双向绑定的数据更新 -->
+    <input type="text" v-model.lazy="msg">      <!-- 失去焦点或者敲回车的时候才会及时更新 -->
+    <h3>{{msg}}</h3>
+
+    <!-- 02 .number -->
+    <input type="number" v-model.number="age">  <!--限制是number, 收到信息还是string类型, .number可以完成转化-->
+    <h3>{{age}} {{typeof age}}</h3>
+
+    <!-- 03 .trim可以去除首尾的空格 -->
+    <input type="text" v-model.trim="name">
+    <h3>输入姓名是: {{name}}</h3>               <!-- 此处用console查看空格效果 --> 
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue",
+        age: 18,
+        name: ""
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model结合checkbox的使用</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- checkbox单选框 -->
+    <label>
+      <input type="checkbox" value="agree" v-model="isAgree"> 同意协议
+    </label>
+    <h3>您选择的是: {{isAgree}}</h3>
+    <button :disabled="!isAgree">下一步</button> <br>
+
+    <!-- checkbox多选框 -->
+    <span>选择爱好：</span>
+    <input type="checkbox" value="basketball" v-model="hobbies"> 篮球  <!-- 将value和hobbies绑定 -->
+    <input type="checkbox" value="football" v-model="hobbies"> 足球
+    <input type="checkbox" value="badminton" v-model="hobbies"> 羽毛球
+    <input type="checkbox" value="swim" v-model="hobbies"> 游泳
+    <h2>你的爱好是: {{hobbies}}</h2>
+
+    <!-- Vue中的值绑定 -->
+    <!-- 按照coderwhy的理解就是v-bind在input中的应用 -->
+    <label v-for="item in originHobbies">                              <!-- checkbox以originhobbies作为数据源 -->
+      <input type="checkbox" :value="item" v-model="hobbies">{{item}}  <!-- checkbox和hobbiesb绑定到一起 -->
+    </label>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~",
+        isAgree: false,  //单选框
+        hobbies: [],     //多选框
+        originHobbies: ['唱歌', '跳舞', '相声', '歌剧', '戏剧']
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件注册的语法糖</title>
+</head>
+
+<!--  组件注册的语法糖形式
+  就是在组件注册的过中省略了组件构造器Vue.extend的过程, 直接使用一个对象来注册组件。
+-->
+
+<body>
+  <div id="app">
+    <mycpn></mycpn>
+    <cpn2></cpn2>
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // const cpnC1 = Vue.extend({
+    //   template: `
+    //     <div>
+    //       <h3>我是一个标题01</h3>
+    //       <h4>我是一句内容01。。。。。。</h4>
+    //     </div>
+    //   `
+    // });
+    // Vue.component('mucpn', cpnC1);
+
+    Vue.component('mycpn', {    //组件注册的语法糖形式; 本质上还是调用了Vue.extend()的方法.
+      template: `
+        <div>
+          <h3>我是一个标题01</h3>
+          <h4>我是一句内容01。。。。。。</h4>
+        </div>
+      `
+    });
+
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~"
+      },
+      components: {             //注册局部组件的语法糖
+        cpn2: {
+          template: `
+            <div>
+              <h3>我是一个标题02</h3>
+              <h4>我是一句内容02。。。。。。</h4>
+            </div>
+          `
+        }
+
+      }
+    });
+  </script>
+
+</body>
+
+</html>

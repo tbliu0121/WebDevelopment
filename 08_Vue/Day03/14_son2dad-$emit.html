@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>子组件向父组件通信</title>
+</head>
+
+<body>
+  <!-- 父组件模板 -->
+  <div id="app">
+    <!-- 监听子组件发射事件: item-click是子组件发射的时间名称; 响应事件kidClick父组件实现 -->
+    <!-- v-on不仅可以监听DOM事件, 也可以监听组件事件 -->
+    <kid @item-click="kidClick"></kid>    
+  </div>
+
+  <!-- 子组件模板 -->
+  <template id="kid">
+    <div>
+      <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 1. 子组件
+    const kid = {
+      template: "#kid",
+      data() {
+        return {
+          categories: [
+            {id: 'aaa', name: '热门推荐'},
+            {id: 'bbb', name: '手机数码'},
+            {id: 'ccc', name: '家用家电'},
+            {id: 'ddd', name: '电脑办公'},
+          ]
+        }
+      },
+      methods: {
+        btnClick(item) {
+          console.log(item);
+          // 子向父发射一个事件, 事件名为itemClick; item作为参数传过去类似event, 父组件会自动接收
+          // this.$emit('item-click', item); 
+          this.$emit('item-click', this.categories);  
+        }
+      }
+    }
+
+    // 2. 父组件
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Hello Vue~",
+        players: ['鲁班', '妲己', '狄仁杰', '娜可露露']
+      },
+      components: {
+        kid
+      },
+      methods: {
+        // item类似于event, 父组件会自动接收
+        kidClick(item) {
+          console.log("爸爸知道了~", item[0].name);
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

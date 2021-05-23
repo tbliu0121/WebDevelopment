@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model练习</title>
+</head>
+
+<body>
+  <div id="app">
+    香蕉<input type="radio" value="香蕉" v-model="fruit">
+    橘子<input type="radio" value="橘子" v-model="fruit">
+    苹果<input type="radio" value="苹果" v-model="fruit">
+    <h4>您选择的水果是：{{fruit}}</h4>
+
+    <p>晚饭吃的是：{{dinner}}</p>
+    火锅<input type="checkbox" value="火锅" v-model="dinner">
+    烧烤<input type="checkbox" value="烧烤" v-model="dinner">
+    麻辣烫<input type="checkbox" value="麻辣烫" v-model="dinner">
+    米线<input type="checkbox" value="米线" v-model="dinner">
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        fruit: "",
+        dinner: []
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS高阶函数的使用</title>
+</head>
+
+<!-- 编程范式 
+  - 给计算机的命令方式: 命令式、声明式(Vue / React)
+  - 面向对象编程(对象是一等公民)、函数式编程(函数式一等公民)、etc
+      - ???自己再百度一下吧ORZ
+-->
+
+<body>
+
+  <script>
+    let nums = [10, 20, 111, 222, 444, 40, 50];
+    console.log(nums);
+
+    //nums.filter(callback); 对每一项使用回调函数; callback返回boolean。
+    let res01 = nums.filter(function(n) {   
+      return n <= 100;                 //将返回为true的元素放入到新数组中
+    });
+    console.log(res01);
+
+    //map()方法
+    let res02 = res01.map(function(n) {
+      return 2 * n;
+    });
+    console.log(res02);
+
+    //reduce()方法; 对数组中所有的内容进行汇总用的; 例子见Day02中的shoppingCart/index.css  line64
+    let res03 = res02.reduce(function(preVal, n) {
+      return preVal + n;
+    }, 0);
+    console.log(res03);
+
+    // 上面三个过程化为一行代码
+    let total = nums.filter(n => n < 100).map(n => 2 * n).reduce((pre, n) => pre + n);
+    console.log(total);
+  </script>
+</body>
+
+</html>

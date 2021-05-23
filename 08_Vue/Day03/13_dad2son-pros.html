@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父子组件的通信</title>
+</head>
+
+<!--    父子组件的通信    
+  - 子组件是无法引用父组件或者Vue实例的数据的。
+  - 但是在开发中确实需要从上层传递数据到下层, 或者从下层传递到上层。
+    - 在一个页面中请求了大量数据, 其中的一部分数据是需要子组件展示的。
+    - 上面这种情况不会让子组件发送请求, 而是让根组件将数据传递给子组件。
+  
+  - 父子组件如何通信呢？
+    - 父传子: 在子组件中props属性中设置对应的接收变量; 在子组件实例中将接收属性与父组件对应的属性绑定即可。
+    - 子传父: 通过自定义事件 $emit Events 发送给父组件。
+-->
+
+<body>
+  <div id="app">
+    <cpnkid :childmovies="movies" :childmsg="msg"></cpnkid>  <!-- 子组件实例绑定对应的父组件元素即可 -->
+  </div>
+
+
+  <!-- 子组件构造器抽离template -->
+  <template id="cpnkid">       
+    <div>
+      <ul>
+        <li v-for="item in childmovies">{{item}}</li>
+      </ul>
+      <h3>{{childmsg}}</h3>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    /***  父传子通信 ***/
+    const cpnkid = {                              //构建一个子组件
+      template: "#cpnkid",
+      // props: ['childmovies', 'childmsg'],      //01 在子组件中props属性中设置接收的元素; 变量不可以有大写字母)
+      // 如果props非要使用驼峰, 那么在html汇总绑定父元素的子元素变量必须编程var-name的命名规则！！！
+
+      // props: {
+      //   childmovies: Array,                    //02 prop以对象的形式书写支持数据类型限制
+      //   childmsg: String
+      // },
+
+      props: {                                    //03 每个数据都以对象的形式书写; 同时可以设置数据类型与默认值
+        childmovies: {
+          type: Array,
+          default: ['待上映', '待上映', '待上映'],
+          required: true                          //添加required属性表示此属性必须传进来
+        },
+        childmsg: {
+          type: String,
+          default: "Hello World~"
+        }
+      },
+      data() {
+        return {}
+      }
+    }  /*** 子组件 END ***/
+
+    const app = new Vue({      //Vue实例作为了父组件
+      el: "#app",
+      data: {
+        msg: "Hello Vue~",
+        movies: ['海贼王', '一人之下', '火影忍者', '秦时明月']
+      },
+      components: {
+        cpnkid                 //在父组件中注册子组件; ES对象属性的曾强写法(cpnkid: cpnkid)。。。
+      }
+    });
+  </script>
+
+</body>
+
+</html>
