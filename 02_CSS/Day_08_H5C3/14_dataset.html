@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>通过dataset.attr来为标签设置属性</title>
+</head>
+
+<body>
+  <div>这是一个div</div>
+
+  <script>
+    /**       添加自定义属性 (第一种方式在dom元素的标签内无法看到, 其余的三种可以看到。)
+     *   - element.attr = value;
+     *   - eleent.setAttribute(attr, value);
+     *   - element.dataset.attr = value;
+     *   - <div data-xxx='yyy'></div>    // 直接写在标签内。
+     * 
+     *   -    获取自定义属性的方法
+     *   - element.attr;
+     *   - getAttribute(attr);
+     *   - element.dataset.attr;
+     *   - [注]: 对于连字符的变量在JS中要换成驼峰命名。
+    */
+
+
+    let div = document.querySelector('div');
+    div.dataset.age = 18;  // 显示为data-age = 18;
+  </script>
+
+</body>
+
+</html>
