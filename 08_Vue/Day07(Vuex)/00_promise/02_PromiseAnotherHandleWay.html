@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise的另外一种处理方式</title>
+</head>
+
+<body>
+
+  <script>
+    /***       Promise中then、reject的另以种处理方式
+     * new Promise((resolve, reject) => {
+     *    setTimeOut(() => {
+     *        resolve();
+     *        reject();
+     *    }, 1000);
+     * }).then(func01, func02);     //把reject后的catch处理函数放到then里面！！！！
+     * 
+    */
+
+
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Hello Vue.js~");
+        reject("error message");
+      }, 1000)
+    }).then((data)=>{
+        console.log(data);
+      }, (err) => {                 //把reject对应的写在then中参数的的第二个位置~
+        consol.log(err);
+      }
+    );
+  </script>
+
+</body>
+
+</html>

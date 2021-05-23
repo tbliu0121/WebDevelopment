@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proise.all()的使用</title>
+</head>
+
+<body>
+
+  <script>
+    Promise.all([
+      new Promise((resolve, rejcet) => {
+        setTimeout(() => {
+          resolve(
+            {
+              description: "Tas01 is done", 
+              data: ['花木兰', '唐人街探案']
+            }
+          );
+        }, 2000);
+      }),
+
+      new Promise((resolve, rejcet) => {
+        setTimeout(() => {
+          resolve(
+            {
+              description: "Tas02 is done",
+              data: ['一人之下', '秦时明月']
+            }
+          );
+        }, 1000);
+      })
+    ]).then(results => {
+      // then接受的参数是一个数据, 按代码顺序依次装入了每次请求的返回结果
+      console.log(results);
+    });
+  </script>
+</body>
+
+</html>

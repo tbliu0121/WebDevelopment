@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+</head>
+
+<body>
+	
+	<script>
+    // New Promise()的参数要求是一个函数; 
+    // 传入的函数中又要求两个参数: resolve, reject; reslove和reject本身就是函数
+
+    new Promise((resolve, reject) => {
+      // 1-1第一次网络请求
+      setTimeout(() => {
+        resolve("Networks Request1-test date~");    //请求成功会调用resolve, 然后调用.then()
+        reject("msg erro");                         //请求失败会调用rject, 然后调用catch()
+      }, 1000);
+    }).then(data => {
+      // 1-2 第一次网络请求的回调处理
+      console.log("Networks Request1-1");
+      console.log("Networks Request1-2");
+      console.log("Networks Request1-3");
+      console.log("Networks Request1-4");
+      console.log(data);
+
+      return new Promise((resolve,reject) => {
+        // 第二次网络请求
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      }).then(() => {                               // 这个then可以直接写到上一个then之后, 见03_promiseChain
+        // 第二次网络请求的回调处理
+        console.log("Networks Request2-1");
+        console.log("Networks Request2-2");
+        console.log("Networks Request2-3");
+        console.log("Networks Request2-4");
+
+        return new Promise((resolve, reject) => {
+          // 第三次网络请求
+          setTimeout(() => {
+            resolve();
+          }, 1000);
+        }).then(() => {
+          // 第三次网络请求的回调处理
+          console.log("Networks Request3-1");
+          console.log("Networks Request3-2");
+          console.log("Networks Request3-3");
+          console.log("Networks Request3-4");
+        });
+      });
+    }).catch(err => console.log(err));  //第一网络请求的catch
+	</script>
+</body>
+</html>
