@@ -1,0 +1,51 @@
+{
+  /* tsconfig.json编译器的配置文件, ts编译器可以根据他的信息来对代码进行编译。
+      - include: 默认使用tsc是编译所有的ts文件的, 此配置选项可以指定那些ts文件被编译;
+        - 路径：* 表示任意文件; ** 任意目录。
+      - exclude: 不需要被编译的文件目录; 默认值: ["node_modules", "bowser", "jspn_packages"]
+      - extends: 定义被继承的文件; 和引入一个外部文件的效果是一样的。
+      - files: 和include类似; 只不过include设置的文件夹, files设置的是文件。
+
+      - complierOptions: 编译器的选项; 决定了编译器如何对文件编译; 包含了很多子选项。
+        - target: 用来指定TS被编译为的ES的版本; esnext表示最新的版本。
+        - module: 指定要使用的模块化规范。最初的ES不支持模块化; 后来衍生出了各种各样的模块化.
+          - 目前可用值: (commonjs, amd, system, umd, es6, es2015(即es6), es2020, esnext)推荐使用es6
+        - lib: 用来指定项目中要使用的库, 可以根据这些库来检查代码; 一般情况下是不改变这个选项的。
+        - outDir: 用来指定编译后的JS文件放在哪里; 可以将js文件与ts文件分离。
+        - outFile: 可以将ts编译输出的代码合并为一个文件(一般使用的不多); 只有部分模块化规范支持。
+        - allowJs: 是否将当前文件下的JS文件编译生成JS文件(如果目标文件当前TS文件不在一起, 则需要~)。
+        - checkJs: 是否检查当前文件下的JS文件是否符合语法规范; 默认是false.
+        - removeComments: 是否移将生成的js文件中注释移除。
+        - noEmit: 不生成编译后的文件。
+        - noEmitOnError: 当有错误时不生成编译文件。
+        - strict: true。所有严格检查的总开关，一般开发时建议打开。
+        - alwaysStrict: 设置代码是否使用严格模式; 如果代码中使用模块代码, 则会自动进入严格模式。
+        - noImplicitAny: true。不允许隐式的any类型(即不声明类型时会自动转化为anyu类型是否允许)。
+        - noImpliciyThis: true。不允许不明类型的this。
+        - strictNullChecks: true。严格检查空值。
+  */ 
+  "include": [
+    // 根目录下的src文件下的src文件下的任意目录下的任意文件。
+    "./src/**/*",
+    "app.js" 
+  ],
+  // "exclude": [
+  //   "./src/hello/**/*"
+  // ]
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    // "lib": ["es6", "DOM", "WebWorker"], 一般不需要动, 使用默认值即可。
+    "outDir": "./dist",
+    "allowJs": true,
+    "checkJs": false,
+    "removeComments": false,
+    "noEmit": false,
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": false
+  }
+  
+}
