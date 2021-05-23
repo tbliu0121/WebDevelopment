@@ -50,6 +50,7 @@
                  *     - 我们可以检测一下触发事件的元素是否为我们期望的元素, 如果是则执行, 否则不执行。
                 */
                 event = event || window.event;
+								// event.target可以返回事件的目标节点。
                 if(event.target.className == "link") {    /* 如果元素是多类, 则此种方法无法生效, 可以通过正则解决 */
                     alert("我是ul的单击响应函数");
                 }
