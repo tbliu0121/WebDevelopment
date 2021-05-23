@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON与深克隆</title>
+</head>
+
+<body>
+
+  <script>
+    let MuLan = {
+      name: "HuaMulan",
+      gender: "Female",
+      age: 18
+    };
+
+    // method-01 利用JSON作为深拷贝的桥梁。
+    let MuLan_ = JSON.stringify(MuLan);  // obj to string
+    MuLan_ = JSON.parse(MuLan_);          // string to obj
+    MuLan_.name = "HuaMulan_";
+    MuLan_.age = 24;
+    console.log(MuLan);
+    console.log(MuLan_);
+
+    // method-02 自己封装一个深拷贝的方法。
+    function deepClone(obj) {
+      let copy = obj instanceof Array ? [] : {};
+      for(let key in obj) {
+        if(typeof obj[key] == "object") {
+          copy[key] = deepClone(obj[key]);
+        } else {
+          copy[key] = obj[key];
+        }
+      }
+      return copy;
+    }
+
+    let MuLan03 = deepClone(MuLan);
+    MuLan03.name = "HuaMulan03";
+    MuLan03.age = 23;
+    console.log(MuLan03);
+
+    let LuBan = {
+      name: "LuBan",
+      gender: "Male",
+      skills: {
+        plain: "Shark cannoball",
+        power: "A powerfull skill~"
+      },
+      mates: ["HuaMulan", "DiRenjie", "DaJi"]
+    }
+
+    let LuBan02 = deepClone(LuBan);
+    LuBan02.name = "LuBan02";
+    LuBan02.skills.power = "A super skill~~~";
+    LuBan02.mates[0] = "SunShangxiang";
+    console.log(LuBan);
+    console.log(LuBan02);
+
+
+  </script>
+
+</body>
+
+</html>
