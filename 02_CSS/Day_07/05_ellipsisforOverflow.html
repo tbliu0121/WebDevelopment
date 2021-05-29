@@ -43,7 +43,7 @@
 
     2. 多行文本用省略号（具有较大的兼容性的问题，比较使用webKit内核的浏览器或者移动端，移动端大部分是webKit内核）
             overflow: hidden;
-            text-overflow: ellipsis;
+            text-overflow: ellipsis; clip表示对超出文本进行剪裁
             display: -webkit-box          弹性伸缩盒子模型显示
             -webkit-line-clamp: 2;        限制一个块元素显示的文本行数
             -webkit-box-orient: vertical  设置或检索伸缩盒对象的子元素排列方式
