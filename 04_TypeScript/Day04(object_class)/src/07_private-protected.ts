@@ -80,7 +80,7 @@
     }
   }
   
-  // 01 private与访问器的例子
+  // 01 private与访问器(getter, setter)的例子
   const p01 = new Person("Jonathan", 24);
   console.log(p01);
   // p01._name = "Nate~~~";    // 私有属性只能在类内部修改, 虽然会报错但是js依然可以通过。添加"noEmmitOnErro": true即可。
