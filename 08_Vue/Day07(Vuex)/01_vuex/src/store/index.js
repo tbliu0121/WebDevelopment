@@ -8,7 +8,7 @@ import moduleA from "./modules/moduleA"
 // 01安装插件; 执行Vue.use(Vuex)后底层就会自动完成Vuex.install
 Vue.use(Vuex);  
 
-// 02创建一个对象, 注意Stroe是大写(是一个Vue类型的实力大写哦~)
+// 02创建一个对象, 注意Store是大写(是一个Vue类型的实力大写哦~)
 // Vuex的核心内容: state, actiongs, mutations, modules, getters
 const state = {   //单一装态树(单一数据源)
   counter: 256,
