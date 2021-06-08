@@ -1,4 +1,4 @@
-/**       loader和resolve的区别
+/**       loader和plugins的区别
  *   - loader: 下载; 使用(配置loader)。
  *   - plugins: 下载; 引入; 使用。
  */
