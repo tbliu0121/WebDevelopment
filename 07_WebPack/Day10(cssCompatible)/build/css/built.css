@@ -1,0 +1,13 @@
+#box01 {
+  display: flex;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;  /* 隐藏背面的效果 */
+  width: 100px;
+  height: 100px;
+  background-color: hotpink;
+}
+#box02 {
+  width: 200px;
+  height: 200px;
+  background-color: teal;
+}

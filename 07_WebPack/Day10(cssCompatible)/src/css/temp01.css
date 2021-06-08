@@ -1,0 +1,7 @@
+#box01 {
+  display: flex;
+  backface-visibility: hidden;  /* 隐藏背面的效果 */
+  width: 100px;
+  height: 100px;
+  background-color: hotpink;
+}
