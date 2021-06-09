@@ -22,7 +22,7 @@ const commonCssLoader = [
 ]
 
 module.exports = {
-  entry: "",
+  entry: ["./src/js/index.js", "./src/index.html"],
 
   output: {
     filename: "js/built.js",
