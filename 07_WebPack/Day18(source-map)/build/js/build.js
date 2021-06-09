@@ -45,7 +45,7 @@ console.log("print.js被加载");
 
 function print() {
   const content = "Hello Hot Module Replace(HMR)";
-  console.log(content);
+  console.log(content)();
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (print);
@@ -880,3 +880,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
+//# sourceMappingURL=build.js.map
