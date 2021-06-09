@@ -21,8 +21,7 @@ const commonCssLoader = [
   }
 ]
 
-
-/**       开发环境基本配置小结
+/**       生产环境基本配置小结
  *   - CSS、JS、图片、HTML依次处理~
  */
 
