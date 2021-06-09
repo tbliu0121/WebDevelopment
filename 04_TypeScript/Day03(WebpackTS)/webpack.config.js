@@ -26,7 +26,7 @@ module.exports = {
         test: /\.ts$/,                      // 通过正则表达式指定规则作用的目标文件
         use: [                              // 要使用的loader, 书写顺序与执行顺序相关, 最先执行的放在后面。
           {                                 // 复杂的loader使用对象的形式放置配置信息
-            loader: "babel-loader",          // 指定使用的loader
+            loader: "babel-loader",         // 指定使用的loader
             options: {                      // 设置定义环境
               presets: [
                 [
@@ -36,7 +36,7 @@ module.exports = {
                       "chrome": "58",
                       "ie": "9"
                     },
-                    "corejs": "3",         // 指定的corejs方式
+                    "corejs": "3",          // 指定的corejs方式
                     "useBuiltIns": "usage"  // 使用corejs的方式: usage表示按需加载
                   }
                 ]
