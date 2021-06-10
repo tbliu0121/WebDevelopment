@@ -1,4 +1,4 @@
-// 测试tree shaking
+// 测试 tree shaking
 export function mul(x, y) {
   return x * y;
 }
