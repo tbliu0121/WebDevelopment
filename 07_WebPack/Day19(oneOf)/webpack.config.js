@@ -1,7 +1,7 @@
 const { resolve } = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");                      // 抽离CSS
-const OptimizeCssAssetsWebpackPlugin = import("optimize-css-assets-webpack-plugin");  // 压缩CSS
-const HTMLWebpackPlugin = import("html-webpack-plugin");
+const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");  // 压缩CSS
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 // 定义nodejs中的环境变量: 决定使用browerslist的那个环境; 未上线之间可使用development
 process.env.NODE_ENV = "production";
@@ -9,7 +9,7 @@ process.env.NODE_ENV = "production";
 // 复用loader
 const commonCssLoader = [
   MiniCssExtractPlugin.loader,   // 完成CSS的抽离
-  "cssloader",
+  "css-loader",
   {
     loader: "postcss-loader",    // 完成CSS的兼容处理 (还需要在package.json中配置browserslist)
     options: {
@@ -32,7 +32,7 @@ module.exports = {
   module: {
     rules: [
       { // js语法的检查(需要在package.json中配置eslintConfig来指示做哪些检查; 推荐使用airbnb规则)
-        test: /\.js/,
+        test: /\.js$/,
         exclude: /node_modules/,
         enforce: "pre",                // 此属性会优先执行此loder！！！
         loader: "eslint-loader",
@@ -47,11 +47,11 @@ module.exports = {
         // 注意: 不能有两个配置处理同一个类型的loader,因为之一个可以生效, 因此将eslint语法检测提出来。
         oneOf: [
           { // 抽离.css
-            test: /\.css/,
+            test: /\.css$/,
             use: [...commonCssLoader]
           },
           { // 抽离.less
-            test: /\.less/,
+            test: /\.less$/,
             use: [ ...commonCssLoader, "less-loader" ]
           },
           /**
@@ -60,7 +60,7 @@ module.exports = {
            *     - 先执行eslint再执行babel-loader。
           */
           { // js兼容性处理
-            test: /\.js/,
+            test: /\.js$/,
             exclude: /node_modules/,
             loader: "babel-loader",
             options: {
@@ -90,7 +90,7 @@ module.exports = {
           },
           { // 处理HTML文件中<img>内的图片资源
             test: /\.html$/,
-            use: "html-loader",           // 注意html-loader使用的是commonjs模块化, 需要处理
+            loader: "html-loader",           // 注意html-loader使用的是commonjs模块化, 需要处理
             options: {
               esModule: false             // 处理commojs和esMo模块之间的冲突
             }
