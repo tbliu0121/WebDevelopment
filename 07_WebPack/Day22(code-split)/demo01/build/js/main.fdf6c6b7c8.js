@@ -1,0 +1,1 @@
+console.log([1,2,3].reduce(((o,l)=>o+l),0)),console.log(mul(2,3));
