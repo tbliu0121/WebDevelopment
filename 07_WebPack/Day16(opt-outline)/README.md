@@ -20,15 +20,14 @@
   * **dll**:  将某些库单独打包出来，后期使用直接引入即可；可以在后期打包的时候只打包自己的文件。dll打包的资源变动的时候，运行webpack.dll.js配置即可。dll需要在webpack.dll.js和webpack.config.js分别配置。dll可以和code-split技术结合使用。
   * 【注】从代码层面来看，项目的代码分为两部分：node_modules第三方库和自己开发的源代码。源代码可以通过import进行任意拆分，而optimization只能将node_modules整体拆分，此时通过dll可以将目标库任意拆分（牛啤.jpg）。
   
-* **优化代码运行的性能**（让构建大代码的性能更加高效）
-
+* **优化代码运行的性能**（让构建的代码的性能更加高效）
   * **资源缓存**：hash / chunkhash / contenthash。通过为资源添加hash值来完成资源在强缓存期间变动可重新请求资源的目的。
-
+  
     * hash: 每次打包之后内容不论是否变化，hash都会变化。
     * chunkhash: 同一个打包入口文件的hash都是一样的。
     * contenthash: 根据文件的内容来生成hash值。
   * **tree-shaking**:  将引用代码但是未使用的代码清理掉。只要在生产环境下使用了es6模块化才可以自动开启tree-shaking优化（通过一个uglify-js）还需要在package.json中配置sideEffects将不想删除的代码配置进去。
-  * **code-split:**  三种情况，一般使用的时候只有两种。单入口场景；多入口场景。
+  * **code-split:**  代码分割是为了达到并行加载的目的。三种情况，一般使用的时候只有两种。单入口场景；多入口场景。
     * 单入口情况下默认只有一个bundle，因此需要对代码分割，从而可以并行加载文件；单入口文件有两种分割方式：
       * 通过webpack的optimization配置，将node_modules文件单独打包。
       * 通过ES10的import语法对文件单独分割。
