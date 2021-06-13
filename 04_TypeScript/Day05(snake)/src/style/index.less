@@ -1,0 +1,65 @@
+// 设置变量
+@bg-color: #b4d7a8;
+
+// 清除默认样式
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: bold 16px "Courier";
+}
+
+// 设置主窗口样式
+#main {
+  display: flex;  // 开启弹性盒模型
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 360px;
+  height: 420px;
+  background: @bg-color;
+  margin: 75px auto;
+  border: 10px solid #000000;
+  border-radius: 16px;
+
+  // 游戏舞台
+  #stage {
+    position: relative;
+    width: 304px;
+    height: 304px;
+    border: 2px solid #000000;
+
+    // 设置蛇的样式
+    #snake {
+      &>div {
+        position: absolute;  // 开启绝对定位, 以便让蛇移动
+        width: 10px;
+        height: 10px;
+        background: #000000;
+        border-radius: 2px;
+        border: 1px solid @bg-color;
+      }
+    }
+
+    #food {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 10px;
+      height: 10px;
+      background: #000000;
+      border: 1px solid @bg-color;
+      border-radius: 50%;
+    }
+  }
+
+  // 计分牌
+  #score-panel {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font: bold 16px "Courier";
+}
+#main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 360px;
+  height: 420px;
+  background: #b4d7a8;
+  margin: 75px auto;
+  border: 10px solid #000000;
+  border-radius: 16px;
+}
+#main #stage {
+  position: relative;
+  width: 304px;
+  height: 304px;
+  border: 2px solid #000000;
+}
+#main #stage #snake > div {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #000000;
+  border-radius: 2px;
+  border: 1px solid #b4d7a8;
+}
+#main #stage #food {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 10px;
+  height: 10px;
+  background: #000000;
+  border: 1px solid #b4d7a8;
+  border-radius: 50%;
+}
+#main #score-panel {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
