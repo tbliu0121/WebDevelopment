@@ -28,7 +28,7 @@ export default function(sel, data, unk) {
       }
       children.push(unk[i]);           // 将嵌套子元素收集起来
     }
-    return vnode(data, data, children, undefined, undefined);
+    return vnode(sel, data, children, undefined, undefined);
 
   } else if(typeof unk === "object" && unk.hasOwnProperty("sel")) {
     // form_03
