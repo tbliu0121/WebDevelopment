@@ -5,23 +5,25 @@ const container = document.getElementById("container");
 const vnode01 = h("h1", {}, "hello handwrite h-function() and patch()");
 
 const vnode02 = h("ul", {}, [
-  h("li", {}, "1_A"),
-  h("li", {}, "2_B"),
-  h("li", {}, [
-    h("p", {}, "这是一段话, 我是li的一个子节点")
-  ]),
-  h("li", {}, "4_D")
+  h("li", {key: "A"}, "1_A"),
+  h("li", {key: "B"}, "2_B"),
+  h("li", {key: "C"}, "3_C")
 ]);
 
-const vnode03 = h("section", {}, [
-  h("h2", {}, "我是section中第一个<h2>标签"),
-  h("h2", {}, "我是section中第一个<h2>标签")
+const vnode03 = h("ul", {}, [
+  h("li", {key: "A"}, "1_A"),
+  h("li", {key: "B"}, "2_B"),
+  h("li", {key: "M"}, "4_M"),
+  h("li", {key: "N"}, "5_N"),
+  h("li", {key: "C"}, "3_C"),
 ]);
 
-// patch(container, vnode01);
+
+// patch(container, vnode01);    // 挂载第一个VNode
 patch(container, vnode02);
 
 const btn = document.getElementById("btn");
+
 btn.onclick = function() {
   patch(vnode02, vnode03);
 };
