@@ -8,15 +8,15 @@ export default function defineReactive(obj, attr, value) {
     value = obj[attr];
   }
 
-  let attrObj = observe(value);  // 如果属性是一个
+  let attrObj = observe(value);    // 如果属性是一个基本数据类型, observe会直接返回
 
   Object.defineProperty(obj, attr, {
     get() {
-      console.log(`访问了对象的${attr}属性`);
+      console.log(`访问对象的${attr}属性: ${value}`);
       return value;
     },
     set(newValue) {
-      console.log(`设置了的对象的${attr}属性为: ${newValue}`);
+      console.log(`设置对象的${attr}属性为: ${newValue}`);
       if(newValue == value) {
         return;
       }

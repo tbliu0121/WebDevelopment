@@ -7,13 +7,13 @@ export default function observe(value) {
    *   - 传入的value是defineReactive()中用到的value
   */
   if(typeof value === "object") {
-    let obj = null;
+    let ob = null;
 
-    if(typeof value.__obj__ !== "undefined") {
-      obj = value.__obj__;
+    if(typeof value.__ob__ !== "undefined") {
+      ob = value.__ob__;
     } else {
-      obj = new Observer(value);
+      ob = new Observer(value);
     }
-    return obj;
+    return ob;
   }
 }
