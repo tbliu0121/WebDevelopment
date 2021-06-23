@@ -2,16 +2,19 @@ import def from "./utils.js"
 import defineReactive from "./defineReactive.js";
 import { arrayMethods } from "./array.js";  // arrayMethods中含有七个数组中的方法
 import observe from "./observe.js";
+import Dep from "./Dep.js";
 
 // 将一个对象（含有嵌套对象）的任何属性转化为每一个属性都可以做到可以被侦测
 export default class Observer {
   constructor(value) {
-    // 构造函数中的this不是表示类本身, 而是表示实例; 给实例添加了__obj__属性, 此属性不可以枚举, 通过def()函数来设定。
-    def(value, "__ob__", this, false);
     console.log("Here is constructor of Observer", value);
+    // 每一个响应式属性都有一个Dep实例, 负责收集依赖
+    this.dep = new Dep();
+    // 构造函数的this指向实例; 给实例添加__ob__属性, 此属性不可以枚举, 通过def()函数设定。
+    def(value, "__ob__", this, false);
 
     if(Array.isArray(value)) {
-      // 如果观察对象是一个数组, 将数组的原型指向改写方法后的原型上
+      // 如果观察对象是一个数组, 将数组的原型指向改写方法后的原型上; 然后监听数据
       Object.setPrototypeOf(value, arrayMethods);
       this.observeArray(value);
     } else {

@@ -1,5 +1,6 @@
 import defineReactive from "./defineReactive.js";
 import observe from "./observe.js";
+import Watcher from "./Watcher.js"
 
 let obj = {};
 // 设置obj的数据属性: name; 通过defineProperty()设置的数据属性, 如果不显式设置其读取属性, 则默认是false。
@@ -55,7 +56,14 @@ let nestedObj = {
   attr03: ["HTML", "CSS", "JavaScript"]
 };
 
-observe(nestedObj);  // 将nestedObj及其属性设置为响应式数据
+// 将nestedObj及其属性设置为响应式数据; Ovserve()的观察目标是一个object, 基本数据对象会返回undefined。
+observe(nestedObj);
+new Watcher(nestedObj, "nested.attr01.son.grandSon.age", (val) => {
+  console.log(`watching attrbution grandSon.age......${val}`);
+})
+
+nestedObj.attr01.son.grandSon.age = 18;
+
 nestedObj.attr02 = "test_attr"
 console.log(nestedObj.attr02);
 
