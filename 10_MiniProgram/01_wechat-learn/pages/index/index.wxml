@@ -1,0 +1,21 @@
+<!-- view类似于div元素 -->
+<view class="indexContainer">
+  <!-- <image class="avatorUrl" src="/static/images/nvsheng.jpg"></image> -->
+  <image wx:if="{{userInfo.avatarUrl}}"class="avatorUrl" src="{{userInfo.avatarUrl}}"></image>
+
+  <!-- getUserInfo废弃了，使用功能wx.getUserProfile -->
+  <!-- <button wx:else open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">获取用户信息</button> -->
+  <button wx:else bindtap="getUserProfile" class="getAuth">获取用户信息</button>
+
+  <!-- <text class="userName">{{msg}}</text> -->
+  <text class="userName">{{userInfo.nickName}}</text>
+
+  <!-- 测试事件绑定 -->
+  <!-- <view class="goStart" catchtap="handleParent">
+    <text catchtap="handleChild">Hello world</text>
+  </view> -->
+
+  <view class="goStart" catchtap="toLogs">
+    <text>Hello world</text>
+  </view>
+</view>
