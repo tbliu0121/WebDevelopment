@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义指令</title>
+
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="example">
+    <!-- 01 v-cloak复习 -->
+    <p ref="content">Vue Review</p>
+    <button @click="hint">提示</button>
+    <!-- alert未完成之前会显示为{{msg}} -->
+    <!-- v-cloak只会在vue解析阶段存在，解析之后就会消失 -->
+    <p v-cloak>{{msg}}</p>
+  </div>
+
+  <!-- 02 自定义指令 -->
+  <!-- v-lower-case是test01内局部注册的 -->
+  <div id="test01">
+    <p v-upper-text="msg01">{{msg1}}</p>
+    <p v-lower-text="msg01">{{msg1}}</p>
+  </div>
+
+  <div id="test02">
+    <p v-upper-text="msg02">{{msg2}}</p>
+    <p v-lower-text="msg02">{{msg2}}</p>  <!-- toLowerCase在此组件内无法生效 -->
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    alert("======");
+    /**    Vue中的指令
+     *   - 内置指令
+     *   - 自定义指令(对操作的一个复用)
+     *     - 注册全局指令 (全局针对所有组件都生效)
+     *         Vue.directive("my-directive", function(el, binding) {
+     *           el.innerHTML = bindding.value.toipperCase();
+     *         });
+     *     - 注册局部指令 (局部只针对某个组件生效)
+     *         directives: {
+     *           "my-directive": {
+     *             bind(el, bindign) {
+     *               el.innerHTML = bindding.value.toupperCase()
+     *             }
+     *           }
+     *         }
+     * 
+     *     - 使用指令: v-my-directive="xxx"; 指令作为一种标签属性去操作标签。
+     * 
+     *   - 需求：
+     *     - 功能类似于v-text指令, 但是全部转化为大写
+     *     - 功能类似于v-text指令, 但是全部转化为小写
+    */
+    new Vue({
+      el: "#example",
+      data: {
+        msg: "指令复习",
+      },
+      methods: {
+        hint() {
+          alert(this.$refs.content.innerHTML);
+        }
+      }
+    });
+
+    // 定义全局指令: 通过Vue.directive()来实现。
+    // el是指令作用的元素标签, binding是一个对象: 包含指令相关信息的对象, 元素的内容在binding.value中了。
+    Vue.directive("upper-text", function(el, binding) {
+      console.log(el, binding);
+      el.textContent = binding.value.toUpperCase();
+    });
+
+    new Vue({
+      el: "#test01",
+      data: {
+        msg1: "NBA I Love This Game!",
+      },
+      // 局部指令在组件内注册
+      directives: {
+        // 对象中属性有特殊字符时必须加上引号！！！
+        // 结合一下ES6的简介语法
+        "lower-text" (el, binding) {
+          el.textContent = binding.value.toLowerCase();
+        }
+      }
+    });
+
+    new Vue({
+      el: "#test02",
+      data: {
+        msg2: "Just Do It!"
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>
