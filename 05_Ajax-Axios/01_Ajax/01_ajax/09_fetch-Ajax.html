@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch()函数发送Ajax请求</title>
+</head>
+
+<body>
+  <button id="btn">fetch发送Ajax请求</button>
+
+  <script>
+    const btn = document.getElementById("btn");
+
+    btn.addEventListener("click", () => {
+      /***      fetch()函数发送网路请求
+       *   - fetch()是一个全局对象, 可以直接调用
+       *   - 返回结果是个Promise对象。
+      */
+      fetch("http://127.0.0.1:8000/fetchServer", {
+        method: "POST",
+        headers: { name:"Jonathan", age:"18" },
+        // body值可以是blob、BufferSource、FormData
+        body: "job=fe&&city=beijing",
+      }).then( res => {
+        console.log(res);
+        // return res.text();   // 此方法返回响应体
+        return res.json();   // 此方法返回JSON格式
+      }).then(result => {
+        console.log(result);
+      });
+    });
+    
+  </script>
+
+</body>
+
+</html>
