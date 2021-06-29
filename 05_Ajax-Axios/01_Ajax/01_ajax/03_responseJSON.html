@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>服务端响应JSON数据</title>
+
+  <style>
+    #result {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #ff6743;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="result"></div>
+
+  <script>
+    const result = document.getElementById("result");
+
+    window.addEventListener("keydown", () => {
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = "json";    // 可完成对响应数据的自动转化， 从JSON转化为Object
+      xhr.open("GET", "http://127.0.0.1:8000/json-server");
+      xhr.send();
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4) {
+          if(xhr.status >= 200 && xhr.status <= 300) {
+            // 处理服务端返回结果
+            // console.log(xhr.response);
+            // result.textContent = xhr.response;
+
+            // 手动对字符串进行转换
+            // let data = JSON.parse(xhr.response);
+            // result.textContent = data.name;
+            // console.log(data);
+
+            // 自动转换, 通过xhr.responseType = 'json'来实现。
+            console.log(xhr.response);
+            result.textContent = xhr.response.name;
+          }
+        }
+      };
+    });
+  </script>
+</body>
+
+</html>
