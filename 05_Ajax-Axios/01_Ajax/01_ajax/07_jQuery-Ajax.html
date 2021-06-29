@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQUery中如何发送Ajax请求</title>
+</head>
+
+<body>
+  <button id="getBtn">jQuery发送GET请求</button>
+  <button id="postBtn">jQuery发送POST请求</button>
+  <button id="generalBtn">通用型方法AJAX</button>
+
+  <!-- 引入jquery的cdn资源 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script>
+    // 01 jQuery发送GET请求
+    $("button").eq(0).click(function() {
+      $.get("http://127.0.0.1:8000/jqueryServer", {a:100, b:200, method:"GET"}, function(data) {
+        // data是响应体中的数据
+        console.log(data);
+      }, "json");  // 第四个参数表示响应体的数据格式。
+    });
+
+    // 02 jQuery发送POST请求
+    $("button").eq(1).click(function() {
+      $.post("http://127.0.0.1:8000/jqueryServer", {a:100, b:200, method:"POST"}, function(data) {
+        // data是响应体中的数据
+        console.log(data);
+      });
+    });
+
+    // 03 jQuery发送通用型AJAX请求
+    $("button").eq(2).click(function() {
+      $.ajax({
+        // url: "http://127.0.0.1:8000/delay",
+        url: "http://127.0.0.1:8000/jqueryServer",
+        data: { a:100, b:200 },
+        type: "GET",
+        dataType: "json",  // 响应体数据的格式
+        success: function(data) {
+          console.log(data);
+        },
+        timeout: 2000,     // 超时时间, 超时后自动取消请求
+        error: function() {
+          console.log("request error");
+        },
+        // 自定义请求头需要在服务端设置
+        headers: {
+          c: 300,
+          d: 400
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
