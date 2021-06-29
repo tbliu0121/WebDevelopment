@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery发送jsonp请求</title>
+
+  <style>
+    #result {
+      width: 500px;
+      height: 200px;
+      border: 1px solid #ff6743;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="sendBtn">点击发送JSONP请求</button>
+  <div id="result"></div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script>
+    $("button").eq(0).click(function() {
+      // 使用jquery发送JSONP请求后面要加callback=? (固定写法)
+      // 查看控制台发现发送的请求中callback会有一个对应的值
+      // 服务端接受这个callback的值就是声明的处理函数
+      $.getJSON("http://127.0.0.1:8000/jqueryJSONP?callback=?", function(data) {
+        // 这个回调就是和callback=?声明所对应的回调。
+        $("#result").html(`
+          content: ${data.content}<br>
+          slogan: ${data.slogan}
+        `);
+      });
+    });
+      
+  </script>
+</body>
+
+</html>

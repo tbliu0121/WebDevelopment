@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSONP</title>
+
+  <style>
+    #result {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #ff6743;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="result"></div>
+
+
+  <!-- <script src="./js/app.js"></script> -->
+  <script>
+    function handle(data) {
+      const result = document.getElementById("result");
+      result.textContent = data.name;
+    }
+  </script>
+  <!-- 通过file协议打开就产生了跨域 -->
+  <!-- 通过src属性来解决跨域 -->
+  <script src="http://127.0.0.1:5500/01_Ajax/01_ajax/10_crossSite/2_JSONP/js/app.js"></script>
+  <!-- 一个跨域请求 -->
+  <script src="http://127.0.0.1:8000/jsonpServer">
+    // script发出的跨域请求, 返回结果JS引擎必须可以识别
+    // 因此需要返回标准的JS代码
+    // 因此请求过去返回的内容以一个JS函数的内容返回, 这样JS前端引擎才可以解析并执行。
+    // 返回的结果是一个函数调用, 函数的实参就是服务器要返回给客户端的结果数据
+    // 这个函数前端必须提前声明, 否则就会报错。
+  </script>
+</body>
+
+</html>
