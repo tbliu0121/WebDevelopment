@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跨域</title>
+
+  <style>
+    li {
+      list-style: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>同源策略 & 跨域</h2>
+  <ul>
+    <li>- 表现形式: 当前网页的url和ajax请求的目标资源的url必须符合同源策略。</li>
+    <li>- ajax默认是遵循同源策略的。</li>
+    <li>- 跨域：违背了同源策略就是跨域。</li>
+    <li>- 因为单台服务器的性能是有限度的, 因此多个服务器的情况下就出现了跨域问题。</li>
+    <li>- 多个服务器保证了高可用; 程序员三高: 高性能, 高并发, 高可用。</li>
+  </ul>
+
+  <button id="getUserData">点击获取用户数据</button>
+
+  <script>
+    /***             同源策略 & 跨域
+     *   - 表现形式: 当前网页的url和ajax请求的目标资源的url必须符合同源策略。
+     *   - ajax默认是遵循同源策略的。
+     * 
+     *   - 跨域：违背了同源策略就是跨域。
+     *   - 因为单台服务器的性能是有限度的, 因此多个服务器的情况下就出现了跨域问题。
+     *   - 多个服务器保证了高可用; 程序员三高: 高性能, 高并发, 高可用。
+     * 
+     *   - 解决方案之一: JSONP; 非官方的解决方案, 只支持GET请求。
+     *   - 
+    */
+
+    const getUserDataBtn = document.getElementById("getUserData");
+
+    getUserDataBtn.onclick = function() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "/userData");  // 因为是满足同源协议的, 因此请求路径可以简写
+      xhr.send();
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
+          console.log(xhr.response);
+        }
+
+      };
+    };
+  </script>
+
+</body>
+
+</html>
