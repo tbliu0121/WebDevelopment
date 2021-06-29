@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax重复发送请求的情况</title>
+</head>
+
+<body>
+  <body>
+    <button id="send">发送请求</button>
+  
+    <script>
+      const send = document.getElementById("send");
+  
+      let xhr = null;  // 放在外部以便手动取消xhr。
+      let isSending = false;  // 标志是否正在发送Ajax请求。
+  
+      send.addEventListener("click", () => {
+        if(isSending) xhr.abort();
+        xhr = new XMLHttpRequest();
+        isSending = true;
+        xhr.open("GET", "http://127.0.0.1:8000/delay");
+        xhr.send();
+        xhr.onreadystatechange = () => {
+          if(xhr.readystate === 4) {
+            isSending = false;
+          }
+        }
+      });
+    </script>
+  </body>
+
+</body>
+
+</html>
