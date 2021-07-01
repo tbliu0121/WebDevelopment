@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成器</title>
+</head>
+
+<body>
+  <script>
+    /**    生成器
+     *   - 生成器是一种特殊的函数, 可完成异步编程。
+     *   - 生成器函数中可以有yield语句; yield相当于对代码内部进行了分割。
+    */
+    // 在function和函数名之间加一个 * 表示声明一个生成器函数
+    function * gen() {
+      // console.log("section 01");
+      yield "一只没有耳朵";
+
+      // console.log("section 01");
+      yield "一只没有尾巴";
+
+      // console.log("section 01");
+      yield "真奇怪";
+    }
+
+    let iter = gen();  // 生成器函数的结果返回的是一个生成器
+    // console.log(Object.prototype.toString.call(iter));  // [Object Generator]
+    // console.log(iter);
+    console.log(iter.next());       // 通过next()方法来调用返回结果
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+
+    for(let item of iter) {
+      console.log(item);
+    }
+
+    /***  Generator函数在异步编程中的需求 ***/
+    // function one() {
+    //   setTimeout(() => {
+    //     console.log(111);
+    //     it.next();
+    //   }, 1000);
+    // }
+
+    // function two() {
+    //   setTimeout(() => {
+    //     console.log(222);
+    //     it.next();
+    //   }, 2000);
+    // }
+
+    // function three() {
+    //   setTimeout(() => {
+    //     console.log(333);
+    //     it.next();
+    //   }, 3000);
+    // }
+
+    // function * gen02() {
+    //   yield one();
+    //   yield two();
+    //   yield three();
+    // }
+
+    // let it = gen02();
+    // it.next();
+
+    /*** demo02 ***/
+    // 获取用户数据 -> 获取订单数据 -> 获取商品数据
+    function getUsers() {
+      setTimeout(() => {
+        let data = "users' data";
+        iter03.next(data);
+      }, 1000);
+    }
+
+    function getOrders() {
+      setTimeout(() => {
+        let data = "orders' data";
+        iter03.next(data);
+      }, 1000);
+    }
+
+    function getGoods() {
+      setTimeout(() => {
+        let data = "goods' data";
+        iter03.next(data);
+      }, 1000);
+    }
+
+    function * gen03() {
+      let users = yield getUsers();
+      console.log(users);
+      let orders = yield getOrders();
+      console.log(orders);
+      let goods = yield getGoods();
+      console.log(goods);
+    }
+
+    let iter03 = gen03();
+    iter03.next();
+
+  </script>
+
+</body>
+
+</html>
