@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbol的内部属性</title>
+</head>
+
+<body>
+  <script>
+    /**    Symbol的内置值
+     *   - Symbol.hasInstance
+     *   - Symbol.isConcatSpreadable
+     *   - ...
+     *   - 参见 ES6电子书: https://wangdoc.com/es6/symbol.html
+    */
+
+    const obj = {
+      msg: "Hello world",
+
+      logMsg() {
+        console.log(this.msg);
+      }
+    }
+
+    setTimeout(obj.logMsg(), 1000);
+    // setTimeout(obj.logMsg.call(obj), 2000);
+  </script>
+
+</body>
+
+</html>
