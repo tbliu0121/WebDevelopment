@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数</title>
+</head>
+
+<body>
+  <script>
+    // 箭头函数的特性
+    // 01 this始终是声明时所在所用域下的this, 是静态的。
+    // 02 不能作为构造函数使用; 即不能使用new操作符
+    // 03 没有arguments对象
+    // 04 箭头函数可以简写: 只有一个参数可以省略小括号; 当代码只有一条语句时可以省略花括号同时return必须省略, 语句执行结果及时返回值。
+    function getName1() {
+      console.log(this.name);
+    }
+
+    const getName2 = () => {
+      console.log(this.name);
+    }
+
+    window.name = "Global Name";
+    obj = {
+      name: "Internal Name",
+    }
+
+    // 直接调用
+    getName1();          // Glaobal Name
+    getName2();          // Global Name
+
+    // 使用call方法调用
+    getName1.call(obj);  // Internal Name
+    getName2.call(obj);  // Global Name
+
+  </script>
+</body>
+
+</html>
