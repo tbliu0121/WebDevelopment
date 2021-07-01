@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbol</title>
+</head>
+
+<body>
+  <script>
+    /**          Symbol的特性
+     *   01 Symbol的值是唯一的, 用来解决命名冲突的问题
+     *   02 Symbol的值不能与其他值一起运算
+     *   03 Symbol定义的对象属性不使用for...in来遍历, 但是可以使用Reflect.ownkeys来获取对象所有的键名
+     *   04 Symbol类型数据不可以使用new操作符创建
+     *   05 Symbol值作为键名, 不会被常规方法遍历得到。我们可以利用这个特性，为对象定义一些非私有的、但又希望只用于内部的方法。
+    */
+    // 01 创建Symbole
+    let s1 = Symbol();
+    console.log(s1, typeof s1);
+
+    let s2 = Symbol("symb");    // 字符串是一个描述字符串, 方便理解symbol的意义
+    let s3 = Symbol("symb");
+    console.log(s2 === s3);    // false
+
+    let s4 = Symbol.for("symbol obj");  // 通过Symbol.for()创建的Symbol
+    let s5 = Symbol.for("symbol obj");  // 只要描述符一样, 那么就是一样的！！！
+    console.log(s4 === s5);    // true
+
+    // 不可以与其他值一起运算
+    // console.log(s5 + 100);  // Uncaught TypeError: Cannot convert a Symbol value to a number
+
+    // 02 使用场景: 为对象添加属性和方法, 表示独一无二的
+    let game = {
+      up() {
+        console.log("up");
+      },
+      down() {
+        console.log("down");
+      },
+      left() {
+        console.log("left");
+      },
+      right() {
+        console.log("right");
+      },
+    }
+
+    let methods = {
+      up: Symbol(),
+      down: Symbol(),
+    };
+
+    // 02-1 为name添加symbol属性
+    game[methods.up] = function() {
+      console.log("我可以快速上升~");
+    }
+
+    game[methods.down] = function() {
+      console.log("我可以快速下降~");
+    }
+
+    console.log(game);
+    game[methods.up]();  // 调用方法
+
+    // 02-2另一中添加方式
+    let angery = Symbol("angery");
+    let attack = Symbol("attack");
+
+    let controller = {
+      name: "Angry Birds",
+      [angery]: function() {
+        console.log("小鸟很生气！！！");
+      },
+      [attack]: function() {
+        console.log("瞄准猪猪。。。");
+      }
+    }
+    console.log(controller);
+    controller[angery]();
+
+
+  </script>
+
+</body>
+
+</html>
