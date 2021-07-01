@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>变量的结构赋值</title>
+</head>
+
+<body>
+  <script>
+    // 解构赋值:允许按照一定模式从数组和对象中提取值, 对变量进行赋值。
+    // 01 数组解构
+    const F4 =  ["小沈阳", "刘能", "赵四", "宋小保"];
+    let [yang, liu, zhao, song] = F4;
+    console.log(yang);
+    console.log(liu);
+    console.log(zhao);
+    console.log(song);
+
+    // 02 对象解构; 一般使用结构赋值提取方法比较多。
+    const test = {
+      name: "鲁班",
+      age: 18,
+      
+      attack: function() {
+        console.log("一个鲨嘴炮。。。");
+      }
+    }
+
+    const { name, age, attack } = test;
+    console.log(name, age, attack);
+    attack();
+  </script>
+
+</body>
+
+</html>
