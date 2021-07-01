@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>变量声明</title>
+
+  <style>
+    .item {
+      float: left;
+      width: 100px;
+      height: 30px;
+      margin-left: 20px;
+      border: 1px solid gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>点击切换颜色</h2>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+
+  <script>
+    // 01 let不可以重复声明; var可以重复声明。
+    // 避免了变量污染。
+
+    // 02 块级作用域, 全局作用域; 函数作用域; eval作用域(ES5的严格模式下才有)
+    // let声明的是块级作用域; var则没有块级作用域。
+    // 块级作用域包括for / while / if等循环内的花括号中。
+
+    // 03 let不存在变量提升
+
+    // 04 不影响作用域链
+    {
+      let school = "atguigu";
+      function fn() {
+        console.log(school);
+      }
+      fn();
+    }
+
+    // practice
+    const items = document.getElementsByClassName("item");
+
+    for(let i = 0; i < items.length; i++) {
+      items[i].onclick = function() {
+        // this.style.background = "pink";
+        items[i].style.background = "pink";
+      }
+    }
+  </script>
+</body>
+
+</html>
