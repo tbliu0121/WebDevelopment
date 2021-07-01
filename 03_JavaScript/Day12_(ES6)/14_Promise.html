@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+</head>
+
+<body>
+  <script>
+    /**            异步操作
+     *   - 异步操作主要针对I/O操作，如数据库I/O、文件I/O、网络请求。
+     * 
+     *   - Promise()是一个构造函数, 用来封装异步操作并可以获取到成功或者失败的结果。
+    */
+    // 01 实例化一个promise, Promise接受一个函数, 函数的参数为另外两个函数。
+    // resolve()会使Promise()落定为fulfilled状态
+    const p = new Promise((resolve, reject) => {
+      // 模拟一个异步操作
+      setTimeout(function() {
+        let data = "请求返回的数据";
+        resolve(data);
+
+        // let err = "获取数据失败";
+        // reject(err);
+      }, 1000);
+    });
+
+    // 02 then方法也是接受两个函数; 如果promise执行了resolve则then会执行第一个方法，反之则执行第二个方法
+    p.then(res => {
+      console.log("then中成功的回调: ", res);
+    }, err => {
+      console.log("then中失败的回调: ", err);
+    });
+
+    // 03 通过Promise读取文件; 需要nodejs中的api
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise封装Ajax请求</title>
+</head>
+
+<body>
+  <script>
+    // 接口地址: https://api.apiopen.top/getJoke
+
+    // 创建一个xhr对象并发送请求、获取响应结果
+    // const xhr = new XMLHttpRequest();
+    // xhr.open("GET", "https://api.apiopen.top/getJoke");  // 初始化open(method, url)
+    // xhr.send();
+    // xhr.onreadystatechange = function() {
+    //   // 判断响应状态
+    //   if(xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300) {
+    //     console.log(xhr.response); // 输出响应体
+    //   } else {
+    //     console.log(xhr.status);   // 输出响应状态
+    //   }
+    // };
+
+    // 使用Promise对xhr请求进行封装
+    const p = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();                    // 创建一个XHR对象
+      xhr.open("GET", "https://api.apiopen.top/getJoke");  // 初始化open(method, url)
+      xhr.send();                                          // 发送请求
+      xhr.onreadystatechange = function() {                // 监听结果的变化
+        // 判断是否成功
+        if (xhr.readyState === 4) {
+          // 必须有了
+          if(xhr.status >= 200 && xhr.status < 300) {
+            resolve(xhr.response);
+          } else {
+            console.log("请失败");
+            reject(xhr.status);           // 输出响应状态
+          }
+        }
+      };
+    });
+
+    // 指定回调
+    p.then(function(res) {
+      console.log(res);
+    }, function(err) {
+      console.log(err);
+    });
+  </script>
+</body>
+
+</html>
