@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一个关于箭头函数的demo</title>
+
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background: teal;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+
+
+  <script>
+    // demo01
+    let box = document.getElementById("box");
+
+    box.addEventListener("click", function() {
+      // 点击元素2s之后改变颜色
+      // let _this = this;
+      setTimeout(() => {
+        // console.log(this);
+        // _this.style.background = "pink";
+        this.style.background = "pink";
+      }, 2000);
+    });
+
+    // demo02 返回偶数元素
+    const arr = [1, 6, 9, 10, 100, 255];
+    const res = arr.filter( item => item % 2 === 0);
+    console.log(res);
+  </script>
+
+</body>
+
+</html>
