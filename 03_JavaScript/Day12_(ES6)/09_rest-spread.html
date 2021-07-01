@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rest参数</title>
+</head>
+
+<body>
+  <script>
+    // 01 ES6引入rest参数
+    let arr = [1, 2, 3, 4];
+    
+    // rest参数必须放在参数的最后
+    function test(...args) {
+      console.log(args);
+    }
+
+    test("html", "css", "javascript");
+
+    // 02 ...也叫扩展运算符; 作用对象是一个数组、类数组时会拆解成序列; 一般用于形参
+    const G1 = ["micky", "duck"];
+    const G2 = ["spounge", "star"];
+    const G3 = [...G1, ...G2];
+    console.log(G3);
+
+  </script>
+
+</body>
+
+</html>

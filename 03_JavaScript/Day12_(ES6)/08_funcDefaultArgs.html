@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>形参的初始值</title>
+</head>
+
+<body>
+  <script>
+    // 01 形参的初始值; 一般有默认值的参数放在参数靠后的位置
+    function add(a, b, c = 0) {
+      return a + b + c;
+    }
+
+    let res1 = add(1, 2);
+    let res2 = add(1, 2, 3);
+    console.log(res1, res2);
+
+    // 02 默认参数可以和结构赋值一起使用
+    function connect({ host="127.0.0.1", port, username, pwd }) {
+      console.log(host);
+      console.log(port);
+      console.log(username);
+      console.log(pwd);
+    }
+
+    connect({
+      host: "localhost",
+      port: "3306",
+      username: "admin",
+      pwd: "admin",
+    });
+  </script>
+
+</body>
+
+</html>
