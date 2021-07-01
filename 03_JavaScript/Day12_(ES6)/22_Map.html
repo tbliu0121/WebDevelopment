@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map</title>
+</head>
+
+<body>
+  <script>
+    /**        Map(升级版的对象)
+     *   - Map也是键值对的集合, 但是键的范围不限于字符串。
+     *   - Map实现了iterable接口, 可以通过for...of进行遍历; 可使用扩展运算符进行序列化拆解。
+     * 
+     *   - size: 返回元素的个数。
+     *   - set(): 新增一个元素, 返回当期的Map。
+     *   - get(): 返回键名对象的值。
+     *   - has(): 检测Map中是否含有某个元素。
+     *   - clear(): 清空map, 返回undefined。
+    */
+    let map = new Map();
+    map.set('name', 'Jonathan');
+    map.set('corp', 'Baidu');
+    map.set('Hi', function() {
+      "Hello Map()";
+    });
+    console.log(map);
+
+    // set
+    let key = {
+      school: "atguigu",
+    }
+    map.set(key, ['Beijin', 'Shanghai', 'Shenzhen']);
+    console.log(map);
+
+    // delete
+    map.delete('Hi');
+    console.log(map);
+
+    // get
+    let res = map.get('corp');
+    console.log(res);  // Baidu
+
+    // has
+    console.log(map.has(corp));
+  </script>
+
+</body>
+
+</html>
