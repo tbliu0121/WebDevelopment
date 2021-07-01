@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象的简化写法</title>
+</head>
+
+<body>
+  <script>
+    // 属性和变量同名
+    let name = "jonathan";
+    let age = 18;
+    let say = function() {
+      console.log("Hello ES6+");
+    }
+
+    const obj = {
+      name,
+      age,
+      say,
+    }
+    console.log(obj);
+
+    const obj02 = {
+      name,
+      age,
+      hello() {
+        console.log("Hello ES2015");
+      }
+    }
+    console.log(obj02)
+  </script>
+</body>
+
+</html>
