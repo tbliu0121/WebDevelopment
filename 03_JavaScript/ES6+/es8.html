@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES8</title>
+</head>
+
+<body>
+  <script>
+    /**                async & await
+     *   - async声明一个异步函数, 返回结果为一个Promise。
+     *   - Proimse对象的结果由async函数的执行的返回值决定。
+     *   - await必须写在async函数中
+     *   - await右侧一般是一个Promise对象
+     *   - await返回的Promise成功的值。
+     *   - await的Promise失败了就会抛出异常, 需要通过try catch来捕获异常。 
+     * 
+     *   - 异步编程的解决方案: 生成器函数、Promise、async/await.
+    */
+    // 返回结果是一个Promise对象
+    // 01 只要返回的结果不是一个Promie对象, 那么返回的值均是一个成功状态的Promise对象。
+    // 02 返回的结果如果是抛出的一个异常, 那么返回的是一个失败的Promise对象。
+    // 03 返回的结果是一个Promise对象, 那么函数的结果就职Promise的返回结果。
+    async function fn() {
+      // return 'Hello async';  // 一个fulfilled状态的Promise对象
+      // throw new Error('返回一个异常');  // 返回一个rejected的promise
+      return new Promise((resolve, reject) => {
+        // resolve('成功返回的Promise');  // pendding
+        reject('失败返回的Promise');  // rejected; uncaught
+      });
+    }
+
+    // const res = fn();
+    // console.log(res); 
+    // res.then(res => {
+    //   console.log(res);
+    // }, err => {
+    //   console.error(err);
+    // });
+
+    /***    await    ***/
+    async function getImg() {
+      try {
+        let res = await new Promise((resolve, reject) => {
+          // resolve('成功获取到图片。。。');
+          reject('ops~ 获取图片失败');  // await中失败的状态需要通catch语句来捕获
+        });
+        console.log(res);
+      } catch(err) {
+        console.log(err);
+      }
+    } 
+    
+    getImg();
+  </script>
+
+</body>
+
+</html>

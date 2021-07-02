@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>继承</title>
+</head>
+
+<body>
+  <script>
+    // ES6中的class与继承
+    // 01 一个父类
+    class Player {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      attack() {
+        console.log('attack()');
+      }
+    }
+
+    // 02 子类通过extends关键字实现继承
+    class Warrior extends Player {
+      constructor(name, age, gender) {
+        super(name, age);
+        this.gender = gender;
+      }
+
+      // 子类对父类的重写
+      attack() {
+        console.log('这是凯的attack()');
+        super.attack.call(this);  // 通过call方法实现在子类中调用父类的方法
+      }
+
+      battle() {
+        console.log('battle()');
+      }
+    }
+
+    const Kai = new Warrior('凯', 18, 'male');
+    console.log(Kai);
+    Kai.attack();
+
+
+    // ES5实现继承
+    // 一个父类Phone
+    function Phone(brand, price) {
+      this.brand = brand;
+      this.price = price;
+    }
+
+    Phone.prototype.playmusic = function() {
+      console.log('正在播放音乐。。。');
+    }
+
+    /**            组合式继承
+     *   - 借用构造函数完成对子类参数的设定: Super.call(this, args);  // 子类中借用构造函数
+     *   - 原型链指向完成父类作为子类的原型: 
+     *     - Sub.prototype = new Super();      // 将子类的显式原型指向父类
+     *     - Sub.prototype.constructor = Sub;  // 修正原型上构造函数的指向
+    */
+
+    // 一个子类smartPhone
+    function SmartPhone(brand, price, smartFunction) {
+      // 01 借用构造函数实现继承, 这是一种假继承
+      Phone.call(this, brand, price);
+      // 对子类独有的属性进行初始化
+      this.smartFunction = smartFunction;
+    }
+
+    // 02 设置子级构造函数的原型
+    SmartPhone.prototype = new Phone();             // 设置子类的原型为一个父类的实例
+    SmartPhone.prototype.constructor = SmartPhone;  // 修正原型的constructor的指向
+    // console.log(Phone.__proto__);                   // f() { [native code] }
+
+
+    // 03 声明子类的方法
+    SmartPhone.prototype.aitalk = function() {
+      console.log('我是您的智能语音助手~');
+    };
+
+    SmartPhone.prototype.playgame = function() {
+      console.log('我可以玩游戏~');
+    };
+
+    const Xiaomi = new SmartPhone('Xiaomi', 1999, '小爱同学');
+    console.log(Xiaomi);
+  </script>
+
+</body>
+
+</html>

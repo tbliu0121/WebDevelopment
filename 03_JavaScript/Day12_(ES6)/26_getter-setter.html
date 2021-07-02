@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>子类对父类方法的重写</title>
+</head>
+
+<body>
+  <script>
+    // get 和 set
+    class Phone {
+      get price() {
+        console.log('读取价格属性。。。');
+        return 'priceAttributionValue';
+      }
+
+      set price(value) {
+        console.log('price属性被修改为: ', value);
+      }
+    }
+
+    let p = new Phone();
+    console.log(p.price);
+
+    p.price = 'free';
+    
+  </script>
+</body>
+
+</html>

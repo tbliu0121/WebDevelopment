@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>静态成员</title>
+</head>
+
+<body>
+  <script>
+    // 01 ES5举个栗子 (关于静态属性、静态方法)
+    function Phone(brand, price) {
+      // TODO
+    }
+
+    // 函数本身作为一个对象, 也可以添加属性哦~
+    // 函数对象的属性属于类的, 放到类的思想中称为静态成员
+    Phone.name = '手机';
+    Phone.basicFunction = function() {
+      console.log('我可以打电话哦~');
+    }
+    Phone.prototype.size = '5.5inch';  // 构造函数的显示原型上有个size属性, 实例可以通过隐式原型访问到
+
+    const nokia = new Phone();
+    console.log(nokia.name);  // undefined; 实例对象上无法访问构造函数上的属性的
+    console.log(nokia.size);  // 5.5inch; 原型上属性、方法, 实例是可以访问的
+
+    // 02 类中的静态属性、静态方法通过static关键字来声明
+    class Player {
+      static country = '王者峡谷';
+      static Hi() {
+        console.log('欢迎来到王者荣耀');
+      }
+    }
+
+    let DaJi = new Player();
+    console.log(DaJi.country);    // undefined
+    console.log(DaJi.Hi);         // undefined
+
+    console.log(Player.country);  // 王者峡谷
+    console.log(Player.Hi);       // f Hi () {}
+  </script>
+
+</body>
+
+</html>

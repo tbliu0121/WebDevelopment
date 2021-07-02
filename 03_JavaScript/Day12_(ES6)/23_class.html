@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>类</title>
+</head>
+
+<body>
+  <script>
+    /***      ES6中的Class
+     *   - 声明: class关键字声明一个类。
+     *   - constructor: 定义初始化构造函数。
+     *   - entends: 实现对父类的继承。
+     *   - super: 调用父类的构造函数。
+     *   - static: 定义静态方法和属性。
+     *   - 父类方法的重写：
+     * 
+     *   - ES6中的class中的class可以看做一个语法糖, 绝大多数功能ES5都可以做得到。
+    */
+
+    // ES5通过构造函数实例化对象的方法
+    function Phone(brand, price) {
+      this.brand = brand;
+      this.price = price;
+    }
+
+    // 在原型上添加方法实现方法的重用。
+    Phone.prototype.takePhoto = function() {
+      console.log('我可以拍照');
+    }
+
+    let Huawei = new Phone('Huawei', '4399');
+    console.log(Huawei);
+    Huawei.takePhoto();
+
+    // ES6通过class实例化函数的方法
+    class Player {
+      // 构造函数在new的过程自动执行, 构造函数的名字是固定的！！！
+      constructor(name, position) {
+        this.name = name;
+        this.position = position;
+      }
+
+      attack() {
+        console.log('决战王者峡谷吧！！！');
+      }
+    };
+
+    let LuBan = new Player('LuBan', 'ADC');
+    console.log(LuBan);
+    LuBan.attack();
+  </script>
+
+</body>
+
+</html>
