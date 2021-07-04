@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>requestAnimationFrame</title>
+
+  <style>
+    #box {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      top: 50px;
+      left: 50px;
+      background-color: pink;  
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    /**        requestAnimationFrame
+     *  - let rAFid = requestAnimationFrame(fn): 在浏览器下次刷新的时候调用fn。
+     *  - fn自己带有一个参数是从性能开始时的毫秒值, 称为performance.now();
+     *  - setInterval(func(), 1000)的时间是自己设置的。
+     *  - 动画的最佳观赏效果就是根据浏览器的刷执行。
+     *  - cancleAnimationFrame(rAFid) 可以取消一个requestAnimationFrame。
+    */
+    requestAnimationFrame(() => {
+      console.log('浏览器下次刷新的时候会调用这个函数。。。');
+    });
+
+    const box = document.getElementById('box');
+    let rAFId = null;
+
+
+    box.onclick = function() {
+      requestAnimationFrame(function fn(now) {
+        // requestAnimationFrame(fn)中的fn自带以默认参数(类似于event)。
+        // 这个参数就是当前性能开始时的毫秒值。
+        console.log(now);
+        if(box.offsetLeft < 600) {
+          box.style.left = box.offsetLeft + 5 + 'px';
+          rAFId = requestAnimationFrame(fn);
+        }
+      });
+    };
+
+
+  </script>
+
+</body>
+
+</html>
