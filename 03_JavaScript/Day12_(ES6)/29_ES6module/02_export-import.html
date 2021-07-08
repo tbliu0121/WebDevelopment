@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6模块化语法</title>
+</head>
+
+<body>
+  <script type="module">
+    /**      ES6模块的导入和导出
+     *   - 通过import和export进行模块化的导入和导出。
+     * 
+     *   - export: 
+     *     - 在数据声明的前面加一个export即可导出对应的数据。
+     *     - 将需要暴露的内容以对象的形式暴露出去。
+     *     - export default {}。
+     * 
+     *   - import
+     *     - import * as name from 'target.js';
+     *     - import { data, func, etc... } from 'target.js'
+     *     - import name from 'garget.js'  // 此种情况只针对默认导出
+     * 
+     *   - 注: 可通过单独一个js文件对需要的js进行引入, 然后在index.html中对js文件引入并设置type='module'即可。
+     * 
+     *   - 坑: 必须在script中加入type=module的属性, 同时在本地服务器运行。。。。。。
+    */
+    // 引入module01中的内容
+    import * as m01 from './module01.js';  // 引入目标模块中的所有导出内容
+    console.log(m01);
+
+    // 引入module02中的内容
+    import * as m02 from './module02.js';
+    console.log(m02);
+
+    // 引入module03中的内容
+    import * as m03 from './module03.js';
+    console.log(m03);
+    m03.default.teach();  // 通过default导出的需要通过default来获取
+  </script>
+
+</body>
+
+</html>
