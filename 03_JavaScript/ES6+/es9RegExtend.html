@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则扩展：命名捕获分组和反向断言</title>
+</head>
+
+<body>
+  <script>
+    /***    01 具名分组匹配: ES9中新增的功能    ***/
+    let str = '<a href="http://www.atguigu.com">尚硅谷</a>';
+
+    // 需求: 提取url和标签文本, 通过reg中的()进行分组匹配可以完成
+    const reg = /<a href="(.*)">(.*)<\/a>/;  // reg中的()可以进行组匹配。
+    const res = reg.exec(str);  // 通过exec()可以将匹配结果提取出来。
+    console.log(res);           // res[0]是整个元素的匹配结果, reg中通过()的分组匹配结果通过索引可以进行访问。
+
+    // 具名分组: 在()首部加上?<name>即可
+    let namedReg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;  
+    let namedRes = namedReg.exec(str);
+    console.log(namedRes);      // 具名分组的结果以对象的形式保存在groups
+    console.log(namedRes.groups.url);
+
+
+    /***    02 正向断言 / 反向断言    ***/
+    let str01 = 'JavaScript666加上一串数字10086。。。';
+    
+    // 需求: 提取出后面的数字10086而不要666
+    // 正向断言: 通过后面是否符合筛选条件(?=)而控制对目标内容的选择
+    let reg01 = /\d+(?=。)/;  // 
+    let res01 = reg01.exec(str01);
+    console.log(res01);
+
+    // 反向断言: 通过前面是否符合筛选条件(?<=)而控制对目标内容的选择
+    let reg02 = /(?<=字)\d+/;
+    let res02 = reg02.exec(str01);
+    console.log(res02);
+
+
+    /***    03 dotAll模式    
+     *   - RegExp中 '.' 可以匹配任意字符, 但是无法匹配\n、\r和UTF-16类型的字符
+     *   - 如果想让 . 实现真正意义上的匹配任意字符, 需要通过修饰符s来开启dotAll模式(类似于g、i的作用)
+    */
+    let str03 = `
+      <ul>
+        <li>
+          <a>肖申克的救赎</a>
+          <p>上映日期: 1994-09-10</p>
+        </li>
+        <li>
+          <a>阿甘正传</a>
+          <p>上映日期: 1994-07-06</p>
+        </li>
+    </ul>
+    `;
+    // 需求: 将电影名称和上映时间提取出来
+    let reg03 = /<li>.*<a>(.*)<\/a>.*<p>(.*)<\/p>/gs;
+    let res03 = reg03.exec(str03);
+    console.log(res03);
+
+
+
+
+
+    
+  </script>
+
+</body>
+
+</html>

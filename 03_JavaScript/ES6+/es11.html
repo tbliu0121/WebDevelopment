@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES11中的私有属性</title>
+</head>
+
+<body>
+  <script>
+    // 01 私有属性
+    class Person {
+      name;  // 共有属性
+      #age;  // #符号表示一个私有属性
+      #weight;
+
+      constructor(name, age, weight) {
+        this.name = name;
+        this.#age = age;
+        this.#weight = weight;
+      }
+
+      introduce() {
+        console.log(`你好, 我叫${this.name}, 今年${this.#age}岁了`);
+      }
+    }
+
+    const LiHua = new Person('李华', 18, '45kg');
+    console.log(LiHua);
+    console.log(LiHua.name);
+    // console.log(LiHua.#age);  // '#age' must be declared in an enclosing class
+    LiHua.introduce();
+
+    // 02 Promise.allSettled(), 接受一个Promise数组, 返回的是一个Promsie, 记录了每一个Promise的落定状态
+    // Promise.all(): 只有每一Promise都成功才会放回成功状态, 否则返回失败的Promise的失败原因。
+    const p1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('用户数据');
+      },1000);
+    });
+
+    const p2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('商品数据');
+        // reject('商品数据获取失败');  // 测试Proise.all()
+      },1000);
+    });
+
+    const res02 = Promise.allSettled([p1, p2]);
+    const res02all = Promise.all([p1, p2]);
+    console.log(res02, res02all);
+
+    // 03 globalThis
+    console.log(globalThis);
+  </script>
+
+</body>
+
+</html>

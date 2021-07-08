@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES10新特性</title>
+</head>
+
+<body>
+  <script>
+    // 01 Object.fromEntries(); 接受一个二维数组或者一个Map
+    // 就是和Object.entries()的逆运算
+    const res01 = Object.fromEntries([
+      ['name', 'Jonathan'],
+      ['age', 18],
+      ['gender', 'male']
+    ]);
+    console.log(res01);
+
+    let map = new Map();
+    map = map.set('name', 'howard').set('age', 12).set('gender', 'male');
+    let res01m = Object.fromEntries(map);
+    console.log(res01m);
+
+    // 02 字符串扩展: trimStart 和 trimEnd
+    // trim()去掉首尾的空格; trimStart()去掉头部的空格; trimEnd()去掉尾部的空格。
+    let str02 = '    hello world~    ';
+    console.log(str02);
+    console.log('trim(): ', str02.trim(), 'STR_END')
+    console.log('trimStart(): ', str02.trimStart(), 'STR_END')
+    console.log('trimEnd(): ', str02.trimEnd(), 'STR_END');
+
+    // 03 flat() / flatMap()
+    // flat中的参数表示去掉的维度, 如三维变成一维参数为2
+    const arr03 = [1, 2, 3, [4, [5, 6]]];
+    let res03 = arr03.flat(Infinity);
+    console.log(res03);
+
+    // flatMap: 如果map操作之后返回的是一个多维数组, 可以直接展开。
+    let res03m = res03.map(item => [item ** 2]);
+    let res03fm = res03.flatMap(item => [item ** 2]);
+    console.log(res03m);
+    console.log(res03fm);
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象中的...运算符</title>
+</head>
+
+<body>
+  <script>
+    /**        扩展运算符
+     *   - 在ES9中将...运算符扩展到了对象上
+     *   - 可以完成对对象中共剩余键值对的收集、以及对对象的拆解。
+    */
+    function fn({ host, port, ...user }) {
+      console.log(host);
+      console.log(port);
+      console.log(user);  // 搜集的参数存放到一个对象中
+    }
+
+    fn({
+      host: 'localhost',
+      port: 8848,
+      username: 'admin',
+      pwd: 'admin0123',
+    });
+
+    // 通过...运算符对对象进行拆解
+    obj01 = {
+      skill01: '鲨嘴炮',
+      skill02: '河豚手雷',
+    }
+
+    obj02 = {
+      skill03: '火力压制',
+      skill04: '空中支援',
+    }
+
+    let res = {...obj01, ...obj02};
+    console.log(res);
+
+
+  </script>
+
+</body>
+
+</html>
