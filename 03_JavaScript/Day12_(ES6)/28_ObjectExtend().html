@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象扩展</title>
+</head>
+
+<body>
+  <script>
+    /**        对象扩展
+     *   - Object.is(): 判断两个值是否完全相等, 与全等类似，只不过修正了对NaN与NaN、+0和-0的判断。
+     *   - Object.assign()
+     *   - Object.setProtpertyOf() / Object.getPropertyOf()
+     *     - 通常建议通过Object.create()的时候直接设置好对象的原型。
+    */
+
+    // 01 Object.is()
+    console.log(Object.is(120, 1024));
+    console.log(Object.is(NaN, NaN));
+
+    // 02 Object.assign(target, ...sourcr), 将源对象中的每个可枚举对象加入到目标对象中。
+    // 对于重名属性, 后面的属性值会将前面的属性值覆盖掉。
+    // 对于配置的合并很有用。
+    const config1 = { host:'localhost', port:3306, name:'root'};
+    const config2 = { name:'admin', pwd:'admin0123' };
+    Object.assign(config1, config2);
+    console.log(config1);
+
+    // 03 Object.setPrototypeOf()
+    // 不建议使用这种方法, 最好使用Object.create()创建对象时直接设置好原型。
+    const school = { name:'atguigu' };
+    const cities = {
+      location: ['BeiJing', 'ShangHai', 'ShenZhen']
+    };
+    Object.setPrototypeOf(school, cities);
+    console.log(school);
+    
+  </script>
+
+</body>
+
+</html>
