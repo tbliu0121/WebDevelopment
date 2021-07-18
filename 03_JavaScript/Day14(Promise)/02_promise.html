@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise的理解</title>
+</head>
+
+<body>
+  <script>
+    /**    Promise的理解
+     *   - what: 
+     *     - 异步编程的一种新的解决方案 (旧的是谁？); 旧的是纯回调函数~
+     *     - 从语法上来说Promise是一个构造函数, 从功能上来看Promise对象封装了一个异步操作并可以获取结果。
+     *   - 状态转换
+     *     - pending --> fulfilled
+     *     - pending --> rejected
+     * 
+     *   - why: 
+     *     - 指定回调函数的方式更加灵活
+     *       - 旧的异步方式必须在启动任务前指定;
+     *       - promise: 启动异步任务 --> 返回Promise对象 --> 给Promise对象绑定回调函数(甚至可以在异步任务结束后指定多个)
+     *     - 支持链式调用, 可以解决回调地狱。回调地狱: 回调函数的嵌套调用不便于阅读 / 不便于异常处理。
+     *     - 链式调用时可以在每个then中只写onFulfilled(), 在then的最后写一个catch(); 这称为 [异常穿透]。
+     *     - 因为Promise中还存在回调函数, 因此可以想办法去掉回调函数来进一步进化 --> async/await
+     * 
+     *   - how: 
+     *     - executor(): 
+     *     - resolve(): 
+     *     - reject(): 
+     *     - all():
+     *     - race(): 
+     *     - Promise.prototype.then(): then方法返回一个Promise对象, 这是实现链式调用的前提。
+    */
+
+    // 01 创建一个Promise对象; Promise中的参数是一个函数, 一般称为executor, 负责执行异步操作
+    // 执行器函数executor是一个同步回调！！！
+    const p = new Promise((resolve, reject) => {
+      console.log("executor执行了~");  // executor是一个同步回调, 因此内部的同步代码会直接执行
+
+      // 启动异步任务
+      setTimeout(() => {
+        const time = Date.now();
+        if(time % 2 == 0) {
+          resolve("成功的数据, time = " + time);
+        } else {
+          reject("失败的数据, time = " + time);
+        }
+      }, 1000);
+    });
+
+    // Promise.then(function onResolved() {} , function onRjected() {]});
+    p.then(val => {
+      console.log('成功的回调', val);
+    }, err => {
+      console.log('失败的回调', err);
+    });
+
+    function getGoodsList() {
+      return "商品列表数据";
+    }
+
+    function getUserList() {
+      return "用户列表数据";
+    }
+
+    // 异步的终极解决方案: async / await
+    async function request() {
+      try {
+        const googsList = await getGoodsList();
+        const userList = await getUserList();
+        console.log("异步获取数据完成");
+      } catch(err) {
+        console.dir(err);
+      }
+    }
+  </script>
+
+</body>
+
+</html>
