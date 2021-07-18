@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>准备</title>
+</head>
+
+<body>
+  <script>
+    /**  01 实例对象和函数对象
+     *   - 实例对象:
+     *   - 函数对象: 
+    */
+    // 一个函数
+    // function Fn() {
+    //   console.log("Hello Function ~");
+    // }
+
+    // let fn = new Fn();          // 通过new操作符Fn作为构造函数使用; fn是一个实例对象
+    // console.log(Fn.prototype);  // Fn本身是一个函数实例, 可以操作对应的属性和方法
+    // Fn.bind({});                // 使用Fn的bind方法时, Fn的角色是一个对象
+    // Fn.call({});                // Fn使用call时, Fn的角色是函数对象
+
+
+    /**  02 回调的类型
+     *   - 同步回调: 立即执行, 完全执行完了才结束回调, 不会放入回调队列中。
+     *   - 如: Promise中的executor参数
+     * 
+     *   - 异步回调: 不会立即调用, 会放入回调队列中将来执行。
+     *   - 如: 定时器回调; Ajax回调; Promsise中resolve / reject回调。
+     * 
+     *   - 回调: 你定义的; 你没调用; 但是最后执行了。
+    */
+    // 同步回调的栗子
+    // const arr = [1, 2, 3, 4];
+    // arr.forEach(elm => {
+    //   console.log(elm ** 2);
+    // });
+
+    // // 异步回调
+    // setTimeout(() => {
+    //   console.log("定时器回调执行了~");
+    // }, 1500);
+
+
+    /**  03 JS中的Error处理
+     *   - 01 错误类型
+     *     - Error: 所有错误的父类型
+     *     - ReferenceError: 引用变量不存在
+     *     - TypeError: 数据类型不正确的错误
+     *     - RangeError: 数据值不在所允许范围内
+     *     - SyntaxError: 语法错误
+     * 
+     *   - 02 错误处理
+     *     - 捕获错误: try ... catch
+     *     - 抛出错误: throw error
+     * 
+     *   - 03 错误对象
+     *     - message属性: 错误的相关信息
+     *     - stack属性: 函数调用栈的记录
+    */
+    // 1-01 ReferenceError: 引用变量不存在
+    // console.log(a); // a is not defined是错误的message
+
+    // 1-02 TypeError: 数据类型不正确的错误
+    // let b = null;
+    // console.log(null.attr);  // Cannot read property 'attr' of null
+    // b = {};
+    // b();  // b is not a function
+
+    // 1-03 RangeError: 数据值不在所允许范围内
+    // function func() {
+    //   func();
+    // }
+    // func();  // Maximum call stack size exceeded
+
+    // 1-04 SyntaxError: 语法错误
+    // const c = "hello world""";  // Unexpected string
+
+    // 2-01 捕获错误 try ... catch
+    // try {
+    //   let d;
+    //   console.log(d.name);
+    // } catch(err) {
+    //   // err是一个对象
+    //   // console.log(err);
+    //   console.dir(err);  // 可以展开错误的详细信息
+    // }
+    // console.log('错误被捕获之后继续运行~');
+
+    // 2-02 抛出错误 throw Error
+    function something() {
+      if(Date.now() % 2 == 1) {
+        console.log("当前时间为奇数");
+      } else {
+        // 如果时间是偶数, 则抛出异常由调用者做出处理
+        throw new Error("当前时间为偶数无法执行任务");
+      }
+    }
+
+    // 对于有可能抛出异常的代码要进行try ... catch处理
+    try {
+      something();
+    } catch(err) {
+      console.dir(err);
+    }
+  </script>
+
+</body>
+
+</html>
