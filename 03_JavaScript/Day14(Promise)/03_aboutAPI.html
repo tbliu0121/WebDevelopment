@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise相关API的使用</title>
+</head>
+
+<body>
+  <script>
+    const p01 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if(Date.now() % 2 == 0) resolve("成功的数据");
+        reject("失败的数据");
+      }, 1000);
+    });
+
+    p01.then(val => {
+      console.log("onResolved-01: ", val)
+    }).catch(err => {
+      console.warn("onRejected-01: ", err);
+    });
+
+    const p02 = Promise.resolve("promise-02");
+    const p03 = Promise.resolve("promise-03");
+
+    // 01 Promise.all()
+    // const allRes = Promise.all([p01, p02, p03]);    // 只要所有请求都成功才可以执行
+    // allRes.then(vals => {
+    //   console.log("all resolved: ", vals);          // 成功的结果是一个数组, 结果的顺序就是all中Promise的顺序
+    // }, err => {
+    //   console.warn("all rejected: ", err);
+    // });
+
+    // 02 Promise.race(), 返回最先落定的期约
+    const raceRes = Promise.race([p01, p02, p03]);
+    raceRes.then(val => {
+      console.log("race onResolved first complete: ", val);        // 结果为最先落定的期约
+    }, err => {
+      console.warn("race onRejected: ", err);
+    });
+
+    // 
+  </script>
+
+</body>
+
+</html>
