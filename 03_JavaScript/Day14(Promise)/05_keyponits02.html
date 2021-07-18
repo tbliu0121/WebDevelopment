@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise中的关键点02</title>
+</head>
+
+<body>
+  <script>
+    /**      Promise串联多个操作任务
+     *   - Promise.then方法回返回一个新的Promise, 可以展开想成thne()的链式调用。
+     *   - 通过then方法的链式调用可以串连多个同步 / 异步任务。
+    */
+
+    // 01 通过then()方法串连多个同步 / 异步任务
+    // const p02 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     console.log("执行了任务01(异步)");
+    //     resolve(1);
+    //   }, 1000);
+    // }).then(
+    //   val => {
+    //     console.log("任务01的结果：", val);
+    //     console.log("执行任务02(同步)");
+    //     return 2;
+    //   }
+    // ).then(
+    //   val => {
+    //     console.log("任务02的结果: ", val);
+
+    //     // Promise封装异步操作
+    //     return new Promise((resolve, reject) => {
+    //       setTimeout(() => {
+    //         console.log("执行任务03(异步)");
+    //         resolve(3);
+    //       }, 1500);
+    //     });
+    //   }
+    // ).then(
+    //   val => {
+    //     console.log("任务03的结果: ", val);
+    //   }
+    // );
+
+    /**      异常穿透
+     *   - then()中没写onRejected()就相当于做了: err => throw err操作, 将异常传递了下去; throw是重点！！！
+     *   - 通过 Promise.reject(err)也可以达到和thorw一样的效果。
+     *   - 只有中间的then都没有onRejected()方法才会最终传递到后面的catch中。
+     *   - 否则传递到有onRejected()的处理环节就会被处理掉。
+     * 
+     *   - 连锁中断: 在某个环节返回一个处于<pending>状态的Promise即可。
+    */
+
+    // 02 异常穿透的栗子
+    new Promise((resolve, reject) => {
+      console.log("执行任务一");
+      // resolve("壹");
+      reject("error_01");
+    }).then(
+      val => {
+        console.log("任务一的结果为: ", val);
+        console.log("执行任务二");
+        return "贰";
+      },
+      // err => { throw err }
+      err => {
+        return Promise.reject(err);
+      }
+    ).then(
+      val => {
+        console.log("任务二的结果为: ", val);
+        console.log("执行任务三");
+        return "叁";
+      }
+    ).then(
+      val => {
+        console.log("任务三的结果为: ", val);
+      }
+    ).catch(err => {
+      // catch就是个语法糖, 相当于thne(null, err => {})
+      // 因此返回的仍然是一个Promise, 可以继续使用then。
+      console.log("onRejected(): ", err);
+      // return Promise.reject(err);
+      return new Promise(() => {});  // 通过返回一个pending状态的Promise实现连锁的中断。
+    }).then(
+      val => {
+        console.log("onResolved()_afterCatch(): ", val);
+      },
+      err => {
+        console.log("onRejected()_afterCatch(): ", err);
+      }
+    );
+  </script>
+
+</body>
+
+</html>

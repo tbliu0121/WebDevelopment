@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promsie中的关键点01</title>
+</head>
+
+<body>
+  <script>
+    /**      关于Promise的几个问题
+     *   - 01 如何改变Promise的状态？
+     *     - resolve  -->  <fulfilled>
+     *     - reject   -->  <rejected>
+     *     - 抛出异常: 主动抛出异常或者由系统抛出异常 --> <rejected>
+     * 
+     *   - 02 一个Promise对象指定多个成功/失败回调函数, 都会调用么？
+     *     - 只要Promise状态改变, 就会调用对应的回调函数。
+     * 
+     *   - 03 链式的then方法中的Promise状态
+     *     - then中回调的返回值是 { undefined / 自定义返回值 / Promise.resolve() }, 则是<fulfilled>
+     *     - then中回调的返回值是 { throw抛出的异常 / Promise.reject() }, 则是<rejected>
+     * 
+     *   - 04 Promise串联多个操作任务
+     *     - Promise.then方法回返回一个新的Promise, 可以展开想成thne()的链式调用。
+     *     - 通过then方法的链式调用可以串连多个同步 / 异步任务。
+    */
+
+    const p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("成功的数据");  // <fulfilled>
+        // reject("失败的数据");  // <rejected>
+        // throw new Error("Promise出错了");  // <rejected>
+      }, 2000);
+    });
+
+    console.log(p);
+
+    // 01 为p绑定多个成功/失败的回调; 每种装态的回调都会执行~
+    // 只有Promise的状态落定了, 然后才会执行then()中对应的回调
+    // Promise.then()返回的Promise的状态由thne()指定的回调函数的结果来决定。
+    p.then(
+      val => {
+        // console.log("onResolved()_01: ", val);  // <fulfilled>
+        return Promise.resolve(1);  // <fulfilled>; return的数据会在后面的then方法中获取到
+        // return Promise.reject(2);  // <rejected>
+        // return 10010;  // <fulfilled>
+        // throw "wrong answer";  // <rejected>
+      }, 
+      err => {
+        // 此处的返回结果与下一个then中调用的回调
+        // 情况和上面的是一样的
+        // console.warn("onRejected()_01: ", err);  // <fulfilled>
+        // return Promise.resolve(1);  // <fulfilled>
+        return Promise.reject(2);  // <rejected>
+        // return 10001;  // <fulfilled>
+      }
+    ).then(
+      // 这个then中的方法调用哪个回调取决于上一个then中的返回转态
+      val => {
+        console.log("onResolved()_01-2: ", val);
+      },
+      err => {
+        console.warn("onRejected()_01-2: ", err);
+      }
+    );
+
+    p.then(val => {
+      console.log("onResolved_02: ", val);
+    }, err => {
+      console.warn("onResolved_02: ", err);
+    });
+
+  </script>
+
+</body>
+
+</html>
