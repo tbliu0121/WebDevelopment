@@ -11,22 +11,31 @@
 <body>
   <script>
     /**      迭代器类型数据
-     *   - Array
-     *   - Arguments
-     *   - Set
-     *   - Map
-     *   - String
-     *   - TypeArray
-     *   - NodeList
-     * 
-     *   - for...of 用来遍历迭代器类型数据
+     *   - Array / Arguments / Set / Map / String / TypeArray / NodeList
+     *   - 对于这种集合结构的数据, 需要一种统一的接口机制来处理所有不同的数据结构。
+     *   - 迭代器(iterator)机制: 任何数据结构只要部署了Iterator借口, 就可以完成遍历操作。
+     *   - for...of 用来遍历迭代器类型数据。
+     *   - 迭代器对象具有next()、return()、throw()方法。
+     *   - 实现一个迭代器, 其中next()方法是必须部署的, return()和throw()是可选的。
     */
     const Players = ["鲁班", "妲己", "花木兰", "赵云"];
 
-    // for...of遍历
-    for(let player of Players) {
+    // 01 for...of遍历可迭代对象
+    for(const player of Players) {
       console.log(player);
     }
+
+    const obj = {
+      name: "Jonathan",
+      age: 18,
+      gender: "female"
+    }
+
+    // 02 for ... in用于便利可枚举属性 
+    for(const key in obj) {
+      console.log(key, obj[key]);
+    }
+
   </script>
 
 </body>
