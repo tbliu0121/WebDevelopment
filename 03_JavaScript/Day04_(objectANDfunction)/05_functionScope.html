@@ -14,8 +14,8 @@
     var foo = 1;
     function bar() {
       console.log(foo);   // f foo {}
-      var foo = 10;
-      function foo() {};  
+      var foo = 10;       // foo的声明会提升上去, 赋值操作会保留在原地
+      function foo() {};  // 函数会整体提升上去
       console.log(foo);   // 10
     }
 
