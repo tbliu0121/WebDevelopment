@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>习题</title>
+</head>
+
+<body>
+  <script>
+    /**  01 关于执行上下文的栗子  from Didi  **/
+    var foo = 1;
+    function bar() {
+      console.log(foo);   // f foo {}
+      var foo = 10;
+      function foo() {};  
+      console.log(foo);   // 10
+    }
+
+    bar();
+
+    /***  02 another demo  ***/
+    function Foo() {
+      getName = function () { console.log(1) }  // 没有var / let, 会被注入到window下
+      return this
+    }
+
+    Foo.getName = function () { console.log(2) }
+    Foo.prototype.getName = function () { console.log(3) }
+    // var getName = function () { console.log(4) }
+    function getName() { console.log(5) }
+
+    //请写出下面的输出结果
+    Foo.getName()      // 2
+    getName()          // 5
+    Foo().getName()    // 1
+    getName()          // 5  should be 1; 注意函数内部没有关键字的声明会被注入到window下                         
+    new Foo.getName()  // 2
+  </script>
+
+</body>
+
+</html>
