@@ -1,0 +1,7 @@
+/* 在全局引入需要的字体图标 */
+@import "/static/iconfont/iconfont.wxss";
+
+/* 设置页面高度为品目高度 */
+page {
+  height: 100%;
+}

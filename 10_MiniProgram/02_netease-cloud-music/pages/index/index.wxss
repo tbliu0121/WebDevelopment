@@ -1,0 +1,131 @@
+/* pages/index.wxss */
+.banner {
+  width: 100%;
+  height: 300rpx;
+}
+
+.banner image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 图标导航 */
+.navContainer {
+  display: flex;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+}
+
+.navItem .iconfont {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  font-size: 50rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: rgb(240, 19, 19);
+  margin: 20rpx 0;
+}
+
+/* 因为权重没有上面的高, 因此不会产生字体覆盖的效果。 */
+.navItem text {
+  font-size: 26rpx;
+}
+
+/* 推荐歌曲 */
+.recommandContainer {
+  padding: 20rpx;
+}
+
+/* 推荐内容区 */
+.recommandScroll {
+  display: flex;
+  height: 300rpx;
+}
+
+.scrollItem {
+  width: 200rpx;
+  margin-right: 20rpx;
+}
+
+.scrollItem image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+
+.scrollItem text {
+  font-size: 26rpx;
+
+  /* 单行文本溢出 */
+  /* overflow: hidden只能对块级元素, 对行级元素、块级元素无法生效。 */
+  /* display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+
+  /* 多行文本溢出 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;          /* 需要使用一下私有属性来设置display */
+  -webkit-box-orient: vertical;  /* 设置对齐模式, 纵向对齐 */
+  -webkit-line-clamp: 2;         /* 设置可显示行数 */
+}
+
+/* 排行榜 */
+.topList {
+  padding: 20rpx;
+  padding-bottom: 30rpx;
+}
+
+ .topListSwiper {
+  height: 420rpx;
+}
+
+.swiperItem {
+  width: 95%;
+  background-color: #fbfbfb;
+}
+
+.swiperItem .title {
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
+
+.musicItem {
+  /* 当一个元素设置为flex时, 子元素都具有inline-block形式 */
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.musicItem image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 6rpx;
+}
+
+.musicItem .count {
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.musicItem .musicName {
+  height: 100rpx;
+  line-height: 100rpx;
+  max-width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
