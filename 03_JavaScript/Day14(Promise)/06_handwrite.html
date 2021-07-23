@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义Promise</title>
+</head>
+
+<body>
+  <script src="./lib/Promise_.js"></script>
+  <script>
+    /**      自定义Promise
+     *   - Promise 构造函数的实现
+     *   - Promise.then() / catch()的实现
+     *   - Promise.resolve() / reject() 的实现
+     *   - Promise.all() / race() 的实现
+     *   - Promise.onResolved() / onRejected()的实现
+    */
+
+    const p = new Promise_((resolve, reject) => {
+      resolve(1);  // value
+      // reject(2);   // reason
+    });
+  </script>
+
+</body>
+
+</html>
