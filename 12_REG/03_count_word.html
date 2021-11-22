@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>量词</title>
+</head>
+
+<body>
+  <script>
+    // {n} 重复 n 次
+    // {7, 11} 重复的区间
+
+    // ? 0 次或 1 次
+
+    // * 0 次或 无数次
+
+    // 非贪婪模式
+    // 在重复区间的后面使用一个?, 去掉这个?j
+    const reg_not_greedy = /\d{8,9}?/g;
+    const test = '1234567890ABCD';
+    const res = test.match(reg_not_greedy);  // 
+
+    console.log(reg_not_greedy);
+    console.log(res);  // 12345678
+  </script>
+
+</body>
+
+</html>
